@@ -1,0 +1,107 @@
+@import 'variables';
+
+%clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+;
+  &:after {
+    clear: both;
+  }
+;
+}
+
+%wei-btn {
+  width: 98%;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid $color-white;
+  height: auto;
+  font-size: $font-size-t14;
+  margin: 0 auto;
+}
+
+@mixin fillet($flag) {
+  @if $flag == true {
+    border-radius: $border-radius-base;
+  } @else {
+    border-radius: $border-radius-none;
+  }
+}
+
+@mixin clearfix() {
+  @extend %clearfix;
+}
+
+@mixin overTextH($line:2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin wei-bg-btn($color: $color-333, $bg-color: $color-white, $border-color: $color-ccc) {
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    @extend %wei-btn;
+    color: $color;
+    border: 1px solid $border-color;
+    background-color: $bg-color;
+  }
+}
+
+@mixin wei-arrow($direction, $color: $color-black, $x: 10px, $y: 2px) {
+  $left: 0;
+  $right: 0;
+  $rotate: 45;
+  position: absolute;
+  display: block;
+  top: 45%;
+  left: 3px;
+  height: $x;
+  width: $y;
+  background-color: $color;
+
+  @if $direction == 'left' {
+    $rotate: -45;
+    $left: 0;
+    $right: 'auto';
+  } @else if $direction == 'right' {
+    $rotate: 45;
+    $left: 'auto';
+    $right: 0;
+  } @else if $direction == 'up' {
+    $rotate: 45;
+    $left: 0;
+    $right: 'auto';
+  } @else if $direction == 'down' {
+    $rotate: 135;
+    $left: 'auto';
+    $right: 0;
+  }
+  transform: rotate(#{$rotate}deg) translateZ(0);
+  -ms-transform: rotate(#{$rotate}deg) translateZ(0);
+  -moz-transform: rotate(#{$rotate}deg) translateZ(0);
+  -webkit-transform: rotate(#{$rotate}deg) translateZ(0);
+  -o-transform: rotate(#{$rotate}deg) translateZ(0);
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: $left;
+    right: $right;
+    top: 0;
+    height: $y;
+    width: $x;
+    background-color: $color;
+  }
+;
+}
