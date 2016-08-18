@@ -47,7 +47,7 @@
               var start = list.length,
                   add = function(args) {
                     $.each(args, function(_, arg){
-                      if (typeof arg === "function") {
+                      if (typeof arg === 'function') {
                         if (!options.unique || !Callbacks.has(arg)) list.push(arg)
                       }
                       else if (arg && arg.length && typeof arg !== 'string') add(arg)

@@ -189,7 +189,7 @@
 
   // serialize payload and append it to the URL for GET requests
   function serializeData(options) {
-    if (options.processData && options.data && $.type(options.data) != "string")
+    if (options.processData && options.data && $.type(options.data) != 'string')
       options.data = $.param(options.data, options.traditional)
     if (options.data && (!options.type || options.type.toUpperCase() == 'GET' || 'jsonp' == options.dataType))
       options.url = appendQuery(options.url, options.data), options.data = undefined
@@ -345,7 +345,7 @@
     if (parts.length > 1) options.url = parts[0], selector = parts[1]
     options.success = function(response){
       self.html(selector ?
-        $('<div>').html(response.replace(rscript, "")).find(selector)
+        $('<div>').html(response.replace(rscript, '')).find(selector)
         : response)
       callback && callback.apply(self, arguments)
     }
@@ -364,7 +364,7 @@
       // handle data in serializeArray() format
       if (!scope && array) params.add(value.name, value.value)
       // recurse into nested objects
-      else if (type == "array" || (!traditional && type == "object"))
+      else if (type == 'array' || (!traditional && type == 'object'))
         serialize(params, value, traditional, key)
       else params.add(key, value)
     })
@@ -374,7 +374,7 @@
     var params = []
     params.add = function(key, value) {
       if ($.isFunction(value)) value = value()
-      if (value == null) value = ""
+      if (value == null) value = ''
       this.push(escape(key) + '=' + escape(value))
     }
     serialize(params, obj, traditional)

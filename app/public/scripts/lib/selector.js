@@ -7,7 +7,7 @@
 
   function visible(elem){
     elem = $(elem)
-    return !!(elem.width() || elem.height()) && elem.css("display") !== "none"
+    return !!(elem.width() || elem.height()) && elem.css('display') !== 'none'
   }
 
   // Implements a subset from:

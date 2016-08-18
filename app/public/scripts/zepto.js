@@ -65,13 +65,13 @@ var Zepto = (function() {
 
   function type(obj) {
     return obj == null ? String(obj) :
-      class2type[toString.call(obj)] || "object"
+      class2type[toString.call(obj)] || 'object'
   }
 
-  function isFunction(value) { return type(value) == "function" }
+  function isFunction(value) { return type(value) == 'function' }
   function isWindow(obj)     { return obj != null && obj == obj.window }
   function isDocument(obj)   { return obj != null && obj.nodeType == obj.DOCUMENT_NODE }
-  function isObject(obj)     { return type(obj) == "object" }
+  function isObject(obj)     { return type(obj) == 'object' }
   function isPlainObject(obj) {
     return isObject(obj) && !isWindow(obj) && Object.getPrototypeOf(obj) == Object.prototype
   }
@@ -104,7 +104,7 @@ var Zepto = (function() {
   }
 
   function maybeAddPx(name, value) {
-    return (typeof value == "number" && !cssNumber[dasherize(name)]) ? value + "px" : value
+    return (typeof value == 'number' && !cssNumber[dasherize(name)]) ? value + 'px' : value
   }
 
   function defaultDisplay(nodeName) {
@@ -112,9 +112,9 @@ var Zepto = (function() {
     if (!elementDisplay[nodeName]) {
       element = document.createElement(nodeName)
       document.body.appendChild(element)
-      display = getComputedStyle(element, '').getPropertyValue("display")
+      display = getComputedStyle(element, '').getPropertyValue('display')
       element.parentNode.removeChild(element)
-      display == "none" && (display = "block")
+      display == 'none' && (display = 'block')
       elementDisplay[nodeName] = display
     }
     return elementDisplay[nodeName]
@@ -145,7 +145,7 @@ var Zepto = (function() {
     if (singleTagRE.test(html)) dom = $(document.createElement(RegExp.$1))
 
     if (!dom) {
-      if (html.replace) html = html.replace(tagExpanderRE, "<$1></$2>")
+      if (html.replace) html = html.replace(tagExpanderRE, '<$1></$2>')
       if (name === undefined) name = fragmentRE.test(html) && RegExp.$1
       if (!(name in containers)) name = '*'
 
@@ -319,10 +319,10 @@ var Zepto = (function() {
   function deserializeValue(value) {
     try {
       return value ?
-        value == "true" ||
-        ( value == "false" ? false :
-          value == "null" ? null :
-          +value + "" == value ? +value :
+        value == 'true' ||
+        ( value == 'false' ? false :
+          value == 'null' ? null :
+          +value + '' == value ? +value :
           /^[\[\{]/.test(value) ? $.parseJSON(value) :
           value )
         : value
@@ -356,7 +356,7 @@ var Zepto = (function() {
 
   $.camelCase = camelize
   $.trim = function(str) {
-    return str == null ? "" : String.prototype.trim.call(str)
+    return str == null ? '' : String.prototype.trim.call(str)
   }
 
   // plugin compatibility
@@ -400,8 +400,8 @@ var Zepto = (function() {
   if (window.JSON) $.parseJSON = JSON.parse
 
   // Populate the class2type map
-  $.each("Boolean Number String Function Array Date RegExp Object Error".split(" "), function(i, name) {
-    class2type[ "[object " + name + "]" ] = name.toLowerCase()
+  $.each('Boolean Number String Function Array Date RegExp Object Error'.split(' '), function(i, name) {
+    class2type[ '[object ' + name + ']' ] = name.toLowerCase()
   })
 
   // Define methods that will be available on all
@@ -564,8 +564,8 @@ var Zepto = (function() {
     },
     show: function(){
       return this.each(function(){
-        this.style.display == "none" && (this.style.display = '')
-        if (getComputedStyle(this, '').getPropertyValue("display") == "none")
+        this.style.display == 'none' && (this.style.display = '')
+        if (getComputedStyle(this, '').getPropertyValue('display') == 'none')
           this.style.display = defaultDisplay(this.nodeName)
       })
     },
@@ -613,12 +613,12 @@ var Zepto = (function() {
       return this.map(function(){ return this.cloneNode(true) })
     },
     hide: function(){
-      return this.css("display", "none")
+      return this.css('display', 'none')
     },
     toggle: function(setting){
       return this.each(function(){
         var el = $(this)
-        ;(setting === undefined ? el.css("display") == "none" : setting) ? el.show() : el.hide()
+        ;(setting === undefined ? el.css('display') == 'none' : setting) ? el.show() : el.hide()
       })
     },
     prev: function(selector){ return $(this.pluck('previousElementSibling')).filter(selector || '*') },
@@ -637,7 +637,7 @@ var Zepto = (function() {
           var newText = funcArg(this, text, idx, this.textContent)
           this.textContent = newText == null ? '' : ''+newText
         }) :
-        (0 in this ? this.pluck('textContent').join("") : null)
+        (0 in this ? this.pluck('textContent').join('') : null)
     },
     attr: function(name, value){
       var result
@@ -677,7 +677,7 @@ var Zepto = (function() {
     },
     val: function(value){
       if (0 in arguments) {
-        if (value == null) value = ""
+        if (value == null) value = ''
         return this.each(function(idx){
           this.value = funcArg(this, value, idx, this.value)
         })
@@ -733,7 +733,7 @@ var Zepto = (function() {
         if (!value && value !== 0)
           this.each(function(){ this.style.removeProperty(dasherize(property)) })
         else
-          css = dasherize(property) + ":" + maybeAddPx(property, value)
+          css = dasherize(property) + ':' + maybeAddPx(property, value)
       } else {
         for (key in property)
           if (!property[key] && property[key] !== 0)
@@ -762,7 +762,7 @@ var Zepto = (function() {
         newName.split(/\s+/g).forEach(function(klass){
           if (!$(this).hasClass(klass)) classList.push(klass)
         }, this)
-        classList.length && className(this, cls + (cls ? " " : "") + classList.join(" "))
+        classList.length && className(this, cls + (cls ? ' ' : '') + classList.join(' '))
       })
     },
     removeClass: function(name){
@@ -771,7 +771,7 @@ var Zepto = (function() {
         if (name === undefined) return className(this, '')
         classList = className(this)
         funcArg(this, name, idx, classList).split(/\s+/g).forEach(function(klass){
-          classList = classList.replace(classRE(klass), " ")
+          classList = classList.replace(classRE(klass), ' ')
         })
         className(this, classList.trim())
       })
@@ -831,7 +831,7 @@ var Zepto = (function() {
     offsetParent: function() {
       return this.map(function(){
         var parent = this.offsetParent || document.body
-        while (parent && !rootNodeRE.test(parent.nodeName) && $(parent).css("position") == "static")
+        while (parent && !rootNodeRE.test(parent.nodeName) && $(parent).css('position') == 'static')
           parent = parent.offsetParent
         return parent
       })
@@ -874,7 +874,7 @@ var Zepto = (function() {
       var argType, nodes = $.map(arguments, function(arg) {
             var arr = []
             argType = type(arg)
-            if (argType == "array") {
+            if (argType == 'array') {
               arg.forEach(function(el) {
                 if (el.nodeType !== undefined) return arr.push(el)
                 else if ($.zepto.isZ(el)) return arr = arr.concat(el.get())
@@ -882,7 +882,7 @@ var Zepto = (function() {
               })
               return arr
             }
-            return argType == "object" || arg == null ?
+            return argType == 'object' || arg == null ?
               arg : zepto.fragment(arg)
           }),
           parent, copyByClone = this.length > 1

@@ -103,7 +103,7 @@
         return $.proxy(fn[context], fn)
       }
     } else {
-      throw new TypeError("expected function")
+      throw new TypeError('expected function')
     }
   }
 
@@ -230,7 +230,7 @@
     event._args = args
     return this.each(function(){
       // handle focus(), blur() by calling them directly
-      if (event.type in focus && typeof this[event.type] == "function") this[event.type]()
+      if (event.type in focus && typeof this[event.type] == 'function') this[event.type]()
       // items in the collection might not be DOM elements
       else if ('dispatchEvent' in this) this.dispatchEvent(event)
       else $(this).triggerHandler(event, args)

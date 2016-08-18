@@ -10,11 +10,11 @@
   function Deferred(func) {
     var tuples = [
           // action, add listener, listener list, final state
-          [ "resolve", "done", $.Callbacks({once:1, memory:1}), "resolved" ],
-          [ "reject", "fail", $.Callbacks({once:1, memory:1}), "rejected" ],
-          [ "notify", "progress", $.Callbacks({memory:1}) ]
+          [ 'resolve', 'done', $.Callbacks({once:1, memory:1}), 'resolved' ],
+          [ 'reject', 'fail', $.Callbacks({once:1, memory:1}), 'rejected' ],
+          [ 'notify', 'progress', $.Callbacks({memory:1}) ]
         ],
-        state = "pending",
+        state = 'pending',
         promise = {
           state: function() {
             return state
@@ -38,7 +38,7 @@
                   } else {
                     var context = this === promise ? defer.promise() : this,
                         values = fn ? [returned] : arguments
-                    defer[tuple[0] + "With"](context, values)
+                    defer[tuple[0] + 'With'](context, values)
                   }
                 })
               })
@@ -65,10 +65,10 @@
       }
 
       deferred[tuple[0]] = function(){
-        deferred[tuple[0] + "With"](this === deferred ? promise : this, arguments)
+        deferred[tuple[0] + 'With'](this === deferred ? promise : this, arguments)
         return this
       }
-      deferred[tuple[0] + "With"] = list.fireWith
+      deferred[tuple[0] + 'With'] = list.fireWith
     })
 
     promise.promise(deferred)
