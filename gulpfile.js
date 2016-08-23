@@ -177,9 +177,14 @@ gulp.task('default', ['clean'], () => {
 gulp.task('uglify_script', function() {
   gulp.src('app/public/scripts/zepto.js')
     .pipe($.uglify())
-    .pipe(gulp.dest('dist/js/lib'));
+    .pipe(gulp.dest('dist/js'));
 
   gulp.src('app/public/scripts/main.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
+
+  gulp.src('app/public/scripts/swiper.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
 });
+

@@ -3,6 +3,7 @@
 @import 'mixins';
 @import 'fontawesome';
 @import 'icon';
+@import 'swiper';
 /* common */
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -376,5 +377,47 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+/* pc */
+.pc-temple-bg{
+  position: relative;
+  background: url("../images/pc_bg.jpg") no-repeat left top;
+  background-size: auto 100%;
+  width: 100%;
+  padding-bottom: 53.57%;
+}
+.pc-temple-container{
+  position: absolute;
+  left: 23%;
+  width: 54%;
+  height: 100%;
+}
+.temple-preview-con{
+  position: absolute;
+  top: 11%;
+  width: 34.1%;
+  height: 61.4%;
+  padding: 9.3% 2.3%;
 
-
+  background: url("../images/iphone.png") no-repeat;
+  background-size: 100% auto;
+  img{
+    width: 100%;
+  }
+}
+.temple-qrcode{
+  position: absolute;
+  right: 0;
+  bottom: 10.222%;
+  width: 15.77%;
+  img:last-child{
+    margin-left: 20px;
+  }
+}
+.temple-copyright{
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  color: $color-666;
+}
