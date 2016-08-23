@@ -67,7 +67,7 @@ gulp.task('html', ['styles', 'scripts'], () => {
 });
 
 gulp.task('images', () => {
-  return gulp.src('app/public/images/**/*')
+  return gulp.src('app/public/img/**/*')
     .pipe($.cache($.imagemin({
       progressive: true,
       interlaced: true,
@@ -75,7 +75,7 @@ gulp.task('images', () => {
       // as hooks for embedding and styling
       svgoPlugins: [{cleanupIDs: false}]
     })))
-    .pipe(gulp.dest('dist/public/images'));
+    .pipe(gulp.dest('dist/public/img'));
 });
 
 gulp.task('fonts', () => {
@@ -111,7 +111,7 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
 
   gulp.watch([
     'app/*.html',
-    'app/public/images/**/*',
+    'app/public/img/**/*',
     '.tmp/public/fonts/**/*'
   ]).on('change', reload);
 
