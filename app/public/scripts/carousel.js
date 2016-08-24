@@ -189,9 +189,16 @@
       isCycling && this.cycle();
 
       var index= this.getItemIndex($active);
-     if(index >= this.$items.length -1 )index = -1;
       if($('.wei-carousel-captions').length > 0){
-        $('.wei-carousel-captions').html(this.txt_data[index + 1]);
+        if(direction == 'left'){
+          if(index >= this.$items.length -1 )index = -1;
+          $('.wei-carousel-captions').html(this.txt_data[index + 1]);
+        }
+        else {
+          if(index <= 0 )index = this.$items.length;
+          $('.wei-carousel-captions').html(this.txt_data[index - 1]);
+        }
+
       }
 
       return this;
