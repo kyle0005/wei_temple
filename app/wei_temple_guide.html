@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>guide</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="guide-container">
+  <section class="temple-guide">
+    <div id="guide" class="wei-carousel"></div>
+  </section>
+  <section class="temple-app">
+    <a href="javascript:;" class="wei-bg-905641" style="font-size: 100%">下载手机APP</a>
+  </section>
+</div>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<script src="public/scripts/hammer.js"></script>
+<script src="public/scripts/carousel.js"></script>
+<!-- endbuild -->
+<script>
+  var img_data = ['public/img/guide1.png','public/img/guide2.png','public/img/guide3.png', 'public/img/guide4.png', 'public/img/guide5.png'];
+  $(function () {
+    $('#guide').carousel(
+      {
+        interval: false,
+        data: img_data,
+        hasCtrls: false
+      }
+    );
+  });
+</script>
+</body>
+</html>

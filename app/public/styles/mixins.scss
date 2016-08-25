@@ -16,11 +16,10 @@
 }
 
 %wei-btn {
-  width: 98%;
+  width: calc(100% - 2px);
   display: inline-block;
   text-align: center;
   border: 1px solid $color-white;
-  height: auto;
   font-size: $font-size-t14;
   margin: 0 auto;
 }

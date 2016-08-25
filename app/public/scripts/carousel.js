@@ -61,11 +61,9 @@
     this.$active = null;
     this.$items = null;
     this.txt_data = opts.txt_data;
-
-
-    this.img = options.data;
-    this.ctrls = options.hasCtrls;
-    this.btns = options.hasBtns;
+    this.img = this.options.data;
+    this.ctrls = this.options.hasCtrls;
+    this.btns = this.options.hasBtns;
     addHtml.call(this.$element, this.img, this.ctrls, this.btns, this.txt_data);
 
     this.$indicators = this.$element.find('.wei-carousel-btns');
@@ -95,7 +93,8 @@
       items = '<div class="wei-carousel-items">',
       btns = '<ol class="wei-carousel-btns">',
       content = '',
-      captions = '<div class="wei-carousel-captions">' + txt[0] + '</div>';
+      captions = '';
+    if(txt.length != 0)captions = '<div class="wei-carousel-captions">' + txt[0] + '</div>';
     if (hasCtrls)content += ctrls;
     if (!data || data.length <= 0)return false;
     $.each(data, function (i) {
@@ -189,7 +188,7 @@
       isCycling && this.cycle();
 
       var index= this.getItemIndex($active);
-      if($('.wei-carousel-captions').length > 0){
+      if($('.wei-carousel-captions').length > 0 && this.txt_data.length != 0){
         if(direction == 'left'){
           if(index >= this.$items.length -1 )index = -1;
           $('.wei-carousel-captions').html(this.txt_data[index + 1]);

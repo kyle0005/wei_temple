@@ -175,16 +175,17 @@ gulp.task('default', ['clean'], () => {
 
 //单独压缩js
 gulp.task('uglify_script', function() {
-  gulp.src('app/public/scripts/zepto.js')
+  gulp.src('app/public/scripts/carousel.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
-  gulp.src('app/public/scripts/main.js')
+  gulp.src('app/public/scripts/hammer.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
-  gulp.src('app/public/scripts/swiper.js')
+  gulp.src('app/public/scripts/jquery-3.0.0.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
+
 });
 
