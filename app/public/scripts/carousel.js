@@ -47,7 +47,7 @@
       interval: 2000,
       pause: 'hover',
       wrap: true,        //若设置为false，所有item只轮播一遍，不循环
-      data: ['2.jpg'],     //默认图片
+      data: [],     //默认图片
       hasCtrls: true,        //默认有左右箭头
       hasBtns: true,         //默认有小点
       txt_data: ''
@@ -98,14 +98,30 @@
     if (hasCtrls)content += ctrls;
     if (!data || data.length <= 0)return false;
     $.each(data, function (i) {
-      items += '<div class="items-container">' +
-        '<a href="javascript:;" class="items-a">' +
-        '<img src="' +
-        data[i] +
-        '" class="items-img"/>' +
-        '</a>' +
-        '</div>';
+      items += '<div class="items-container">';
+      var _data = [],str = '';
+      _data = data[i].split('.');
+      str = _data[_data.length - 1].toLowerCase();
+      if(str != 'jpg' && str != 'jpeg' && str != 'png' && str != 'bmp' && str != 'gif'){
+        items += '<div class="items-a">' +
+          '<video class="items-img" controls="controls" preload="metadata" style="width:100%;max-width:30rem;max-height:30rem;"' +
+        'src="' +
+          data[i] +
+          '"' +
+        'poster="' +
+          '' +
+          '"></video>' +
+          '</div>';
+      }else{
+        items += '<a href="javascript:;" class="items-a">' +
+          '<img src="' +
+          data[i] +
+          '" class="items-img"/>' +
+          '</a>';
+      }
+      items += '</div>';
       btns += '<li></li>';
+
     });
     items += '</div>';
     btns += '</ol>';

@@ -7,6 +7,10 @@
 html, body{
   height: 100%;
 }
+@media screen {
+
+}
+device-pixel-ratio
 * {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -85,12 +89,21 @@ input:focus, select:focus, textarea:focus {
   height: 30px;
 }
 
+.wei-bg2-905641 {
+  @include wei-bg-btn($color-white, $color-905641, $color-905641);
+  @include fillet(true); /* 圆角 */
+  line-height: 24px;
+  height: 24px;
+}
+
 .wei-bg-905641 {
-  @include wei-bg-btn($color-905641, $color-f9f4f2, $color-905641);
+  $bg-color: initial;
+  @include wei-bg-btn($color-905641, $bg-color, $color-905641);
   @include fillet(true); /* 圆角 */
   line-height: 30px;
   height: 30px;
 }
+
 
 /* common end */
 
@@ -138,9 +151,9 @@ input:focus, select:focus, textarea:focus {
   .temple-banner {
     position: relative;
     width: 100%;
-    padding-bottom: 39.0625%;
-    background: $color-white url("../img/bg.jpg") no-repeat left top;
-    background-size: 100% auto;
+    img.banner-bg{
+      width: 100%;
+    }
     @at-root a.temple-banner-a {
       position: absolute;
       display: block;
@@ -170,7 +183,6 @@ input:focus, select:focus, textarea:focus {
           margin-bottom: 1%;
         }
         .temple-con {
-          display: inline-block;
           padding-right: 5%;
         }
       }
@@ -189,6 +201,10 @@ input:focus, select:focus, textarea:focus {
     width: 100%;
     height: 60px;
     border-bottom: 1px solid $color-dcdcdc;
+    @at-root .temple-at{
+      color: $color-666;
+      line-height: 20px;
+    }
     a {
       position: relative;
       -moz-box-flex: 1.0; /* Firefox */
@@ -260,7 +276,7 @@ input:focus, select:focus, textarea:focus {
             margin: 5%;
             width: 90%;
           }
-          .product-title {
+          @at-root .product-title {
             display: block;
             width: 100%;
             color: $color-444;
@@ -317,7 +333,35 @@ input:focus, select:focus, textarea:focus {
     }
   }
 }
+.wei-downloadApp {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  a.down-fork{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    float: left;
+    width: 10.9375%;
+    img{
+      width: 100%;
+    }
+  }
+  img{
+    width: 100%;
+  }
+  .down-now{
+    position: absolute;
+    width: 21.40625%;
+    right: 3.125%;
+    top: 50%;
+    margin-top: -13px;
+  }
 
+
+}
 /* temple_info */
 .art-container {
   padding: 4.6875%;
@@ -351,7 +395,7 @@ input:focus, select:focus, textarea:focus {
     font-size: $font-size-t14;
     color: $color-905641;
   }
-  .info-item{
+  @at-root .info-item{
     width: 100%;
     padding: 10px 0;
     border-bottom: 1px solid $color-dcdcdc;
@@ -376,6 +420,10 @@ input:focus, select:focus, textarea:focus {
           width: 100%;
           margin: 5px 0;
           color: $color-444;
+        }
+        .item-total-num{
+          width: 100%;
+          margin-bottom: 5px;
         }
         .item-temp{
           width: 50%;
@@ -690,3 +738,306 @@ input:focus, select:focus, textarea:focus {
   }
 }
 
+/* act */
+.act-content{
+  background-color: $color-f8f8f8;
+  @at-root .temple-detTop{
+    width: 100%;
+    margin-bottom: 10px;
+    background-color: $color-white;
+    img{
+      width: 100%;
+    }
+    @at-root .link-temple{
+      position: relative;
+      display: block;
+      margin: 0 2.34375%;
+      padding: 7.5px 0;
+      border-bottom: 1px solid $color-dcdcdc;
+      color: $color-444;
+      img.link-temple-img{
+        border-radius: 50%;
+        width: 40px;
+        margin-right: 10px;
+        margin-left: 5px;
+      }
+      @at-root .wei-arrow-right {
+        @include wei-arrow('right', $color-dcdcdc);
+        right: 8px;
+        left: initial;
+      }
+    }
+    .wish-tree{
+      margin: 10px 4.6875%;
+      color: $color-444;
+      span{
+        display: block;
+      }
+      .tree-con{
+        color: $color-888;
+        margin-top: 5px;
+        margin-bottom: 5px;
+      }
+    }
+    .wish-tree-progress{
+      position: relative;
+      margin: 0 4.6875%;
+      .progress-container{
+        position: relative;
+        float: left;
+        width: 80%;
+        height: 5.5px;
+        margin-top: 7.25px;
+        border-radius: 20px;
+        background-color: $color-e6e6e6;
+        .progress-bar{
+          width: 25%;
+          height: 5.5px;
+          border-radius: 20px;
+          background-color: $color-905641;
+        }
+      }
+      .progress-txt{
+        float: left;
+        width: 20%;
+        height: 20px;
+        line-height: 20px;
+        text-align: right;
+      }
+    }
+    .temple-result{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 60px;
+      border-bottom: 1px solid $color-dcdcdc;
+      div.temple-result-items {
+        position: relative;
+        -moz-box-flex: 1.0; /* Firefox */
+        -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+        box-flex: 1.0;
+        color: $color-888;
+        height: 51px;
+        width: 50%;
+        padding-top: 9px;
+        text-align: center;
+        img{
+          width: 12.5px;
+          margin-right: 5px;
+          vertical-align: text-bottom;
+        }
+        .temple-result-money{
+          display: block;
+          margin-top: 5px;
+          color: $color-905641;
+          font-size: $font-size-t15;
+        }
+        &:after {
+          content: '';
+          position: absolute;
+          right: 0;
+          top: 20px;
+          height: 20px;
+          width: 1px;
+          background-color: $color-dcdcdc;
+        }
+        &:last-child:after {
+          content: '';
+          position: absolute;
+          height: 0;
+          width: 0;
+        }
+      }
+    }
+
+  }
+  .temple-support{
+    width: 100%;
+    background-color: $color-white;
+    margin-bottom: 10px;
+    .temple-support-a{
+      position: relative;
+      display: block;
+      margin: 0 2.34375%;
+      .temple-support-items{
+        display: block;
+        float: left;
+        margin-left: 5px;
+        img{
+          width: 30px;
+          border-radius: 50%;
+          margin-right: 10px;
+          margin-top: 15px;
+          margin-bottom: 15px;
+        }
+      }
+      .temple-support-num{
+        float: right;
+        display: block;
+        line-height: 60px;
+        margin-right: 8%;
+      }
+    }
+  }
+  .temple-topic{
+    width: 100%;
+    background-color: $color-white;
+    margin-bottom: 10px;
+    @at-root .temple-content{
+      padding: 4.6875%;
+      .temple-title{
+        color: $color-444;
+        padding-bottom: 9px;
+        border-bottom: 1px solid $color-dcdcdc;
+      }
+      .temple-chat-content{
+        height: 50px;
+        line-height: 50px;
+        img.temple-chat-img{
+          width: 10%;
+          border-radius: 50%;
+          margin-top: -2px;
+          margin-right: 5px;
+        }
+        @at-root .temple-chat-name{
+          display: inline-block;
+          color: $color-888;
+        }
+        .temple-chat-time{
+          float: right;
+          display: inline-block;
+          color: $color-888;
+        }
+      }
+      .temple-chat-reply{
+        .reply-img{
+          float: left;
+          width: 9%;
+          height: 50px;
+          line-height: 50px;
+          img{
+            width: 12px;
+          }
+        }
+        .reply-content{
+          float: right;
+          width: 91%;
+        }
+      }
+    }
+
+  }
+  @at-root .temple-intro{
+    width: 100%;
+    background-color: $color-white;
+    margin-bottom: 10px;
+    p{
+      margin-bottom: 10px;
+      img{
+        width: 100%;
+      }
+    }
+  }
+}
+
+/* pro */
+.pro-content{
+  background-color: $color-f8f8f8;
+  color: $color-444;
+  .pro-title{
+    width: 100%;
+    background-color: $color-white;
+    margin-bottom: 10px;
+    .pro-title-con{
+      padding: 4.6875%;
+      //padding-bottom: 4.6875%;
+    }
+
+  }
+  .pro-container{
+    .info-item{
+      width: 100%;
+      padding: 10px 0;
+      border-bottom: 1px solid $color-dcdcdc;
+      .info-item-a{
+        display: block;
+        width: 100%;
+        height: 100%;
+        img{
+          float: left;
+          width: 31%;
+          margin-right: 3%;
+        }
+        .info-item-con{
+          position: relative;
+          display: inline-block;
+          width: 66%;
+          span{
+            float: left;
+            display: inline-block;
+            color: $color-888;
+          }
+          .item-con-title{
+            width: 100%;
+            margin: 5px 0;
+            color: $color-444;
+          }
+          .item-total-num{
+            width: 100%;
+            margin-bottom: 5px;
+          }
+          .item-temp{
+            width: 50%;
+          }
+          .item-time{
+            width: 50%;
+            text-align: right;
+          }
+          .item-a{
+            position: absolute;
+            right: 0;
+            bottom: -5px;
+            a{
+              height: 20px;
+              line-height: 20px;
+            }
+
+            width: 68px;
+          }
+        }
+      }
+
+    }
+  }
+
+}
+
+/* turnRound */
+.turnRound-link{
+  .link-temple{
+    margin: 0;
+    border: 0;
+    padding: 7.5px 0 0 0;
+  }
+}
+.about-temple{
+  position: relative;
+  display: block;
+  width: 100%;
+  img{
+    float: left;
+    width: 22%;
+    margin-right: 10px;
+  }
+  span{
+    float: left;
+  }
+  .about-container{
+    width: 64%;
+    color: $color-666;
+  }
+  .product-title{
+    line-height: initial;
+  }
+}
