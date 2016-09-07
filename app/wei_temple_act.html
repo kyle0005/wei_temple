@@ -33,7 +33,7 @@
       <div class="progress-container">
         <div class="progress-bar"></div>
       </div>
-      <div class="progress-txt">进度<span class="progress-num">25%</span></div>
+      <div class="progress-txt">进度<span class="progress-num"></span></div>
     </div>
     <div class="temple-result">
       <div class="temple-result-items">
@@ -104,10 +104,14 @@
 </section>
 
 <!-- build:js scripts/main.js -->
-<script src="public/scripts/zepto.js"></script>
-<script src="public/scripts/lib/event.js"></script>
-<script src="public/scripts/lib/touch.js"></script>
-<script src="public/scripts/main.js"></script>
+<script src="public/scripts/jquery-3.0.0.js"></script>
 <!-- endbuild -->
+<script>
+  var data = '25%';
+  $(function () {
+    $('.progress-bar').width(data);
+    $('.progress-num').html(data);
+  });
+</script>
 </body>
 </html>

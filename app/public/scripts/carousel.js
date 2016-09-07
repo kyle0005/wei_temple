@@ -66,12 +66,31 @@
     this.btns = this.options.hasBtns;
     addHtml.call(this.$element, this.img, this.ctrls, this.btns, this.txt_data);
 
+    var proportion = [];
+    var ww = $(window).width(),
+      nw = '', nh = '', wh = '',$imgs = $('.items-img');
+
+    if(!IsPC()){
+      this.$element.height(ww);
+    }
+
+/*    $imgs.each(function(){
+      var qim=new Image();
+      qim.src='';//图片地址是你准备要加载的地址；
+      if(qim.complete){
+
+      }
+      nw = this.naturalWidth;
+      nh = this.naturalHeight;
+      wh = nh * ww /nw;         //页面上图片的实际高度
+      proportion.push(wh.toFixed(2));   //四舍五入,保留两位小数
+    });
+    var max_num = Math.min.apply(Math, proportion);
+
+    var obj = proportion[max_num];
+    var ind = Array.indexOf(obj);*/
+
     this.$indicators = this.$element.find('.wei-carousel-btns');
-    // this.$captions = this.$element.find('.wei-carousel-captions');
-    // this.$captionCons = this.$captions.find('.caption-container');
-/*    this.options.pause == 'hover' && !('ontouchstart' in document.documentElement) && this.$element
-      .on('mouseenter.wei.carousel', $.proxy(this.pause, this))
-      .on('mouseleave.wei.carousel', $.proxy(this.cycle, this));*/
     var left_ctrl = this.$element.find('.ctrls-a-l'), right_ctrl = this.$element.find('.ctrls-a-r');
     this.$items = this.$indicators.find('li');
     $(left_ctrl).on('click', $.proxy(this.prev, this));
@@ -84,6 +103,21 @@
 
     return this;
   };
+
+  function IsPC() {
+    var userAgentInfo = navigator.userAgent;
+    var Agents = ['Android', 'iPhone',
+      'SymbianOS', 'Windows Phone',
+      'iPad', 'iPod'];
+    var flag = true;
+    for (var v = 0; v < Agents.length; v++) {
+      if (userAgentInfo.indexOf(Agents[v]) > 0) {
+        flag = false;
+        break;
+      }
+    }
+    return flag;
+  }
 
   function addHtml(data, hasCtrls, hasBtns, txt) {
     var ctrls = '<div class="wei-carousel-ctrls">' +
