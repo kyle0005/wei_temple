@@ -4,14 +4,10 @@ html {
   font-family: $font-family-base; /* 1 */
   -ms-text-size-adjust: 100%; /* 2 */
   -webkit-text-size-adjust: 100%; /* 2 */
-  font-size: $font-size-base;
 }
 
 body {
   margin: 0;
-  font-size: $font-size-body;
-  line-height: $line-height-base;
-  color: $color-333;
 }
 
 article,
