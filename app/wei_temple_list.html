@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wei_temple_list</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<header class="wei-head clearfix">
+  <a href="javascript:;" class="wei-arr-container"><span class="wei-arrow-left"></span></a>
+  <span>寺庙</span>
+</header>
+<section class="wei-content">
+  <div id="guide" class="wei-carousel"></div>
+<div style="width: 100px; height: 100px; background-color: green;" class="animated pulse"></div>
+</section>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<script src="public/scripts/hammer.js"></script>
+<script src="public/scripts/carousel.js"></script>
+<!-- endbuild -->
+<script>
+  var img_data = ['public/img/pro1.png','public/img/pro2.png','public/img/pro3.png'];
+  $(function () {
+    $('#guide').carousel(
+      {
+        interval: false,
+        data: img_data,
+        hasCtrls: false,
+        hasBtns: false
+      }
+    );
+
+    $('.down-fork').click(function () {
+      $('.wei-downloadApp').addClass('hide');
+    })
+  });
+</script>
+</body>
+</html>
