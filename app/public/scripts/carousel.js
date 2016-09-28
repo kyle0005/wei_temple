@@ -50,8 +50,10 @@
       data: [],     //默认图片
       hasCtrls: true,        //默认有左右箭头
       hasBtns: true,         //默认有小点
-      txt_data: ''
+      txt_data: '',
+      height: false            //carousel高度
     };
+
     var opts = $.extend({}, this.defaults, options);     //将$.fn.carousel.defaults和options合并放入第一个参数“{}”中
     this.$element = $(element);
     this.options = opts;
@@ -66,29 +68,39 @@
     this.btns = this.options.hasBtns;
     addHtml.call(this.$element, this.img, this.ctrls, this.btns, this.txt_data);
 
-    var proportion = [];
-    var ww = $(window).width(),
-      nw = '', nh = '', wh = '',$imgs = $('.items-img');
-
     if(!IsPC()){
-      this.$element.height(ww);
+      this.$element.height(this.$element.width());
+    }
+    if(!this.options.height){
+      //设置了高度值
+
+    }else {
+      //未设置高度值
+    }
+    if($('video.items-img').length > 0){
+      $('video.items-img').height(this.$element.width());
     }
 
-/*    $imgs.each(function(){
-      var qim=new Image();
-      qim.src='';//图片地址是你准备要加载的地址；
-      if(qim.complete){
 
+    /*var proportion = [];
+    var ww = $(window).width(),
+      nw = '', nh = '', wh = '',$imgs = $('.items-img');
+       $imgs.each(function(i){
+      var qim=new Image();
+      qim.src=img[i];//图片地址是你准备要加载的地址；
+      if(qim.complete){
+        nw = this.naturalWidth;
+        nh = this.naturalHeight;
+        wh = nh * ww /nw;         //页面上图片的实际高度
+        proportion.push(wh.toFixed(2));   //四舍五入,保留两位小数
       }
-      nw = this.naturalWidth;
-      nh = this.naturalHeight;
-      wh = nh * ww /nw;         //页面上图片的实际高度
-      proportion.push(wh.toFixed(2));   //四舍五入,保留两位小数
+
     });
     var max_num = Math.min.apply(Math, proportion);
 
     var obj = proportion[max_num];
-    var ind = Array.indexOf(obj);*/
+    var ind = Array.indexOf(obj);
+    console.log(ind);*/
 
     this.$indicators = this.$element.find('.wei-carousel-btns');
     var left_ctrl = this.$element.find('.ctrls-a-l'), right_ctrl = this.$element.find('.ctrls-a-r');
@@ -138,7 +150,7 @@
       str = _data[_data.length - 1].toLowerCase();
       if(str != 'jpg' && str != 'jpeg' && str != 'png' && str != 'bmp' && str != 'gif'){
         items += '<div class="items-a">' +
-          '<video class="items-img" controls="controls" preload="metadata" style="width:100%;max-width:30rem;max-height:30rem;"' +
+          '<video class="items-img" controls="controls" preload="metadata" ' +
         'src="' +
           data[i] +
           '"' +

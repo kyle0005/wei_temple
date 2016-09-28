@@ -594,6 +594,12 @@ input:focus, select:focus, textarea:focus {
         .items-img {
           width: 100%;
         }
+        video.items-img{
+          width:100%;
+          max-width:50rem;
+          max-height:50rem;
+          background-color: $color-black;
+        }
       }
     }
     > .active, > .next, > .prev{
@@ -642,7 +648,7 @@ input:focus, select:focus, textarea:focus {
       float: left;
       margin-right: 6px;
       &.active {
-        background-color: #fff;
+        background-color: $color-905641;
         width: 7px;
         height: 7px;
       }
@@ -752,42 +758,42 @@ input:focus, select:focus, textarea:focus {
       }
       //包括min-height，不包括max-height值
       @media screen and (max-height: 416px){
-        bottom: -3%;
+        bottom: -14%;
       }
       @media screen and (max-height: 480px) and (min-height: 416px){
-        bottom: -3%;
+        bottom: -14%;
       }
       @media screen and (max-height: 504px) and (min-height: 480px) {
-        bottom: -3%;
+        bottom: -29%;
       }
 
       @media screen and (max-height: 568px) and (min-height: 504px) {
-        bottom: -4%;
+        bottom: -30%;
       }
 
       @media screen and (max-height: 603px) and (min-height: 568px) {
-        bottom: -15%;
+        bottom: -45%;
       }
 
       @media screen and (max-height: 640px) and (min-height: 603px) {
-        bottom: -7%;
+        bottom: -34%;
       }
 
       @media screen and (max-height: 667px) and (min-height: 640px) {
         //安卓
-        bottom: -15%;
+        bottom: -50%;
       }
 
       @media screen and (max-height: 672px) and (min-height: 667px) {
-        bottom: -15%;
+        bottom: -50%;
       }
 
       @media screen and (max-height: 736px) and (min-height: 672px) {
-        bottom: -8%;
+        bottom: -35%;
       }
 
       @media screen and (min-height: 736px) {
-        bottom: -15%;
+        bottom: -50%;
       }
     }
   }
@@ -1194,4 +1200,9 @@ input:focus, select:focus, textarea:focus {
     border: none;
     outline: none;
   }
+}
+
+/* temple-list */
+.temple-items{
+
 }

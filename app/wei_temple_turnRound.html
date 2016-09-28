@@ -95,10 +95,10 @@
 </footer>
 <footer class="wei-foot">
   <div class="foot-container">
-    <a href="javascript:;" class="btn click">
+    <a href="javascript:;" class="js-btn btn">
       <i class="fa fa-heart"></i>
     </a>
-    <a href="javascript:;" class="btn">
+    <a href="javascript:;" class="js-btn btn">
       <i class="fa fa-video-camera"></i>
     </a>
     <a href="wei_temple_lighting.html" class="btn ok">
@@ -112,7 +112,7 @@
 <script src="public/scripts/carousel.js"></script>
 <!-- endbuild -->
 <script>
-  var img_data = ['public/img/1.jpg', 'public/img/2.jpg'];
+  var img_data = ['public/img/1.jpg', 'public/img/2.jpg', 'http://200006282.vod.myqcloud.com/200006282_42ca7ffa1e9011e692fe0785d455c86c.f20.mp4'];
   $(function () {
     $('#guide').carousel(
       {
@@ -124,7 +124,16 @@
 
     $('.down-fork').click(function () {
       $('.wei-downloadApp').addClass('hide');
-    })
+    });
+
+    $('.js-btn').click(function () {
+      if($(this).hasClass('click')){
+        $(this).removeClass('click');
+      }else {
+        $(this).addClass('click');
+      }
+
+    });
   });
 </script>
 </body>
