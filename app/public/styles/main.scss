@@ -372,12 +372,13 @@ input:focus, select:focus, textarea:focus {
   width: 100%;
   font-size: $font-size-body;
   background-color: $color-white;
-  border-top: 1px solid $color-905641;
-  .foot-container {
+
+  @at-root .foot-container {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     height: 100%;
+    border-top: 1px solid $color-905641;
     a {
       -moz-box-flex: 1.0; /* Firefox */
       -webkit-box-flex: 1.0; /* Safari 和 Chrome */
@@ -416,8 +417,21 @@ input:focus, select:focus, textarea:focus {
     .lightning-price{
       color: $color-905641;
     }
+    a.cancel{
+      background-color: $color-eee;
+      color: $color-444;
+    }
   }
+  @at-root .foot-container.r2{
+    border-top: none;
+    a{
+      width: 50%;
+    }
+  }
+
 }
+
+
 .wei-downloadApp {
   position: fixed;
   left: 0;
@@ -731,6 +745,115 @@ input:focus, select:focus, textarea:focus {
     text-align: center;
     color: $color-905641;
     font-size: 17px;
+  }
+}
+
+/* 滑出框 */
+.pop-up-wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  bottom: 0;
+  z-index: 997;
+  overflow: hidden;
+  font-size: $font-size-body;
+  .pop-up {
+    position: fixed;
+    bottom: 0;
+    z-index: 999;
+    background-color: #fff;
+    width: 100%;
+    height: 0;
+    //overflow: hidden;
+    -webkit-transition: height 0.4s;
+    -moz-transition: height 0.4s;
+    -o-transition: height 0.4s;
+    transition: height 0.4s;
+  }
+  .pop-up-mask {
+    display: block;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 996;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+  .wei-foot{
+    position: absolute;
+    bottom: 0;
+  }
+}
+.pop-light-container{
+  position: relative;
+  margin: 0 15px;
+  img.light-pro{
+    position: absolute;
+    top:-20px;
+    z-index: 1000;
+    width: 35%;
+    border: 1px solid $color-905641;
+  }
+  .light-det{
+    display: block;
+    margin-left:35% ;
+    padding: 3% 0 3% 4% ;
+    width: 61%;
+    color: $color-444;
+    span{
+      display: block;
+    }
+    .title{
+      font-size: $font-size-t13;
+      margin-bottom: 6%;
+    }
+    .price{
+      color: $color-905641;
+      font-size: $font-size-body;
+      margin-bottom: 1%;
+    }
+    .num{
+      font-size: $font-size-body;
+    }
+  }
+  .light-intro{
+    padding-bottom: 10px;
+    border-bottom: 1px solid $color-dcdcdc;
+  }
+  .choose-num{
+    margin: 20px 0;
+    .num{
+      float: left;
+      width: 50%;
+      line-height: 20px;
+    }
+    .num-btns{
+      float: right;
+      width: 50%;
+      text-align: right;
+      >*{
+        float: right;
+      }
+      a{
+        display: inline-block;
+        background-color: $color-dcdcdc;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        line-height: 20px;
+      }
+      input.num-check{
+        width: 40px;
+        border: none;
+        outline: none;
+        background-color: $color-eee;
+        line-height: 20px;
+        text-align: center;
+        color: $color-444;
+      }
+    }
   }
 }
 
@@ -1204,5 +1327,18 @@ input:focus, select:focus, textarea:focus {
 
 /* temple-list */
 .temple-items{
-
+  background-color: $color-white;
+  .temple-con{
+    padding: 10px;
+    color: $color-666;
+    .title{
+      font-size: $font-size-t14;
+      color: $color-black;
+      margin-right: 5px;
+    }
+    span{
+      display: inline-block;
+      line-height: 20px;
+    }
+  }
 }

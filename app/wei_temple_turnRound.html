@@ -101,11 +101,50 @@
     <a href="javascript:;" class="js-btn btn">
       <i class="fa fa-video-camera"></i>
     </a>
-    <a href="wei_temple_lighting.html" class="btn ok">
+    <a href="javascript:;" class="js-light btn ok">
       我要点灯
     </a>
   </div>
 </footer>
+<div id="popUpWrap" class="pop-up-wrap hide">
+  <div class="pop-up">
+    <div class="pop-light-container">
+      <img src="public/img/p1.png" class="light-pro">
+      <span class="light-det">
+        <span class="title">南无阿弥陀佛释迦摩尼尊和田碧玉材质</span>
+        <span class="price">￥12121.00</span>
+        <span class="num">可点灯数量231个</span>
+      </span>
+      <div class="light-intro">
+        您只需要选择点灯的数量，系统会为您随机分配佛龛卡位，直到分配到您满意的卡位为止。
+      </div>
+      <div class="choose-num clearfix">
+        <div class="num">点灯数量</div>
+        <div class="num-btns clearfix">
+          <a href="javascript:;" class="plus-btn">
+            <i class="fa fa-plus"></i>
+          </a>
+          <input type="text" class="num-check" value="1" disabled>
+          <a href="javascript:;" class="minus-btn">
+            <i class="fa fa-minus"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <footer class="wei-foot">
+      <div class="foot-container r2">
+        <a href="javascript:;" class="js-light cancel btn">
+          取消
+        </a>
+        <a href="wei_temple_lighting.html" class="js-light btn ok">
+          点灯
+        </a>
+      </div>
+    </footer>
+
+  </div>
+  <div class="js-mask pop-up-mask"></div>
+</div>
 <!-- build:js scripts/main.js -->
 <script src="public/scripts/jquery-3.0.0.js"></script>
 <script src="public/scripts/hammer.js"></script>
@@ -132,8 +171,36 @@
       }else {
         $(this).addClass('click');
       }
-
     });
+
+    $('.js-light').click(function(){
+      $('#popUpWrap').removeClass('hide');
+      $('.pop-up').height(280);
+    }) ;
+    $('.js-mask').click(function(){
+      $('.pop-up').height('0');
+      $('#popUpWrap').addClass('hide');
+    }) ;
+
+    var num = $('.num-check').val();
+    $(document).on('click', '.minus-btn', function () {
+      if(parseInt(num) <= 1){
+        $('.minus-btn>img').addClass('code-mask');
+        return;
+      }else{
+        num--;
+        $('.num-check').val(num);
+      }
+    });
+    $(document).on('click', '.plus-btn', function () {
+      num++;
+      $('.num-check').val(num);
+      if(parseInt(num) > 1) {
+        $('.minus-btn>img').removeClass('code-mask');
+      }
+    });
+
+
   });
 </script>
 </body>
