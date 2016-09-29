@@ -1326,19 +1326,55 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* temple-list */
-.temple-items{
-  background-color: $color-white;
-  .temple-con{
-    padding: 10px;
-    color: $color-666;
-    .title{
-      font-size: $font-size-t14;
-      color: $color-black;
-      margin-right: 5px;
-    }
-    span{
-      display: inline-block;
-      line-height: 20px;
+.list-container{
+  overflow:hidden;
+  height:90%;
+  ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  img{
+    width:100%;
+  }
+  .js-carousel{
+    position:relative;
+    margin:auto;
+    width:80%;
+    -webkit-transform-style:preserve-3d;
+    -webkit-perspective:1000px;
+  }
+  .js-carousel-li{
+    display:none;
+    position:absolute;
+    top:30px;
+    left:0;
+    width:100%;
+    -webkit-transition:500ms linear;opacity:0;
+  }
+  .js-carousel-li-visible{
+    display:block;
+    opacity:1;
+  }
+  .js-carousel-li img{
+    width:100%;
+    height:auto;
+  }
+  .temple-items{
+    background-color: $color-white;
+    .temple-con{
+      padding: 10px;
+      color: $color-666;
+      .title{
+        font-size: $font-size-t14;
+        color: $color-black;
+        margin-right: 5px;
+      }
+      span{
+        display: inline-block;
+        line-height: 20px;
+      }
     }
   }
 }
+
