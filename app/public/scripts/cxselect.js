@@ -1,13 +1,3 @@
-/*!
- * jQuery cxSelect
- * @name jquery.cxselect.js
- * @version 1.4.0
- * @date 2016-04-01
- * @author ciaoca
- * @email ciaoca@gmail.com
- * @site https://github.com/ciaoca/cxSelect
- * @license Released under the MIT license
- */
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     define(['jquery'], factory);
