@@ -339,13 +339,13 @@
     var
       o = $.extend({
         startIndex: 0,
-        li: "li",
+        li: 'li',
         visibleCount: 3,
         step:0.5,
         rotateY:0,
         translateZ:100,
         preventTouchEvent:false,
-        style:"double",
+        style:'double',
         resizeEvent: false
       }, opt);
     return $(this).each(function () {
@@ -369,40 +369,40 @@
           leftIndex = 0,
           rightIndex = 0;
         index = fixIndex(index);
-        $lis.removeClass("js-carousel-li-visible").eq(index).addClass("js-carousel-li-visible js-carousel-li-cur")
+        $lis.removeClass('js-carousel-li-visible').eq(index).addClass('js-carousel-li-visible js-carousel-li-cur')
           .css({
-            "-webkit-transform": "none",
-            "z-index": 1000
+            '-webkit-transform': 'none',
+            'z-index': 1000
           });
-        if (o.style === "double") {
+        if (o.style === 'double') {
           for(i; i <= len; i++) {
             leftIndex = fixIndex(index - i);
             rightIndex = fixIndex(index + i);
-            $lis.eq(leftIndex).addClass("js-carousel-li-visible").css({
-              "z-index": 1000 - i,
-              "-webkit-transform": "translateX(" + (-o.step * width * i) + "px) translateZ(-" + o.translateZ * i + "px)  rotateY(" + o.rotateY + "deg)"
+            $lis.eq(leftIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (-o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px)  rotateY(' + o.rotateY + 'deg)'
             });
-            $lis.eq(rightIndex).addClass("js-carousel-li-visible").css({
-              "z-index": 1000 - i,
-              "-webkit-transform": "translateX(" + (o.step * width * i) + "px) translateZ(-" + o.translateZ * i + "px) rotateY(-" + o.rotateY + "deg)"
+            $lis.eq(rightIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px) rotateY(-' + o.rotateY + 'deg)'
             });
           }
-        } else if (o.style === "left") {
+        } else if (o.style === 'left') {
           len = visibleCount;
           for(i; i < len; i++) {
             rightIndex = fixIndex(index + i);
-            $lis.eq(rightIndex).addClass("js-carousel-li-visible").css({
-              "z-index": 1000 - i,
-              "-webkit-transform": "translateX(" + (o.step * width * i) + "px) translateZ(-" + o.translateZ * i + "px) rotateY(-" + o.rotateY + "deg)"
+            $lis.eq(rightIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px) rotateY(-' + o.rotateY + 'deg)'
             });
           }
-        } else if (o.style === "right") {
+        } else if (o.style === 'right') {
           len = visibleCount;
           for(i; i < len; i++) {
             leftIndex = fixIndex(index - i);
-            $lis.eq(leftIndex).addClass("js-carousel-li-visible").css({
-              "z-index": 1000 - i,
-              "-webkit-transform": "translateX(" + (-o.step * width * i) + "px) translateZ(-" + o.translateZ * i + "px) rotateY(" + o.rotateY + "deg)"
+            $lis.eq(leftIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (-o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px) rotateY(' + o.rotateY + 'deg)'
             });
           }
         }
@@ -411,11 +411,11 @@
       function updateSize() {
         width = $carousel.width();
         translate(curIndex);
-        lisHeight = $lis.filter(".js-carousel-li-cur").height();
+        lisHeight = $lis.filter('.js-carousel-li-cur').height();
         $carousel.height(lisHeight);
       }
       function init() {
-        $lis.addClass("js-carousel-li");
+        $lis.addClass('js-carousel-li');
 
         var ham = new hammer($carousel[0]);
         ham.on('swipeleft', function () {
@@ -431,19 +431,19 @@
          $carousel.swipeRight(function (e) {
          translate(curIndex - 1);
          });*/
-        $(window).on("load", function (e) {
+        $(window).on('load', function (e) {
           updateSize();
         });
         if (o.resizeEvent) {
-          $(window).on("resize", function (e) {
+          $(window).on('resize', function (e) {
             updateSize();
           });
         }
         if (o.preventTouchEvent) {
-          $carousel.on("touchstart", function (e) {
+          $carousel.on('touchstart', function (e) {
             e.preventDefault();
           });
-          $carousel.on("touchmove", function (e) {
+          $carousel.on('touchmove', function (e) {
             e.preventDefault();
           });
         }
