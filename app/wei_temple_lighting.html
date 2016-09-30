@@ -6,7 +6,7 @@
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta name="format-detection" content="telephone=no">
-  <title>wei_temple_list</title>
+  <title>wei_temple_lighting</title>
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="public/styles/main.css">
@@ -34,17 +34,19 @@
         <span>点灯数量</span>
         <span class="lightning-right">110000盏</span>
       </div>
-      <div class="lightning-opts clearfix">
-        <span>付费类型</span>
-        <select class="lightning-select">
-          <option class="">按小时</option>
-        </select>
-      </div>
-      <div class="lightning-opts clearfix">
-        <span>付费时长</span>
-        <select class="lightning-select">
-          <option class="">1小时</option>
-        </select>
+      <div id="lighting-selects">
+        <div class="lightning-opts clearfix">
+          <span>付费类型</span>
+          <select class="lightning-select selA">
+            <option class="">按小时</option>
+          </select>
+        </div>
+        <div class="lightning-opts clearfix">
+          <span>付费时长</span>
+          <select class="lightning-select selB">
+            <option class="">1小时</option>
+          </select>
+        </div>
       </div>
       <div class="lightning-opts clearfix">
         <label>
@@ -71,10 +73,34 @@
 </div>
 <!-- build:js scripts/main.js -->
 <script src="public/scripts/jquery-3.0.0.js"></script>
+<script src="public/scripts/cxselect.js"></script>
 <!-- endbuild -->
 <script>
+  var data = [];
+  var num = 1;  //产品数量
+  var dataCustom = [
+    {'name': '按小时', 'value': 'hour', 'sub': [
+      {'name': '一小时', 'value': '1'},
+      {'name': '两小时', 'value': '2'},
+      {'name': '三小时', 'value': '3'}
+    ]},
+    {'name': '按天数', 'value': 'day', 'sub': [
+      {'name': '一天', 'value': '1'},
+      {'name': '两天', 'value': '2'}
+    ]},
+    {'name': '按月份','value': 'mouth', 'sub': [
+      {'name': '一个月' ,'value': '1'},
+      {'name': '两个月' ,'value': '2'}
+    ]}
+  ];
   $(function () {
-
+    $('#lighting-selects').cxSelect({
+      jsonName: 'name',
+      jsonValue: 'value',
+      jsonSub: 'sub',
+      data: dataCustom,
+      selects: ['selA', 'selB']
+    });
   });
 </script>
 </body>
