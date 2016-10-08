@@ -1370,3 +1370,105 @@
     @include fillet(true); /* 圆角 */
   }
 }
+
+/* payment */
+.payment-container{
+  .total{
+    margin-bottom: 3.125%;
+    padding: 0 4.6875%;
+    line-height: 45px;
+    background-color: $color-white;
+    color: $color-666;
+    img{
+      margin-top: -2px;
+      width: 2.2rem;
+    }
+    .price{
+      display: inline-block;
+      float: right;
+      color: $color-905641;
+    }
+  }
+  .way{
+    .items{
+      position: relative;
+      padding: 0 4.6875%;
+      height: 55px;
+      background-color: $color-white;
+      color: $color-666;
+      border-bottom: 1px solid $color-dcdcdc;
+      img{
+        position: absolute;
+        top:50%;
+        height: 2.2rem;
+        margin-top: -1.1rem;
+      }
+      .radio{
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        right: 4.6875%;
+        width: 18px;
+        height: 18px;
+        border: 2px solid $color-888;
+        border-radius: 50%;
+      }
+      input[type=radio].radio:checked{
+        border: none;
+        background: url("../img/radio.png") no-repeat center;
+        background-size: 100% auto;
+      }
+      .wechat{
+        display: block;
+        line-height: 55px;
+        margin-left: 12%;
+        .title{
+          display: block;
+          line-height: initial;
+          margin-top: 3.5%;
+        }
+        .inner{
+          display: block;
+          font-size: 1rem;
+          color: $color-888;
+          line-height: initial;
+        }
+      }
+    }
+  }
+  .pay-btn{
+    margin: 4.6875%;
+    a{
+      @include wei-bg-btn($color-white, $color-905641, $color-905641, 40px, 40px);
+      @include fillet(true); /* 圆角 */
+    }
+  }
+  .pay-suc{
+    background-color: $color-white;
+    padding-top: 15.625%;
+    padding-bottom: 4.6875%;
+    text-align: center;
+    color: $color-905641;
+    font-size: $font-size-t15;
+    img{
+      width: $font-size-t20;
+      margin-right: 10px;
+    }
+  }
+  .context{
+    text-align: center;
+    background-color: $color-white;
+    padding-bottom:15.625%;
+  }
+  .check{
+    margin: 4.6875%;
+    a{
+      @include wei-bg-btn($color-905641, $color-white, $color-905641, 40px, 40px);
+      @include fillet(true); /* 圆角 */
+    }
+  }
+  .tips{
+    margin: 4.6875%;
+    color: $color-888;
+  }
+}

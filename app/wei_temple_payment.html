@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta name="format-detection" content="telephone=no">
+  <title>demo</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="wei-container">
+  <header class="wei-head clearfix">
+    <a href="javascript:;" class="wei-arr-container"><span class="wei-arrow-left"></span></a>
+    <span>支付</span>
+  </header>
+  <section class="wei-content">
+    <div class="payment-container">
+      <div class="total clearfix">
+        <img src="public/img/pay.png">
+        <span>本次所需支付</span>
+        <span class="price">￥200.000</span>
+      </div>
+      <div class="way">
+        <ul>
+          <li class="items clearfix">
+            <img src="public/img/zfb.png">
+            <span class="wechat">支付宝支付</span>
+            <input type="radio" class="radio" name="payway">
+          </li>
+          <li class="items clearfix">
+            <img src="public/img/wechat.png">
+            <span class="wechat">
+              <span class="title">微信支付</span>
+              <span class="inner">推荐安装微信5.0及以上版本使用</span>
+            </span>
+            <input type="radio" class="radio" name="payway">
+          </li>
+        </ul>
+      </div>
+      <div class="pay-btn">
+        <a href="javascript:;">确认支付</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- build:js scripts/main.js -->
+<!-- endbuild -->
+</body>
+</html>
