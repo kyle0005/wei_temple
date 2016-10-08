@@ -1,0 +1,26 @@
+@import 'variables';
+@import 'normalize';
+@import 'mixins';
+@import 'fontawesome';
+@import 'icon';
+@import 'animate.css';
+.wei-bg-white {
+  @include wei-bg-btn();
+  @include fillet(true); /* 圆角 */
+}
+
+.wei-bg-theme {
+  @include wei-bg-btn($color-white, $color-ff8000, $color-ff8000);
+  @include fillet(false); /* 非圆角 */
+}
+
+.wei-bg2-905641 {
+  @include wei-bg-btn($color-white, $color-905641, $color-905641, 24px, 24px);
+  @include fillet(true); /* 圆角 */
+}
+
+.wei-bg-905641 {
+  $bg-color: initial;
+  @include wei-bg-btn($color-905641, $bg-color, $color-905641, 30px, 30px);
+  @include fillet(true); /* 圆角 */
+}
