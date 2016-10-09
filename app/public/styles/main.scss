@@ -1510,20 +1510,22 @@
   justify-content: center;
   align-items: center;
   padding: 4.6875%;
+  background-color: $color-white;
+  margin-bottom: 3.125%;
   .date{
     -moz-box-flex: 1.0; /* Firefox */
     -webkit-box-flex: 1.0; /* Safari 和 Chrome */
     box-flex: 1.0;
     width: 8.59375%;
     img{
-      width: 100%;
+      width: 65.4545%;
     }
   }
   .info{
     -moz-box-flex: 1.0; /* Firefox */
     -webkit-box-flex: 1.0; /* Safari 和 Chrome */
     box-flex: 1.0;
-    width: 60%;
+    width: 69%;
     span{
       display: block;
     }
@@ -1540,10 +1542,110 @@
     -webkit-box-flex: 1.0; /* Safari 和 Chrome */
     box-flex: 1.0;
     width: 22%;
-    a.sign-btn{
+    a.sign-btn.sign{
       @include wei-bg-btn($color-white, $color-888, $color-888, 25px, 25px);
       @include fillet(true); /* 圆角 */
     }
+    a.sign-btn{
+      @include wei-bg-btn($color-905641, $color-white, $color-905641, 25px, 25px);
+      @include fillet(true); /* 圆角 */
+    }
 
+  }
+}
+.sign-list{
+  background-color: $color-white;
+  .li{
+    width: 100%;
+
+    .items{
+      position: relative;
+      display: block;
+      margin-left: 4.6875%;
+      padding: 3.6% 0;
+      border-bottom: 1px solid $color-dcdcdc;
+      line-height: 1.8rem;
+      i{
+        margin-right: 1.5%;
+        font-size: 1.8rem;
+        vertical-align: text-bottom;
+      }
+      .right-arr{
+        position: relative;
+        display: inline-block;
+        float: right;
+        margin-right: 2%;
+        width: 10%;
+        height: 1.8rem;
+      }
+    }
+  }
+
+}
+.show-point{
+  position: relative;
+  width: 100%;
+  img.banner{
+    width: 100%;
+  }
+  .detail{
+    position: absolute;
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin-top: 7.8125%;
+    text-align: center;
+    color: $color-white;
+    font-size: 1.4rem;
+    .points{
+      margin-top: 5px;
+    }
+  }
+}
+.point-info{
+  padding: 4.6875%;
+  background-color: $color-white;
+  margin-bottom: 1.5625%;
+}
+.point-detail{
+  padding: 4.6875%;
+  background-color: $color-white;
+  .title{
+    padding-bottom: 9px;
+    border-bottom: 1px solid $color-dcdcdc;
+  }
+  .items{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid $color-dcdcdc;
+    padding: 9px 0;
+    .left{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      width: 12%;
+      margin-right: 3%;
+      text-align: center;
+    }
+    .right{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      width: 85%;
+      .point{
+        display: block;
+        color: $color-905641;
+        .num{
+          font-size: $font-size-t15;
+        }
+      }
+      .info{
+        display: block;
+        font-size: 1rem;
+        color: $color-888;
+      }
+    }
   }
 }
