@@ -7,13 +7,11 @@
 @import "common";
 /* index */
 .wei-container{
-  width: 100%;
-  height: 100%;
+  @extend %page;
   background-color: $color-f8f8f8;
 }
 .wei-container2{
-  width: 100%;
-  height: 100%;
+  @extend %page;
   background-color: $color-f9f4f2;
 }
 .wei-head {

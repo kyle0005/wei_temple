@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta name="format-detection" content="telephone=no">
+  <title>demo</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+  <style>
+    .upload-container {
+      position: relative;
+    }
+
+  </style>
+</head>
+<body>
+<div class="wei-container">
+  <header class="wei-head clearfix">
+    <a href="javascript:;" class="wei-arr-container"><span class="wei-arrow-left"></span></a>
+    <span>账号设置</span>
+  </header>
+  <section class="wei-content">
+    <div class="upload">
+      <div class="upload-container clearfix wei-upload">
+        <span class="img_ul clearfix"></span>
+        <span id="invest-upload" class="img_add mb10">
+            <img src="Public/img/upload_btn.png"/>
+            <input type="file" class="upload-inp"/>
+          </span>
+        <span class="upload_exp_con ml10 clearfix">
+            <img src="Public/img/upload_exp.png" class="pull-left mr10">
+            <span class="upload_exp_demo pull-left">范本示例</span>
+          </span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<script src="public/scripts/wei_upload.js"></script>
+<!-- endbuild -->
+<script>
+  var golddiy_image_path = "";
+  $(function () {
+
+    var url = "http://localhost:9000/public/scripts/json/data.json";
+    $('#invest-upload').uploads({
+      'input_id': 'hidden_logo_img',
+      'c_url': url,
+      'extensions': '',
+      'number': 1
+    });
+  })
+</script>
+</body>
+</html>

@@ -191,5 +191,9 @@ gulp.task('uglify_script', function() {
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
+  gulp.src('app/public/scripts/wei_upload.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
 });
 

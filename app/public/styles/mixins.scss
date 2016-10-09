@@ -1,4 +1,10 @@
 @import 'variables';
+%page{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: $font-size-body;
+}
 
 %clearfix {
   *zoom: 1;
