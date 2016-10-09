@@ -1472,3 +1472,78 @@
     color: $color-888;
   }
 }
+
+/* manage */
+.manage{
+  position: relative;
+  width: 100%;
+  padding-bottom: 44.53125%;
+  overflow: hidden;
+  img.banner{
+    position: absolute;
+    display: block;
+    width: 100%;
+  }
+  .info{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    color: $color-white;
+    font-size: 1.2rem;
+    img.photo {
+      width: 20.3125%;
+      margin: 4.6875% auto 3%;
+      border-radius: 50%;
+    }
+    span{
+      display: block;
+    }
+    .title{
+      font-size: 1.4rem;
+    }
+  }
+}
+.sign{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4.6875%;
+  .date{
+    -moz-box-flex: 1.0; /* Firefox */
+    -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+    box-flex: 1.0;
+    width: 8.59375%;
+    img{
+      width: 100%;
+    }
+  }
+  .info{
+    -moz-box-flex: 1.0; /* Firefox */
+    -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+    box-flex: 1.0;
+    width: 60%;
+    span{
+      display: block;
+    }
+    .title{
+      font-size: 1.4rem;
+      color: $color-444;
+    }
+    .tips{
+      color: $color-888;
+    }
+  }
+  .mark{
+    -moz-box-flex: 1.0; /* Firefox */
+    -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+    box-flex: 1.0;
+    width: 22%;
+    a.sign-btn{
+      @include wei-bg-btn($color-white, $color-888, $color-888, 25px, 25px);
+      @include fillet(true); /* 圆角 */
+    }
+
+  }
+}
