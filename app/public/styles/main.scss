@@ -1647,3 +1647,60 @@
     }
   }
 }
+.m-lighting-container{
+  .items{
+    position: relative;
+    padding: 4.6875%;
+    color: $color-888;
+    background-color: $color-white;
+    margin-bottom: 1.5625%;
+    .detail{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 4%;
+      border-bottom: 1px solid $color-dcdcdc;
+      .left{
+        -moz-box-flex: 1.0; /* Firefox */
+        -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+        box-flex: 1.0;
+        width: 25.5%;
+        img{
+          width: 100%;
+        }
+      }
+      .right{
+        -moz-box-flex: 1.0; /* Firefox */
+        -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+        box-flex: 1.0;
+        width: 70%;
+        margin-left: 4.5%;
+        .name{
+          color: $color-444;
+          margin-bottom: 3%;
+        }
+
+      }
+    }
+    .msg{
+      padding: 3% 0;
+      border-bottom: 1px solid $color-dcdcdc;
+    }
+    .end-time{
+      position: relative;
+      padding-top: 3%;
+      .preview{
+        position: absolute;
+        right: 0;
+        top:50%;
+        margin-top: -10px;
+        width: 80px;
+        line-height: 20px;
+        a.btn{
+          @include wei-bg-btn($color-905641, $color-white, $color-905641, 24px, 24px);
+          @include fillet(true);
+        }
+      }
+    }
+  }
+}
