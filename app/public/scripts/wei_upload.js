@@ -20,7 +20,7 @@
         var extensions = this.options.extensions;
         var number = this.options.number;
         var singleRepeat = this.options.singleRepeat;
-        var _extensions = extensions || "jpg,jpeg,gif,png";
+        var _extensions = extensions || 'jpg,jpeg,gif,png';
         var text = this.options.text;
         var text_name = this.options.text_name;
         var text_placeholder = this.options.text_placeholder;
@@ -29,17 +29,20 @@
         $this.children('.upload-inp').on('change', function () {
           if($(this).val()!=''){
             var formData = new FormData();
-            formData.append("file", $(this)[0].files[0]);
+            formData.append('file', $(this)[0].files[0]);
             $.ajax({
               url: c_url,
               type: 'POST',
               data: formData,
               cache: false,
               timeout: 3000000,
-              enctype: "multipart/form-data",
+              enctype: 'multipart/form-data',
               processData: false,
               contentType: false,
-              error: function () {
+              error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
                 alert('数据加载失败，可能是网络连接问题或者服务器错误。');
               },
               success: function (result) {
@@ -47,7 +50,7 @@
                 /* "/uuu/kkj.jpg" 或者 {"message":"没有上传的文件！","url":"","method":"alert","func":""} */
                 //判断返回值不是 json 格式
                 var _url = '';
-                if (!result.match("^\{(.+:.+,*){1,}\}$"))
+                if (!result.match('^\{(.+:.+,*){1,}\}$'))
                 {
                   //字符串
                   _url = result;
