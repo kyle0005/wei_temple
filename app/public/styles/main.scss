@@ -115,6 +115,7 @@
     @at-root .temple-at{
       color: $color-666;
       line-height: 20px;
+      margin-left: 20%;
     }
     a {
       position: relative;
@@ -229,7 +230,7 @@
     justify-content: flex-end;
     align-items: center;
     height: 100%;
-    border-top: 1px solid $color-905641;
+    border-top: 1px solid $color-dcdcdc;
     a {
       -moz-box-flex: 1.0; /* Firefox */
       -webkit-box-flex: 1.0; /* Safari 和 Chrome */
@@ -250,7 +251,7 @@
       line-height: 36px;
       justify-content: center;
       align-items: center;
-      color: $color-999;
+      color: $color-dcdcdc;
     }
     a.btn.click{
       color: $color-905641;
@@ -875,7 +876,7 @@
         height: 51px;
         width: 50%;
         padding-top: 9px;
-        text-align: center;
+        text-align: left;
         img{
           position: initial;
           width: 12.5px;
@@ -1123,12 +1124,16 @@
   padding: 2% 4.6875%;
   margin-bottom: 10px;
   .lightning-img{
+    position: relative;
     display: inline-block;
     float: left;
     width: 30%;
+    //padding-bottom: 30%;
     margin-right: 5%;
     img{
+      //position: absolute;
       width: 100%;
+      //height: 100%;
     }
   }
   .info-item-con{
@@ -1149,7 +1154,7 @@
       margin-bottom: 2px;
     }
     .item-temp{
-      width: 50%;
+      //width: 50%;
     }
     .item-time{
       width: 50%;
@@ -1200,7 +1205,7 @@
   .js-carousel{
     position:relative;
     margin:auto;
-    width:80%;
+    width:70.3125%;
     -webkit-transform-style:preserve-3d;
     -webkit-perspective:1000px;
   }
@@ -1222,8 +1227,20 @@
   }
   .temple-items{
     background-color: $color-white;
+    .img-con{
+      position: relative;
+      width: 100%;
+      padding-bottom: 133.3333%;
+      img{
+        position: absolute;
+        top:0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
     .temple-con{
-      padding: 10px;
+      padding: 10px 10px 15px 10px;
       color: $color-666;
       .title{
         font-size: $font-size-t14;
@@ -1233,6 +1250,9 @@
       span{
         display: inline-block;
         line-height: 20px;
+      }
+      .product-num{
+        margin-right: 15px;
       }
     }
   }
@@ -1349,13 +1369,16 @@
           right: 5%;
           top: 50%;
           margin-top: -12.5px;
-          width: 30%;
+          width: 40%;
           line-height: 25px;
           a{
             @include wei-bg-btn($color-905641, $color-white, $color-905641, 25px, 25px);
             @include fillet(true); /* 圆角 */
           }
 
+        }
+        .code-mask{
+          opacity: .5;
         }
       }
     }
@@ -1368,7 +1391,62 @@
     @include fillet(true); /* 圆角 */
   }
 }
+.pop-mask{
+  position: fixed;
+  top:0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background: rgba(0,0,0,.85);
+  overflow: hidden;
+  font-size: $font-size-body;
+  .pop-container{
+    position: absolute;
+    top:50%;
+    margin-top: -10%;
+    left: 50%;
+    margin-left: -40%;
+    height: 20%;
+    width: 80%;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  .pop-txt{
+    width: 90%;
+    height: 40%;
+    padding: 5%;
+    overflow: hidden;
+    text-align: center;
+    color: $color-905641;
 
+  }
+  .pop-btn{
+    width: 100%;
+    text-align: center;
+  }
+  .cancel{
+    display: inline-block;
+    width: 30%;
+    line-height: 30px;
+    color: #fff;
+    background-color: $color-905641;
+    border: 1px solid $color-905641;
+    border-radius: 4px;
+    text-align: center;
+    margin-right: 10px;
+  }
+  .ok{
+    display: inline-block;
+    width: 60%;
+    line-height: 30px;
+    color: #fff;
+    background-color: $color-905641;
+    border: 1px solid $color-905641;
+    border-radius: 4px;
+    text-align: center;
+  }
+}
 /* payment */
 .payment-container{
   .total{
