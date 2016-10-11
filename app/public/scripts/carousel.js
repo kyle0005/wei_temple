@@ -68,10 +68,6 @@
     this.btns = this.options.hasBtns;
     addHtml.call(this.$element, this.img, this.ctrls, this.btns, this.txt_data);
 
-    $("video.lazy").lazyload({
-      event:'scroll'
-    });
-
     if(!IsPC()){
       this.$element.height(this.$element.width());
     }
@@ -150,22 +146,23 @@
     $.each(data, function (i) {
       items += '<div class="items-container">';
       var _data = [],str = '';
-      if(data[i] === 'string'){
+      if(typeof (data[i]) === 'string'){
         _data = data[i].split('.');
         str = _data[_data.length - 1].toLowerCase();
       }
       if(str != 'jpg' && str != 'jpeg' && str != 'png' && str != 'bmp' && str != 'gif'){
         items += '<div class="items-a">' +
-          '<video class="lazy items-img" data-original="' +
+          '<video class="lazy items-img" ' +
+        /*  'data-original="' +
           data[i].url +
           '" data-poster="' +
-          data[i].poster +
+          data[i].poster +*/
           '" controls="controls" preload="metadata" ' +
-        /*'src="' +
+        'src="' +
           data[i].url +
           '"' +
         'poster="' +
-          data[i].poster +*/
+          data[i].poster +
           '"></video>' +
           '</div>';
       }else{
