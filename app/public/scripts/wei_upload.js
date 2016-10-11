@@ -40,9 +40,9 @@
               processData: false,
               contentType: false,
               error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert(XMLHttpRequest.status);
+                /*alert(XMLHttpRequest.status);
                 alert(XMLHttpRequest.readyState);
-                alert(textStatus);
+                alert(textStatus);*/
                 alert('数据加载失败，可能是网络连接问题或者服务器错误。');
               },
               success: function (result) {
