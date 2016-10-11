@@ -49,11 +49,12 @@
         </div>
       </div>
       <div class="lightning-opts clearfix">
-        <label>
-          <input type="checkbox" class="lightning-discount">
+        <span class="lightning-discount">
           使用222積分抵扣10元
-        </label>
-        <span class="lightning-right">￥10.00</span>
+        </span>
+        <span class="lightning-right">
+          <input class="js-buy-coup mui-switch mui-switch-anim" type="checkbox" unchecked>
+        </span>
       </div>
       <textarea class="lightning-inp" placeholder="请输入祈福语"></textarea>
     </div>
@@ -71,11 +72,47 @@
     </div>
   </footer>
 </div>
+<div id="pop-mask" class="pop-mask hide">
+  <div class="pop-container alert">
+    <div id="pop-txt" class="pop-txt">请填写祈福语</div>
+    <div class="pop-btn">
+      <!-- <a href="javascript:;" class="cancel" id="cancel">取消</a>-->
+      <!--a#ok.ok(href='javascript:;') 确认-->
+    </div>
+  </div>
+</div>
 <!-- build:js scripts/main.js -->
 <script src="public/scripts/jquery-3.0.0.js"></script>
 <script src="public/scripts/cxselect.js"></script>
 <!-- endbuild -->
 <script>
+  var open_pop = function (message, has_wait) {
+    $('#pop-txt').html(message);
+    var mask = $('#pop-mask');
+    if (mask.hasClass('hide')) {
+      mask.removeClass('hide');
+    } else {
+      mask.addClass('hide');
+    }
+    if (has_wait == true)
+    {
+      wait_close_pop(3);
+    }
+  };
+  var close_pop = function () {
+    var mask = $('#pop-mask');
+    mask.addClass('hide');
+  };
+  var wait_close_pop = function (t) {
+    var timer = setInterval(function () {
+      t--;
+      if (t < 0) {
+        clearTimeout(timer);
+        close_pop();
+      }
+    }, 1000);
+  };
+
   var data = [];
   var num = 1;  //产品数量
   var dataCustom = [

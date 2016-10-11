@@ -5,6 +5,7 @@
 @import "icon";
 @import "button";
 @import "common";
+@import "LCalendar";
 /* index */
 .wei-container{
   @extend %page;
@@ -13,6 +14,10 @@
 .wei-container2{
   @extend %page;
   background-color: $color-f9f4f2;
+}
+.wei-container3{
+  @extend %page;
+  background-color: $color-white;
 }
 .wei-head {
   position: relative;
@@ -47,7 +52,7 @@
 
 .wei-content {
   position: relative;
-  font-size: $font-size-body;
+  font-size: $font-size-t12;
   &:after {
     content: '';
     position: absolute;
@@ -76,7 +81,11 @@
       margin-top: -10.625%;
       img {
         float: left;
-        width: 22.41379%;
+        //width: 22.41379%;
+        margin-top: 2.3%;
+        width: 61px;
+        height: 61px;
+        border: 2px solid $color-white;
       }
 
       .temple-detail {
@@ -182,6 +191,7 @@
           height: 100%;
           img {
             width: 100%;
+            height: 74%;
           }
           .product-detail {
             display: block;
@@ -222,7 +232,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  font-size: $font-size-body;
+  font-size: $font-size-t12;
   background-color: $color-white;
 
   @at-root .foot-container {
@@ -275,9 +285,11 @@
     }
   }
   @at-root .foot-container.r2{
-    border-top: none;
     a{
       width: 50%;
+    }
+    a:first-child{
+      color: $color-444;
     }
   }
 
@@ -609,7 +621,7 @@
   bottom: 0;
   z-index: 997;
   overflow: hidden;
-  font-size: $font-size-body;
+  font-size: $font-size-t12;
   .pop-up {
     position: fixed;
     bottom: 0;
@@ -663,11 +675,11 @@
     }
     .price{
       color: $color-905641;
-      font-size: $font-size-body;
+      font-size: $font-size-t12;
       margin-bottom: 1%;
     }
     .num{
-      font-size: $font-size-body;
+      font-size: $font-size-t12;
     }
   }
   .light-intro{
@@ -945,7 +957,7 @@
       .temple-title{
         color: $color-444;
         padding-bottom: 9px;
-        border-bottom: 1px solid $color-dcdcdc;
+        border-bottom: 1px solid $color-ebebeb;
       }
       .temple-chat-content{
         height: 50px;
@@ -1099,7 +1111,9 @@
   width: 100%;
   img{
     float: left;
-    width: 22%;
+    //width: 22%;
+    width: 75px;
+    height: 75px;
     margin-right: 10px;
   }
   span{
@@ -1114,7 +1128,7 @@
   }
 }
 .turn-pro-con{
-  width: 72%;
+  width: 70%;
   color: $color-888;
 }
 
@@ -1163,6 +1177,7 @@
   }
   .lightning-opts{
     line-height: 35px;
+    height: 35px;
     border-bottom: 1px solid $color-eee;
     .lightning-right{
       float: right;
@@ -1189,11 +1204,84 @@
     min-height: 60px;
   }
 }
+input[type=checkbox].mui-switch {
+  width: 70px;
+  height: 20px;
+  margin: 7px 0 0 0;
+  position: relative;
+  //border: 1px solid #dfdfdf;
+  background-color: $color-905641;
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  border-radius: 4px;
+  background-clip: content-box;
+  display: inline-block;
+  -webkit-appearance: none;
+  user-select: none;
+  outline: 0
+}
+
+input[type=checkbox].mui-switch:before {
+  content: '';
+  width: 35px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, .4)
+}
+
+input[type=checkbox].mui-switch:checked {
+  border-color: $color-905641;
+  box-shadow: $color-905641 0 0 0 16px inset;
+  background-color: $color-905641
+}
+
+input[type=checkbox].mui-switch:checked:before {
+  left: 35px
+}
+
+input[type=checkbox].mui-switch.mui-switch-animbg {
+  transition: background-color ease .4s
+}
+
+input[type=checkbox].mui-switch.mui-switch-animbg:before {
+  transition: left .3s
+}
+
+input[type=checkbox].mui-switch.mui-switch-animbg:checked {
+  box-shadow: #dfdfdf 0 0 0 0 inset;
+  background-color: $color-905641;
+  transition: border-color .4s, background-color ease .4s
+}
+
+input[type=checkbox].mui-switch.mui-switch-animbg:checked:before {
+  transition: left .3s
+}
+
+input[type=checkbox].mui-switch.mui-switch-anim {
+  transition: border cubic-bezier(0, 0, 0, 1) .4s, box-shadow cubic-bezier(0, 0, 0, 1) .4s
+}
+
+input[type=checkbox].mui-switch.mui-switch-anim:before {
+  transition: left .3s
+}
+
+input[type=checkbox].mui-switch.mui-switch-anim:checked {
+  box-shadow:$color-905641 0 0 0 16px inset;
+  background-color: $color-905641;
+  transition: border ease .4s, box-shadow ease .4s, background-color ease 1.2s
+}
+
+input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
+  transition: left .3s
+}
 
 /* temple-list */
 .list-container{
   overflow:hidden;
-  height:90%;
+  height:100%;
   ul{
     list-style:none;
     padding:0;
@@ -1263,7 +1351,7 @@
   width: 100%;
   height: 100%;
   background-color: $color-37231e;
-  font-size: $font-size-body;
+  font-size: $font-size-t12;
   .light-bg{
     position: relative;
     width: 100%;
@@ -1274,12 +1362,13 @@
     input.name{
       width: 25%;
       margin-top: 79%;
-      line-height: 2.4rem;
+      line-height: 2.5rem;
       text-align: center;
       background-color: initial;
       border: none;
       outline: none;
       color: $color-6b442c;
+      font-size: $font-size-t10;
     }
     .light-con{
       width: 83.4375%;
@@ -1398,20 +1487,28 @@
   width: 100%;
   height: 100%;
   z-index: 10;
-  background: rgba(0,0,0,.85);
+  background: rgba(0,0,0,.5);
   overflow: hidden;
-  font-size: $font-size-body;
+  font-size: $font-size-t12;
   .pop-container{
-    position: absolute;
+    position: absolute;     //默认信息框
     top:50%;
-    margin-top: -10%;
     left: 50%;
-    margin-left: -40%;
-    height: 20%;
-    width: 80%;
     border-radius: 5px;
     background-color: #fff;
+
+    height: 20%;
+    margin-top: -10%;
+    width: 80%;
+    margin-left: -40%;
   }
+  .pop-container.alert{           //提示框
+    height: 10%;
+    margin-top: -5%;
+    width: 80%;
+    margin-left: -40%;
+  }
+
   .pop-txt{
     width: 90%;
     height: 40%;
@@ -1548,7 +1645,18 @@
     color: $color-888;
   }
 }
-
+/* detail */
+.temple-info-t{
+  margin: 4.6875%;
+  color: $color-444;
+  line-height: 1.4rem;
+  p{
+    margin-bottom: 2%;
+    img{
+      width: 100%;
+    }
+  }
+}
 /* manage */
 .manage{
   position: relative;
@@ -1783,5 +1891,111 @@
   }
 }
 .person-info{
+  .upload{
+    width: 75px;
+    height: 75px;
+    margin: 25px auto;
+    .upload-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      span.img_ul {
+        display: inline-block;
+        width: 100%;
+        height: 100%;
+        line-height: normal;
+        margin: 0;
+        padding: 0;
+        text-align: right;
+        .img_up img {
+          width: 100%;
+          height: 100%;
+          border: 1px solid $color-dcdcdc;
+          border-radius: 50%;
+        }
+      }
+    }
+    .img_add {
+      position: relative;
+      top: -75px;
+      left: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid $color-dcdcdc;
+      margin: 0;
+      overflow: hidden;
+      text-align: center;
+      z-index: 1;
+      img.upload-click{
+        width: 50%;
+        margin-top: 28%;
 
+      }
+      input[type=file].upload-inp {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        opacity: .01;
+        cursor: pointer;
+      }
+    }
+
+  }
+  .info{
+    width: 100%;
+    background-color: $color-white;
+    .items{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: 4.6875%;
+      padding-right: 4.6875%;
+      line-height: 44px;
+      border-bottom: 1px solid $color-dcdcdc;
+      &:last-child{
+        border-bottom:none;
+      }
+      div{
+        -moz-box-flex: 1.0; /* Firefox */
+        -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+        box-flex: 1.0;
+        width: 50%;
+      }
+      .right{
+        input.inp{
+          width: 100%;
+          text-align: right;
+          border: none;
+          outline: none;
+        }
+        select.sel{
+          width: 20%;
+          float: right;
+          border: none;
+          outline: none;
+          text-align: right;
+          background: url("../img/r_arr.png") no-repeat right center;
+          background-size: 8px auto;
+        }
+        input.birth{
+          width: 57%;
+          float: right;
+          border: none;
+          outline: none;
+          background: url("../img/r_arr.png") no-repeat right center;
+          background-size: 8px auto;
+        }
+        input.text{
+          width: 100%;
+          text-align: right;
+          border: none;
+          outline: none;
+        }
+      }
+    }
+  }
 }

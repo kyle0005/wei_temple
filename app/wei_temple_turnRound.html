@@ -63,7 +63,7 @@
         <span class="about-container">
           <span class="product-title">法门寺</span>
           <span class="overTextH2">法门寺地宫是迄今所见最大塔下地宫。宝鸡法门寺地宫其出土了释迦牟尼佛祖舍利...</span>
-          <span><i class="icon-position"></i>&nbsp;陕西宝鸡&emsp;<i class="icon-bucket"></i>&nbsp;1400</span>
+          <span><i class="icon-position"></i>&nbsp;陕西宝鸡&emsp;&emsp;<i class="icon-bucket"></i>&nbsp;1400</span>
         </span>
         <span class="wei-arrow-right"></span>
       </a>
@@ -94,9 +94,9 @@
   </div>
 </footer>
 <footer class="wei-foot">
-  <div class="foot-container">
+  <div class="foot-container r2">
     <a href="javascript:;" class="js-btn btn">
-      <i class="fa fa-video-camera"></i>
+      现场直播
     </a>
     <a href="javascript:;" class="js-light btn ok">
       我要点灯
@@ -148,7 +148,14 @@
 <script src="public/scripts/carousel.js"></script>
 <!-- endbuild -->
 <script>
-  var img_data = ['public/img/1.jpg', 'public/img/2.jpg', 'http://200006282.vod.myqcloud.com/200006282_42ca7ffa1e9011e692fe0785d455c86c.f20.mp4'];
+  var img_data = [
+    'public/img/1.jpg',
+    'public/img/2.jpg',
+    {
+      poster: '',
+      url: 'http://200006282.vod.myqcloud.com/200006282_42ca7ffa1e9011e692fe0785d455c86c.f20.mp4'
+    }
+    ];
   $(function () {
     $('#guide').carousel(
       {

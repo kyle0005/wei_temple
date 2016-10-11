@@ -26,6 +26,7 @@ $color-d09a5a: #d09a5a;
 $color-37231e: #37231e;
 $color-f9f4f2: #f9f4f2;
 $color-a48e8c: #a48e8c;
+$color-ebebeb: #ebebeb;
 
 
 /* font */
@@ -36,8 +37,9 @@ $font-family-monospace:   Menlo, Monaco, Consolas, "Courier New", monospace;
 $font-family-base:        $font-family-sans-serif;
 
 $font-size-base:          62.5%;    /* 10px */
-$font-size-body:          1.2rem;   /* 12px */
-
+$font-size-t10:           1rem;   /* 10px */
+$font-size-t11:           1.1rem;   /* 11px */
+$font-size-t12:           1.2rem;   /* 12px */
 $font-size-t13:           1.3rem;   /* 13px */
 $font-size-t14:           1.4rem;   /* 14px */
 $font-size-t15:           1.5rem;   /* 15px */

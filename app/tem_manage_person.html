@@ -11,12 +11,6 @@
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="public/styles/main.css">
   <!-- endbuild -->
-  <style>
-    .upload-container {
-      position: relative;
-    }
-
-  </style>
 </head>
 <body>
 <div class="wei-container">
@@ -26,21 +20,62 @@
   </header>
   <section class="person-info">
     <div class="upload">
-      <div class="upload-container clearfix wei-upload">
-        <span class="img_ul clearfix"></span>
-        <span id="invest-upload" class="img_add">
-            <img src="Public/img/upload_btn.png"/>
-            <input type="file" class="upload-inp"/>
+      <div class="upload-container">
+        <span class="img_ul">
+          <span class="img_up">
+            <img src="public/img/photo.png">
+            <input name="avatar" type="hidden" value="/Uploads/images/2016-04-28/5721b0d4c3e60.png">
+          </span>
+        </span>
+        <span id="avatar-add" class="img_add">
+          <img src="public/img/upload.png" class="upload-click">
+          <input type="file" class="upload-inp">
         </span>
       </div>
     </div>
-
+    <ul class="info">
+      <li class="items">
+        <div class="left">
+          昵称
+        </div>
+        <div class="right">
+          <input type="text" class="inp">
+        </div>
+      </li>
+      <li class="items">
+        <div class="left">
+          性别
+        </div>
+        <div class="right clearfix">
+          <select class="sel">
+            <option value="male">男</option>
+            <option value="female">女</option>
+          </select>
+        </div>
+      </li>
+      <li class="items">
+        <div class="left">
+          生日
+        </div>
+        <div class="right clearfix">
+          <input id="birth" type="text" readonly="" class="birth" data-lcalendar="2016-05-11,2016-05-11" />
+        </div>
+      </li>
+      <li class="items">
+        <div class="left">
+          签名
+        </div>
+        <div class="right clearfix">
+          <input type="text" class="text">
+        </div>
+      </li>
+    </ul>
   </section>
 </div>
-
 <!-- build:js scripts/main.js -->
 <script src="public/scripts/jquery-3.0.0.js"></script>
 <script src="public/scripts/wei_upload.js"></script>
+<script src="public/scripts/LCalendar.js"></script>
 <!-- endbuild -->
 <script>
   var golddiy_image_path = "";
@@ -53,6 +88,17 @@
       'extensions': '',
       'number': 1
     });
+
+
+    var calendar = new LCalendar();
+    calendar.init({
+      'trigger': '#birth', //标签id
+      'type': 'date', //date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择,
+      'minDate': '1900-1-1', //最小日期
+      'maxDate': new Date().getFullYear() + '-' + (new Date().getMonth() + 1) + '-' + new Date().getDate() //最大日期
+    });
+
+
   })
 </script>
 </body>
