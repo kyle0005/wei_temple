@@ -1372,7 +1372,7 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
     }
     .light-con{
       width: 83.4375%;
-      margin: 30% auto 0;
+      margin: 37.8125% auto 0;
       @media screen and (max-height: 505px){
         //ip5以下设备
         margin: 28% auto 0;
@@ -1385,12 +1385,9 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
 
       .title{
         color: $color-d09b58;
-        line-height: 2.2rem;
+        margin-bottom: 10px;
       }
       .context{
-        margin-left: 11.6%;
-        text-align: left;
-        line-height: 2.2rem;
         img{
           height: 1.2rem;
           line-height: 1.2rem;
