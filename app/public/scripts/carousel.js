@@ -495,9 +495,9 @@
          translate(curIndex - 1);
          });*/
         $(window).on('load', function (e) {
-          $carousel.attr('class', function (i, cls) { return cls.replace(/class-\d+ /g, ''); });
+          $carousel.attr('class', '');
           $carousel.attr('style', '');
-          $lis.attr('class', function (i, cls) { return cls.replace(/class-\d+ /g, ''); });
+          $lis.attr('class', '');
           $lis.attr('style', '');
           updateSize();
         });
