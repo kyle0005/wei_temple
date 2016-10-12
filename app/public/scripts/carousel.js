@@ -73,6 +73,12 @@
       loadVideo($(this), $(e.data.obj), video_num);
     });
 
+/*    var _imgs = this.img;
+    var ham_video = new hammer($('.js-video')[0]);
+    ham_video.on($('.js-video').get[0] ,'tap', function (e) {
+      loadVideo($(this), $(_imgs), video_num);
+    });*/
+
 
     if(!IsPC()){
       this.$element.height(this.$element.width());
@@ -121,10 +127,6 @@
     var p = $(obj).parents('.items-container');
     var items = '<div class="items-a">' +
       '<video class="items-img" ' +
-      /*  'data-original="' +
-       data[i].url +
-       '" data-poster="' +
-       data[i].poster +*/
       '" controls="controls" preload="metadata" ' +
       'src="' +
       data[i].url +
@@ -139,10 +141,36 @@
     var _video = $('video.items-img').get(0);
 
     _video.play();
-    $(js_video).hide();
+
+    $(_video).on('playing', function() {
+      // 开始播放
+      if($(_video).hasClass('small')){
+        $(_video).removeClass('small');
+      }
+      $(js_video).hide();
+    });
+
+   /* $(_video).on('play', function() {
+      // 开始播放
+      if($(_video).hasClass('small')){
+        $(_video).removeClass('small');
+      }
+      $(js_video).hide();
+      _video.play();
+    });*/
+
+    $(_video).on('pause', function() {
+      // 暂停播放时
+      _video.pause();
+      $(js_video).show();
+      $(_video).addClass('small');
+
+    });
+
+
     // $("video.items-img").trigger("play");
   }
-  function stopVideo(obj, data, i) {
+  function stopVideo() {
     var _obj = $('.js-video');
     $(_obj).show();
     var p = $(_obj).parents('.items-container');

@@ -2,7 +2,7 @@
 <html lang="">
 <head>
   <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport">
   <meta content="yes" name="apple-mobile-web-app-capable">
   <meta content="black" name="apple-mobile-web-app-status-bar-style">
   <meta name="format-detection" content="telephone=no">
@@ -32,27 +32,27 @@
     <div class="lightning-item clearfix">
       <div class="lightning-opts clearfix">
         <span>点灯数量</span>
-        <span class="lightning-right" id="lighton_number" data-number="1">110000盏</span>
+        <span class="lightning-right" id="lighton_number" data-number="5">5盏</span>
       </div>
       <div id="lighting-selects">
         <div class="lightning-opts clearfix">
           <span>付费类型</span>
-          <select class="lightning-select selA" id="time_value"></select>
+          <select class="lightning-select selA" id="time_type"></select>
         </div>
         <div class="lightning-opts clearfix">
           <span>付费时长</span>
-          <select class="lightning-select selB" id="time_type"></select>
+          <select class="lightning-select selB" id="time_value"></select>
         </div>
       </div>
       <div class="lightning-opts clearfix">
-        <span class="lightning-discount">
-          使用222積分抵扣10元
+        <span class="lightning-discount" data-point>
+          使用8功德分抵扣0.08元
         </span>
         <span class="lightning-right">
-          <input class="js-buy-coup mui-switch mui-switch-anim" type="checkbox" unchecked>
+          <input class="js-buy-coup mui-switch mui-switch-anim" id="used_merit" name="used_merit" value="0.08" type="checkbox" unchecked>
         </span>
       </div>
-      <textarea class="lightning-inp" placeholder="请输入祈福语"></textarea>
+      <textarea class="lightning-inp" placeholder="请输入祈福语" >祝xx身体健康！万事如意！！</textarea>
     </div>
     <div>
     </div>
@@ -70,7 +70,7 @@
   <footer class="wei-foot">
     <div class="foot-container">
     <span class="lightning-txt">
-      实付款：<span class="lightning-price">￥1.00</span>
+      实付款：<span class="lightning-price" id="cash_price"></span>
     </span>
       <a href="javascript:;" class="btn ok">
         确认支付
@@ -121,71 +121,10 @@
 
   var data = [];
   var num = 1;  //产品数量
-  var timeJsons = [
-    {
-    "name": "\u6309\u5c0f\u65f6",
-    "value": "hour",
-    "subs": [{
-      "name": "1\u5c0f\u65f6",
-      "value": "1",
-      "price": "0.01"
-    }, {
-      "name": "3\u5c0f\u65f6",
-      "value": "3",
-      "price": "2"
-    }]
-  },
-    {
-    "name": "\u6309\u5929\u6570",
-    "value": "day",
-    "subs": [{
-      "name": "1\u5929",
-      "value": "1",
-      "price": "5"
-    }, {
-      "name": "3\u5929",
-      "value": "3",
-      "price": "10"
-    }, {
-      "name": "5\u5929",
-      "value": "5",
-      "price": "15"
-    }]
-  },
-    {
-    "name": "\u6309\u6708\u4efd",
-    "value": "month",
-    "subs": [{
-      "name": "1\u4e2a\u6708",
-      "value": "1",
-      "price": "30"
-    }, {
-      "name": "3\u4e2a\u6708",
-      "value": "3",
-      "price": "50"
-    }]
-  },
-    {
-    "name": "\u6309\u5e74\u5ea6",
-    "value": "year",
-    "subs": [{
-      "name": "1\u5e74",
-      "value": "1",
-      "price": "100"
-    }, {
-      "name": "2\u5e74",
-      "value": "2",
-      "price": "160"
-    }, {
-      "name": "3\u5e74",
-      "value": "3",
-      "price": "200"
-    }]
-  }
-  ];
   $(function () {
-//    $.cxSelect.defaults.firstTitle = dataCustom[0].name;
-//    $.cxSelect.defaults.firstValue = dataCustom[0].value;
+    var timeJsons = [
+      {"name":"\u6309\u5c0f\u65f6","value":"hour","subs":[{"name":"1\u5c0f\u65f6","value":"1","price":"0.01"},{"name":"3\u5c0f\u65f6","value":"3","price":"2"}]},{"name":"\u6309\u5929\u6570","value":"day","subs":[{"name":"1\u5929","value":"1","price":"5"},{"name":"3\u5929","value":"3","price":"10"},{"name":"5\u5929","value":"5","price":"15"}]},{"name":"\u6309\u6708\u4efd","value":"month","subs":[{"name":"1\u4e2a\u6708","value":"1","price":"30"},{"name":"3\u4e2a\u6708","value":"3","price":"50"}]},{"name":"\u6309\u5e74\u5ea6","value":"year","subs":[{"name":"1\u5e74","value":"1","price":"100"},{"name":"2\u5e74","value":"2","price":"160"},{"name":"3\u5e74","value":"3","price":"200"}]}] ;
+    var num = 1 ;
     $('#lighting-selects').cxSelect({
       jsonName: 'name',
       jsonValue: 'value',
@@ -195,53 +134,52 @@
       selects: ['selA', 'selB']
     });
 
-    var get_values = function () {
-//      console.log($('#time_value option:selected').index());
-//      timeJsons.
-//      console.log($('#time_type option:selected').val());
-    };
-
-    var sub = [];
-    $('#time_value').on('change', function () {
-      var _num = $('#time_value option:selected').index();
-      sub = timeJsons[_num].subs;
-    });
-
-    $('#time_type').on('change', function () {
-      var _num = $('#time_type option:selected').index();
-      console.log('name:' + sub[_num].name + '--' + 'value:' + sub[_num].value + '--' + 'price:' + sub[_num].price);
-    });
-
-    var set_total = function() {
-      var price = parseFloat($('#time_value option:selected').data('price')) * parseFloat($('#lighton_number').data('number'));
-      $('#total_price').html('￥' + price);
-    };
-    var set_cash = function() {
-      var price = parseFloat($('#time_value option:selected').data('price')) * parseFloat($('#lighton_number').data('number'));
-      var merit_price = 0;
-      if ($('#used_merit:checked').val()) {
+    var set_cash = function () {
+      var v_time = $('#time_value option:selected').val(),
+        v_type = $('#time_type option:selected').val(),
+        v_subs,
+        price = 0,
+        merit_price = 0;
+      for (p in timeJsons)
+      {
+        if (timeJsons[p].value == v_type)
+        {
+          v_subs = timeJsons[p].subs;
+          break;
+        }
+      }
+      for (p in v_subs)
+      {
+        if (v_subs[p].value == v_time)
+        {
+          price = v_subs[p].price;
+          break;
+        }
+      }
+      price = price * num;
+      if ($('#used_merit:checked').val())
+      {
         merit_price = parseFloat($('#used_merit:checked').val());
-        if (merit_price >= price) {
+        if (merit_price >= price)
+        {
           merit_price = price;
         }
       }
-      $('#cash_price').html('￥' + (price - merit_price));
-    };
-    get_values($('#time_type').val());
-    set_total();
+      $('#cash_price').html('￥' + (price - merit_price).toFixed(2));
+      return price;
+    }
+
+    $('#time_value').on('change', function () {
+      set_cash();
+    });
+    $('#time_type').on('change', function () {
+      set_cash();
+    });
+    $('#used_merit').on('change', function () {
+      set_cash();
+    });
     set_cash();
-    $('#time_type').click(function() {
-      get_values($(this).val());
-      set_total();
-      set_cash();
-    });
-    $('#time_value').click(function() {
-      set_total();
-      set_cash();
-    });
-    $('#used_merit').click(function() {
-      set_cash();
-    });
+
 
   });
 </script>
