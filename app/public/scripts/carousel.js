@@ -66,7 +66,13 @@
     this.img = this.options.data;
     this.ctrls = this.options.hasCtrls;
     this.btns = this.options.hasBtns;
-    addHtml.call(this.$element, this.img, this.ctrls, this.btns, this.txt_data);
+    var video_num = 0;
+    video_num = addHtml.call(this.$element, this.img, this.ctrls, this.btns, this.txt_data);
+
+    $('.js-video').on('click', {obj: this.img}, function (e) {
+      loadVideo($(this), $(e.data.obj), video_num);
+    });
+
 
     if(!IsPC()){
       this.$element.height(this.$element.width());
@@ -81,26 +87,6 @@
       $('video.items-img').height(this.$element.width());
     }
 
-
-    /*var proportion = [];
-    var ww = $(window).width(),
-      nw = '', nh = '', wh = '',$imgs = $('.items-img');
-       $imgs.each(function(i){
-      var qim=new Image();
-      qim.src=img[i];//图片地址是你准备要加载的地址；
-      if(qim.complete){
-        nw = this.naturalWidth;
-        nh = this.naturalHeight;
-        wh = nh * ww /nw;         //页面上图片的实际高度
-        proportion.push(wh.toFixed(2));   //四舍五入,保留两位小数
-      }
-
-    });
-    var max_num = Math.min.apply(Math, proportion);
-
-    var obj = proportion[max_num];
-    var ind = Array.indexOf(obj);
-    console.log(ind);*/
 
     this.$indicators = this.$element.find('.wei-carousel-btns');
     var left_ctrl = this.$element.find('.ctrls-a-l'), right_ctrl = this.$element.find('.ctrls-a-r');
@@ -131,7 +117,40 @@
     return flag;
   }
 
+  function loadVideo(obj, data, i) {
+    var p = $(obj).parents('.items-container');
+    var items = '<div class="items-a">' +
+      '<video class="items-img" ' +
+      /*  'data-original="' +
+       data[i].url +
+       '" data-poster="' +
+       data[i].poster +*/
+      '" controls="controls" preload="metadata" ' +
+      'src="' +
+      data[i].url +
+      '"' +
+      'poster="' +
+      data[i].poster +
+      '"></video>' +
+      '</div>';
+
+    $(p).append(items);
+    var js_video = $('.js-video');
+    var _video = $('video.items-img').get(0);
+
+    _video.play();
+    $(js_video).hide();
+    // $("video.items-img").trigger("play");
+  }
+  function stopVideo(obj, data, i) {
+    var _obj = $('.js-video');
+    $(_obj).show();
+    var p = $(_obj).parents('.items-container');
+    $(p).find('div.items-a').remove();
+    // $('video.items-img').get(0).pause();
+  }
   function addHtml(data, hasCtrls, hasBtns, txt) {
+    var video_num = 0;
     var ctrls = '<div class="wei-carousel-ctrls">' +
         '<a href="javascript:;" class="ctrls-a-l"><span class="ctrls-l"></span></a>' +
         '<a href="javascript:;" class="ctrls-a-r"><span class="ctrls-r"></span></a>' +
@@ -145,31 +164,37 @@
     if (!data || data.length <= 0)return false;
     $.each(data, function (i) {
       items += '<div class="items-container">';
-      var _data = [],str = '';
+      // var _data = [],str = '';
       if(typeof (data[i]) === 'string'){
-        _data = data[i].split('.');
-        str = _data[_data.length - 1].toLowerCase();
-      }
-      if(str != 'jpg' && str != 'jpeg' && str != 'png' && str != 'bmp' && str != 'gif'){
-        items += '<div class="items-a">' +
-          '<video class="lazy items-img" ' +
-        /*  'data-original="' +
-          data[i].url +
-          '" data-poster="' +
-          data[i].poster +*/
-          '" controls="controls" preload="metadata" ' +
-        'src="' +
-          data[i].url +
-          '"' +
-        'poster="' +
-          data[i].poster +
-          '"></video>' +
-          '</div>';
-      }else{
+        //为图片
+        // _data = data[i].split('.');
+        // str = _data[_data.length - 1].toLowerCase();
+      /*}
+      if(str != 'jpg' && str != 'jpeg' && str != 'png' && str != 'bmp' && str != 'gif'){*/
         items += '<a href="javascript:;" class="items-a">' +
           '<img src="' +
           data[i] +
           '" class="items-img"/>' +
+          '</a>';
+      }else{
+        //为视频
+        video_num = i;
+        items += '<a href="javascript:;" class="items-a cal-video js-video">' +
+          '<img src="' +
+          data[i].poster +
+          '" class="items-img"/>' +
+          '<img src="' +
+          data[i].play +
+          '" class="items-img play"/>' +
+
+         /* '<video class="items-img" ' +
+          '" controls="controls" preload="metadata" ' +
+          'src="' +
+          data[i].url +
+          '"' +
+          'poster="' +
+          data[i].poster +
+          '"></video>' +*/
           '</a>';
       }
       items += '</div>';
@@ -187,6 +212,8 @@
     this.html(content);
     this.find('.items-container').eq(0).addClass('active');
     this.find('.wei-carousel-btns li:first-child').addClass('active');
+
+    return video_num;
   }
 
   function plugin(opts) {
@@ -268,6 +295,7 @@
         }
 
       }
+      stopVideo();
 
       return this;
     },
@@ -439,6 +467,10 @@
          translate(curIndex - 1);
          });*/
         $(window).on('load', function (e) {
+          $carousel.attr('class', function (i, cls) { return cls.replace(/class-\d+ /g, ''); });
+          $carousel.attr('style', '');
+          $lis.attr('class', function (i, cls) { return cls.replace(/class-\d+ /g, ''); });
+          $lis.attr('style', '');
           updateSize();
         });
         if (o.resizeEvent) {

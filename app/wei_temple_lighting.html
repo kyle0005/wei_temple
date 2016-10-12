@@ -32,20 +32,16 @@
     <div class="lightning-item clearfix">
       <div class="lightning-opts clearfix">
         <span>点灯数量</span>
-        <span class="lightning-right">110000盏</span>
+        <span class="lightning-right" id="lighton_number" data-number="1">110000盏</span>
       </div>
       <div id="lighting-selects">
         <div class="lightning-opts clearfix">
           <span>付费类型</span>
-          <select class="lightning-select selA">
-            <option class="">按小时</option>
-          </select>
+          <select class="lightning-select selA" id="time_value"></select>
         </div>
         <div class="lightning-opts clearfix">
           <span>付费时长</span>
-          <select class="lightning-select selB">
-            <option class="">1小时</option>
-          </select>
+          <select class="lightning-select selB" id="time_type"></select>
         </div>
       </div>
       <div class="lightning-opts clearfix">
@@ -57,6 +53,16 @@
         </span>
       </div>
       <textarea class="lightning-inp" placeholder="请输入祈福语"></textarea>
+    </div>
+    <div>
+    </div>
+  </section>
+  <section class="wei-content">
+    <div class="lightning-item clearfix">
+      <span class="lightning-img">
+        收福人
+      </span>
+      <input type="text" placeholder="手机号码" class="accept-phone">
     </div>
     <div>
     </div>
@@ -115,29 +121,128 @@
 
   var data = [];
   var num = 1;  //产品数量
-  var dataCustom = [
-    {'name': '按小时', 'value': 'hour', 'sub': [
-      {'name': '一小时', 'value': '1'},
-      {'name': '两小时', 'value': '2'},
-      {'name': '三小时', 'value': '3'}
-    ]},
-    {'name': '按天数', 'value': 'day', 'sub': [
-      {'name': '一天', 'value': '1'},
-      {'name': '两天', 'value': '2'}
-    ]},
-    {'name': '按月份','value': 'mouth', 'sub': [
-      {'name': '一个月' ,'value': '1'},
-      {'name': '两个月' ,'value': '2'}
-    ]}
+  var timeJsons = [
+    {
+    "name": "\u6309\u5c0f\u65f6",
+    "value": "hour",
+    "subs": [{
+      "name": "1\u5c0f\u65f6",
+      "value": "1",
+      "price": "0.01"
+    }, {
+      "name": "3\u5c0f\u65f6",
+      "value": "3",
+      "price": "2"
+    }]
+  },
+    {
+    "name": "\u6309\u5929\u6570",
+    "value": "day",
+    "subs": [{
+      "name": "1\u5929",
+      "value": "1",
+      "price": "5"
+    }, {
+      "name": "3\u5929",
+      "value": "3",
+      "price": "10"
+    }, {
+      "name": "5\u5929",
+      "value": "5",
+      "price": "15"
+    }]
+  },
+    {
+    "name": "\u6309\u6708\u4efd",
+    "value": "month",
+    "subs": [{
+      "name": "1\u4e2a\u6708",
+      "value": "1",
+      "price": "30"
+    }, {
+      "name": "3\u4e2a\u6708",
+      "value": "3",
+      "price": "50"
+    }]
+  },
+    {
+    "name": "\u6309\u5e74\u5ea6",
+    "value": "year",
+    "subs": [{
+      "name": "1\u5e74",
+      "value": "1",
+      "price": "100"
+    }, {
+      "name": "2\u5e74",
+      "value": "2",
+      "price": "160"
+    }, {
+      "name": "3\u5e74",
+      "value": "3",
+      "price": "200"
+    }]
+  }
   ];
   $(function () {
+//    $.cxSelect.defaults.firstTitle = dataCustom[0].name;
+//    $.cxSelect.defaults.firstValue = dataCustom[0].value;
     $('#lighting-selects').cxSelect({
       jsonName: 'name',
       jsonValue: 'value',
-      jsonSub: 'sub',
-      data: dataCustom,
+      required: true,
+      jsonSub: 'subs',
+      data: timeJsons,
       selects: ['selA', 'selB']
     });
+
+    var get_values = function () {
+//      console.log($('#time_value option:selected').index());
+//      timeJsons.
+//      console.log($('#time_type option:selected').val());
+    };
+
+    var sub = [];
+    $('#time_value').on('change', function () {
+      var _num = $('#time_value option:selected').index();
+      sub = timeJsons[_num].subs;
+    });
+
+    $('#time_type').on('change', function () {
+      var _num = $('#time_type option:selected').index();
+      console.log('name:' + sub[_num].name + '--' + 'value:' + sub[_num].value + '--' + 'price:' + sub[_num].price);
+    });
+
+    var set_total = function() {
+      var price = parseFloat($('#time_value option:selected').data('price')) * parseFloat($('#lighton_number').data('number'));
+      $('#total_price').html('￥' + price);
+    };
+    var set_cash = function() {
+      var price = parseFloat($('#time_value option:selected').data('price')) * parseFloat($('#lighton_number').data('number'));
+      var merit_price = 0;
+      if ($('#used_merit:checked').val()) {
+        merit_price = parseFloat($('#used_merit:checked').val());
+        if (merit_price >= price) {
+          merit_price = price;
+        }
+      }
+      $('#cash_price').html('￥' + (price - merit_price));
+    };
+    get_values($('#time_type').val());
+    set_total();
+    set_cash();
+    $('#time_type').click(function() {
+      get_values($(this).val());
+      set_total();
+      set_cash();
+    });
+    $('#time_value').click(function() {
+      set_total();
+      set_cash();
+    });
+    $('#used_merit').click(function() {
+      set_cash();
+    });
+
   });
 </script>
 </body>
