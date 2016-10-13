@@ -1422,13 +1422,13 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
       }
       .play{
         .voice_img{
-          background: url("../img/btn_voice.png") no-repeat center center;
+          background: url("../img/btn_noVoice.png") no-repeat center center;
           background-size: 100% auto;
         }
       }
       .pause{
         .voice_img{
-          background: url("../img/btn_noVoice.png") no-repeat center center;
+          background: url("../img/btn_voice.png") no-repeat center center;
           background-size: 100% auto;
         }
       }
@@ -2132,8 +2132,7 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
     -moz-box-flex: 1.0; /* Firefox */
     -webkit-box-flex: 1.0; /* Safari 和 Chrome */
     box-flex: 1.0;
-    height: 44px;
-    line-height: 44px;
+    padding: 10px 0;
     width: calc(100% /3);
     text-align: center;
     border-bottom: 1px solid $color-dcdcdc;
@@ -2141,5 +2140,18 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
   a.links.tab-cur{
     color: $color-905641;
     border-bottom: 2px solid $color-905641;
+  }
+}
+.tab-container{
+  margin: 4.6875%;
+  .tab-ops{
+    width: 100%;
+    p{
+      width: 100%;
+      margin-bottom: 10px;
+      img{
+        width: 100%;
+      }
+    }
   }
 }
