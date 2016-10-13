@@ -17,11 +17,45 @@
     <span>详细信息</span>
   </header>
   <section class="">
-
+    <div class="js-tab tab-link">
+        <a href="javascript:;" class="links tab-cur">
+          一一一一
+        </a>
+        <a href="javascript:;" class="links">二二二二</a>
+        <a href="javascript:;" class="links">三三三三</a>
+    </div>
+  </section>
+  <section class="js-tab-container">
+    <div class="tab-ops">
+      a
+    </div>
+    <div class="tab-ops hide">
+      b
+    </div>
+    <div class="tab-ops hide">
+      c
+    </div>
   </section>
 </div>
 
 <!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
 <!-- endbuild -->
+<script>
+  $(function () {
+    tabClick($('.js-tab'), 'tab-cur');
+    function tabClick(tabObj, chosenClassName) {
+      var click_obj = $(tabObj).find('.links');
+      var tab_obj = $(document).find('.tab-ops');
+      $(click_obj).click(function () {
+        $(click_obj).removeClass(chosenClassName);
+        $(this).addClass(chosenClassName);
+        var ind = $(this).index();
+        $(tab_obj).addClass('hide');
+        $(tab_obj).eq(ind).removeClass('hide');
+      });
+    }
+  });
+</script>
 </body>
 </html>

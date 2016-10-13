@@ -2121,3 +2121,25 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
   width: 16px;
   margin-left: 5px;
 }
+
+/* tab */
+.tab-link{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  a.links{
+    display: block;
+    -moz-box-flex: 1.0; /* Firefox */
+    -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+    box-flex: 1.0;
+    height: 44px;
+    line-height: 44px;
+    width: calc(100% /3);
+    text-align: center;
+    border-bottom: 1px solid $color-dcdcdc;
+  }
+  a.links.tab-cur{
+    color: $color-905641;
+    border-bottom: 2px solid $color-905641;
+  }
+}
