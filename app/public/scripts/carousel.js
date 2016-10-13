@@ -495,10 +495,10 @@
          translate(curIndex - 1);
          });*/
         $(window).on('load', function (e) {
-          $carousel.attr('class', '');
+         /* $carousel.attr('class', '');
           $carousel.attr('style', '');
           $lis.attr('class', '');
-          $lis.attr('style', '');
+          $lis.attr('style', '');*/
           updateSize();
         });
         if (o.resizeEvent) {

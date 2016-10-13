@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>live</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="wei-container">
+  <div id="id_video_container" class="live-video"></div>
+</div>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js"></script>
+<!-- endbuild -->
+<script>
+  var configs = {
+    app_id: '1251951972',
+    live_url: 'http://200006282.vod.myqcloud.com/200006282_42ca7ffa1e9011e692fe0785d455c86c.f20.mp4'
+  };
+  $(function () {
+    vodLive(configs.live_url);
+    function vodLive(live_url){
+      //live
+      var PLAY_INFO = (function(){
+        var ps = (window.location.href.split('?')[1] || '').split('&')
+          , opt = {
+            "channel_id": live_url,
+            "app_id": configs.app_id,
+            "width": 0,
+            "height": 0,
+            "https":0
+          }
+          , i1 = 0 , i2 = ps.length, i3, i4
+          ;
+        for (; i1 < i2; i1++) {
+          i3 = ps[i1];
+          i4 = i3.split('=');
+          if(i4[0] == '$app_id' || i4[0] == 'app_id'){
+            opt.app_id = i4[1];
+          } else if(i4[0] == '$channel_id' || i4[0] == 'channel_id'){
+            opt.channel_id = i4[1];
+          } else if(i4[0] == '$sw' || i4[0] == 'sw'){
+            opt.width = i4[1];
+          } else if(i4[0] == '$sh' || i4[0] == 'sh'){
+            opt.height = i4[1];
+          } else if(i4[0] == 'cache_time'){
+            opt.cache_time = i4[1];
+          } else if(i4[0] == 'https'){
+            opt.https = i4[1];
+          }
+        }
+
+        return opt;
+      })();
+      (function () {
+        new qcVideo.Player("id_video_container", {
+          "channel_id": live_url,
+          "app_id": configs.app_id,
+          "width": 414,
+          "height": 244,
+          "https": 0
+        });
+
+      })();
+    }
+  });
+</script>
+</body>
+</html>

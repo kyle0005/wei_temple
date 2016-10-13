@@ -195,5 +195,13 @@ gulp.task('uglify_script', function() {
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
+  gulp.src('app/public/scripts/LCalendar.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
+  gulp.src('app/public/scripts/audioplayer.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
 });
 
