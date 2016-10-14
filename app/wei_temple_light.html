@@ -13,7 +13,68 @@
 <body>
 <div class="light-container">
   <div class="light-bg">
-    <input type="text" class="name" value="xxx點燈祈福">
+    <div class="lotus">
+      <img src="public/img/buddha.png" class="buddha">
+      <div class="buddha-i-con">
+        <img src="public/img/buddha_i.png" class="buddha-i">
+      </div>
+      <input type="text" class="name" value="王xx點燈">
+      <div class="lotus-container">
+        <ul class="js-carousel">
+          <li>
+            <img src="public/img/lotus.png">
+          </li>
+          <li>
+            <img src="public/img/lotus.png">
+          </li>
+          <li>
+            <img src="public/img/lotus.png">
+          </li>
+          <li>
+            <img src="public/img/lotus.png">
+          </li>
+          <li>
+            <img src="public/img/lotus.png">
+          </li>
+          <li>
+            <img src="public/img/lotus.png">
+          </li>
+        </ul>
+          <!--<div class="lotus-container2">
+          <div id="stage">
+            <ul id="container">
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+              <li>
+                <img src="public/img/lotus.png"/>
+              </li>
+            </ul>
+          </div>
+            </div>-->
+      </div>
+    </div>
     <div class="light-con">
       <div class="title">法门寺-W12041号转经轮</div>
       <!--<div class="context">
@@ -23,7 +84,11 @@
       <div class="context">
         祈福语：一花一世界，一叶一菩提，一片白云<br>横谷口，几多归鸟尽迷巢
       </div>
-      <a href="javascript:;" class="btn">我要点灯</a>
+      <a href="javascript:;" class="btn" style="display: none;">我要点灯</a>
+      <div class="btn-container clearfix" id="share">
+        <a href="javascript:;" class="share hide">分享好友</a>
+        <a href="javascript:;" class="cont hide">继续点灯</a>
+      </div>
     </div>
     <div class="btns clearfix">
       <a href="wei_temple_light_live.html" class="live">
@@ -36,6 +101,15 @@
         <span class="voice_img"></span>
       </a>
     </div>
+    <footer class="foot">
+      <div class="tips">
+        <i class="fa fa-bell-o"></i>
+        <span>新用户送99元点灯体验金！</span>
+      </div>
+      <div class="btn" id="lighting">
+        我要点灯
+      </div>
+    </footer>
   </div>
 </div>
 <div class="pop-mask hide" id="pop-mask">
@@ -49,12 +123,54 @@
 <!-- build:js scripts/main.js -->
 <script src="public/scripts/jquery-3.0.0.js"></script>
 <script src="public/scripts/audioplayer.js"></script>
+<script src="public/scripts/hammer.js"></script>
+<script src="public/scripts/carousel.js"></script>
 <!-- endbuild -->
 <script>
   $(function () {
     var url = 'public/file/boruomi.mp3';
     audioPlayer.loadVoice(url);
+
+    $('.foot').on('click', '#lighting', function () {
+      $('.foot').remove();
+      $('#share >a').removeClass('hide').addClass('show');
+
+    });
+
+    $(".js-carousel").carousel_h({
+      startIndex: 0,
+      li: 'li',
+      visibleCount: 6,
+      step:37.5,
+      rotateY:0,
+      translateZ:200,
+      preventTouchEvent:false,
+      style:'o',
+      resizeEvent: false
+    });
   });
+
+  /*// alert( 64 / Math.tan(20 / 180 * Math.PI));
+  var transform = function (element, value, key)
+  {
+    key = key || "Transform";
+    ["Moz", "O", "Ms", "Webkit", ""].forEach(function (prefix)
+    {
+      element.style[prefix + key] = value;
+    });
+
+    return element;
+  }
+
+
+  $(function ()
+  {
+    var deg = -40 , i = 1;
+    $("#container").click(function ()
+    {
+      transform($(this)[0], "rotateY(" + (deg * i++) + "deg)")
+    });
+  });*/
 </script>
 </body>
 </html>

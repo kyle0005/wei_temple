@@ -403,7 +403,7 @@
       o = $.extend({
         startIndex: 0,
         li: 'li',
-        visibleCount: 3,
+        visibleCount: 6,
         step:0.5,
         rotateY:0,
         translateZ:100,
@@ -421,7 +421,10 @@
         curIndex = o.startIndex,
         width = $carousel.width(),
         visibleCount = o.visibleCount;
-      if (visibleCount > lisLength) {visibleCount = lisLength;}
+      if (visibleCount > lisLength)
+      {
+        visibleCount = lisLength;
+      }
       function fixIndex(index) {
         return (index + lisLength) % lisLength;
       }
@@ -469,6 +472,77 @@
             });
           }
         }
+        /* 圆形 */
+        else if (o.style === 'o') {
+          var r = (width/2) / Math.tan(30 / 180 * Math.PI);
+
+          for(i; i <= len; i++) {
+            leftIndex = fixIndex(index - i);
+            rightIndex = fixIndex(index + i);
+            $lis.eq(leftIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (-o.step * i) + 'px) translateZ(-' + o.translateZ * i + 'px)  rotateY(' + o.rotateY + 'deg)'
+            });
+            $lis.eq(rightIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (o.step * i) + 'px) translateZ(-' + o.translateZ * i + 'px) rotateY(-' + o.rotateY + 'deg)'
+            });
+
+            switch (i)
+            {
+              case 0:
+                $lis.eq(i).addClass('js-carousel-li-visible').css({
+                  'z-index': 1000 - i,
+                  '-webkit-transform': 'translateX(' + (0) + 'px) translateZ(-' + (0) + 'px)  rotateY(' + o.rotateY + 'deg)'
+                });
+                break;
+              case 1:
+                $lis.eq(i).addClass('js-carousel-li-visible').css({
+                  'z-index': 1000 - i,
+                  '-webkit-transform': 'translateX(' + (-37.5) + 'px) translateZ(-' + (65) + 'px)  rotateY(' + o.rotateY + 'deg)'
+                });
+                break;
+              case 2:
+                $lis.eq(i).addClass('js-carousel-li-visible').css({
+                  'z-index': 1000 - i,
+                  '-webkit-transform': 'translateX(' + (-37.5) + 'px) translateZ(-' + (195) + 'px)  rotateY(' + o.rotateY + 'deg)'
+                });
+                break;
+              case 3:
+                $lis.eq(i).addClass('js-carousel-li-visible').css({
+                  'z-index': 1000 - i,
+                  '-webkit-transform': 'translateX(' + (0) + 'px) translateZ(-' + (260) + 'px)  rotateY(' + o.rotateY + 'deg)'
+                });
+                break;
+              case 4:
+                $lis.eq(i).addClass('js-carousel-li-visible').css({
+                  'z-index': 1000 - i,
+                  '-webkit-transform': 'translateX(' + (37.5) + 'px) translateZ(-' + (195) + 'px)  rotateY(' + o.rotateY + 'deg)'
+                });
+                break;
+              case 5:
+                $lis.eq(i).addClass('js-carousel-li-visible').css({
+                  'z-index': 1000 - i,
+                  '-webkit-transform': 'translateX(' + (-37.5) + 'px) translateZ(-' + (65) + 'px)  rotateY(' + o.rotateY + 'deg)'
+                });
+                break;
+            }
+          }
+        }
+        else if (o.style === 'circle'){
+          for(i; i <= len; i++) {
+            leftIndex = fixIndex(index - i);
+            rightIndex = fixIndex(index + i);
+            $lis.eq(leftIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (-o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px)  rotateY(' + o.rotateY + 'deg)'
+            });
+            $lis.eq(rightIndex).addClass('js-carousel-li-visible').css({
+              'z-index': 1000 - i,
+              '-webkit-transform': 'translateX(' + (o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px) rotateY(-' + o.rotateY + 'deg)'
+            });
+          }
+        }
         curIndex = index;
       }
       function updateSize() {
@@ -480,13 +554,20 @@
       function init() {
         $lis.addClass('js-carousel-li');
 
-        var ham = new hammer($carousel[0]);
-        ham.on('swipeleft', function () {
+        if(o.style !== 'circle'){
+          var ham = new hammer($carousel[0]);
+          ham.on('swipeleft', function () {
+            translate(curIndex + 1);
+          });
+          ham.on('swiperight', function () {
+            translate(curIndex - 1);
+          });
+        }
+
+/*        var ti = setInterval(function () {
           translate(curIndex + 1);
-        });
-        ham.on('swiperight', function () {
-          translate(curIndex - 1);
-        });
+        }, 1000);*/
+
         //绑定事件
         /*				$carousel.swipeLeft(function (e) {
          translate(curIndex + 1);
@@ -494,7 +575,7 @@
          $carousel.swipeRight(function (e) {
          translate(curIndex - 1);
          });*/
-        $(window).on('load', function (e) {
+        $(document).ready(function (e) {
          /* $carousel.attr('class', '');
           $carousel.attr('style', '');
           $lis.attr('class', '');
