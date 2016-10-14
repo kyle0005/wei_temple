@@ -473,63 +473,10 @@
           }
         }
         /* 圆形 */
-        else if (o.style === 'o') {
+        else if (o.style === 'circle') {
           var r = (width/2) / Math.tan(30 / 180 * Math.PI);
+          console.log(r);
 
-          for(i; i <= len; i++) {
-            leftIndex = fixIndex(index - i);
-            rightIndex = fixIndex(index + i);
-            $lis.eq(leftIndex).addClass('js-carousel-li-visible').css({
-              'z-index': 1000 - i,
-              '-webkit-transform': 'translateX(' + (-o.step * i) + 'px) translateZ(-' + o.translateZ * i + 'px)  rotateY(' + o.rotateY + 'deg)'
-            });
-            $lis.eq(rightIndex).addClass('js-carousel-li-visible').css({
-              'z-index': 1000 - i,
-              '-webkit-transform': 'translateX(' + (o.step * i) + 'px) translateZ(-' + o.translateZ * i + 'px) rotateY(-' + o.rotateY + 'deg)'
-            });
-
-            switch (i)
-            {
-              case 0:
-                $lis.eq(i).addClass('js-carousel-li-visible').css({
-                  'z-index': 1000 - i,
-                  '-webkit-transform': 'translateX(' + (0) + 'px) translateZ(-' + (0) + 'px)  rotateY(' + o.rotateY + 'deg)'
-                });
-                break;
-              case 1:
-                $lis.eq(i).addClass('js-carousel-li-visible').css({
-                  'z-index': 1000 - i,
-                  '-webkit-transform': 'translateX(' + (-37.5) + 'px) translateZ(-' + (65) + 'px)  rotateY(' + o.rotateY + 'deg)'
-                });
-                break;
-              case 2:
-                $lis.eq(i).addClass('js-carousel-li-visible').css({
-                  'z-index': 1000 - i,
-                  '-webkit-transform': 'translateX(' + (-37.5) + 'px) translateZ(-' + (195) + 'px)  rotateY(' + o.rotateY + 'deg)'
-                });
-                break;
-              case 3:
-                $lis.eq(i).addClass('js-carousel-li-visible').css({
-                  'z-index': 1000 - i,
-                  '-webkit-transform': 'translateX(' + (0) + 'px) translateZ(-' + (260) + 'px)  rotateY(' + o.rotateY + 'deg)'
-                });
-                break;
-              case 4:
-                $lis.eq(i).addClass('js-carousel-li-visible').css({
-                  'z-index': 1000 - i,
-                  '-webkit-transform': 'translateX(' + (37.5) + 'px) translateZ(-' + (195) + 'px)  rotateY(' + o.rotateY + 'deg)'
-                });
-                break;
-              case 5:
-                $lis.eq(i).addClass('js-carousel-li-visible').css({
-                  'z-index': 1000 - i,
-                  '-webkit-transform': 'translateX(' + (-37.5) + 'px) translateZ(-' + (65) + 'px)  rotateY(' + o.rotateY + 'deg)'
-                });
-                break;
-            }
-          }
-        }
-        else if (o.style === 'circle'){
           for(i; i <= len; i++) {
             leftIndex = fixIndex(index - i);
             rightIndex = fixIndex(index + i);
@@ -564,9 +511,12 @@
           });
         }
 
-/*        var ti = setInterval(function () {
-          translate(curIndex + 1);
-        }, 1000);*/
+/*        if(o.style === 'circle'){
+          var ti = setInterval(function () {
+            translate(curIndex + 1);
+          }, 600);
+        }*/
+
 
         //绑定事件
         /*				$carousel.swipeLeft(function (e) {

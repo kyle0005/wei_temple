@@ -1214,8 +1214,18 @@
     line-height: 35px;
     height: 35px;
     border-bottom: 1px solid $color-eee;
+    .lightning-discount{
+      display: block;
+      width: 70%;
+      float: left;
+    }
     .lightning-right{
+      display: block;
       float: right;
+      width: 30%;
+      line-height: 35px;
+      height: 35px;
+      text-align: right;
     }
   }
   select.lightning-select{
@@ -1386,11 +1396,17 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
   height: 100%;
   background-color: $color-37231e;
   font-size: $font-size-t12;
+  @media screen and (max-height: 505px){
+    //ip5以下设备
+  }
+  @media screen and (max-height: 481px){
+    //ip4以下设备
+  }
   .light-bg{
     position: relative;
     width: 100%;
     height: 100%;
-    background: url("../img/light_.png") no-repeat top left;
+    background: url("../img/light.png") no-repeat top left;
     background-size: 100% auto;
     text-align: center;
     .lotus{
@@ -1455,9 +1471,9 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
         .js-carousel{
           position:relative;
           margin:auto;
-          width:15.15625%;
+          width:44.6875%;
           -webkit-transform-style:preserve-3d;
-          -webkit-perspective:500px;
+          -webkit-perspective:800px;
         }
         .js-carousel-li{
           display:none;
@@ -1466,13 +1482,15 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
           left:0;
           width:100%;
           -webkit-transition:500ms linear;opacity:0;
+          background-color: $color-white;
         }
         .js-carousel-li-visible{
           display:block;
           opacity:1;
         }
         .js-carousel-li img{
-          width:100%;
+          width:29%;
+          margin: 0 auto;
           height:auto;
         }
         .temple-items{
@@ -1634,16 +1652,18 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
     .light-con{
       position: absolute;
       left: 50%;
-      bottom: 10%;
+      bottom: 15%;
       margin-left: -41.71875%;
       width: 83.4375%;
       @media screen and (max-height: 505px){
         //ip5以下设备
-
+        //padding: 20px 0;
+        bottom: 10%;
       }
       @media screen and (max-height: 481px){
         //ip4以下设备
-
+        //padding: 20px 0;
+        bottom: 10%;
       }
       color: $color-956644;
 
@@ -1818,13 +1838,13 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
 
     background-color: #fff;
     color: $color-905641;
-    height: 20%;
+    //height: 20%;
     margin-top: -10%;
     width: 80%;
     margin-left: -40%;
   }
   .pop-container.alert{           //提示框
-    height: 7%;
+    //height: 7%;
     margin-top: -3.5%;
     width: 65.625%;
     margin-left: -32.8125%;
@@ -1845,6 +1865,7 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
   .pop-btn{
     width: 100%;
     text-align: center;
+    margin-bottom: 10px;
   }
   .cancel{
     display: inline-block;
