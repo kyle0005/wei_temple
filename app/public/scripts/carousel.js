@@ -432,6 +432,7 @@
         var
           len = visibleCount / 2,
           i = 1,
+          li_index,
           leftIndex = 0,
           rightIndex = 0;
         index = fixIndex(index);
@@ -475,18 +476,37 @@
         /* 圆形 */
         else if (o.style === 'circle') {
           var r = (width/2) / Math.tan(30 / 180 * Math.PI);
-          console.log(r);
-
-          for(i; i <= len; i++) {
-            leftIndex = fixIndex(index - i);
-            rightIndex = fixIndex(index + i);
-            $lis.eq(leftIndex).addClass('js-carousel-li-visible').css({
-              'z-index': 1000 - i,
-              '-webkit-transform': 'translateX(' + (-o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px)  rotateY(' + o.rotateY + 'deg)'
-            });
-            $lis.eq(rightIndex).addClass('js-carousel-li-visible').css({
-              'z-index': 1000 - i,
-              '-webkit-transform': 'translateX(' + (o.step * width * i) + 'px) translateZ(-' + o.translateZ * i + 'px) rotateY(-' + o.rotateY + 'deg)'
+          var position = [
+            {
+              x: -70, y: 50, z: 0
+            },
+            {
+              x: 70, y: 50, z: 0
+            },
+            {
+              x: 140, y: 35, z: -100
+            },
+            {
+              x: 70, y: 20, z: -150
+            },
+            {
+              x: -70, y: 20, z: -150
+            },
+            {
+              x: -140, y: 35, z: -100
+            }
+          ];
+          var m = 0;
+          for(var j = 1; j <= visibleCount; j++) {
+            li_index = fixIndex(index - j);
+            if(parseInt(position[position.length - j].y) == 0){
+              m = -1;
+            }else {
+              m = 2;
+            }
+            $lis.eq(li_index).addClass('js-carousel-li-visible').css({
+              'z-index': m,
+              '-webkit-transform': 'translateX(' + (position[position.length-j].x) + 'px) translateY(' + (position[position.length-j].y) + 'px) translateZ(' + (position[position.length-j].z) + 'px)  rotateY(' + o.rotateY + 'deg)'
             });
           }
         }
@@ -496,7 +516,9 @@
         width = $carousel.width();
         translate(curIndex);
         lisHeight = $lis.filter('.js-carousel-li-cur').height();
-        $carousel.height(lisHeight);
+        if(o.style !== 'circle') {
+          $carousel.height(lisHeight);
+        }
       }
       function init() {
         $lis.addClass('js-carousel-li');
@@ -511,11 +533,11 @@
           });
         }
 
-/*        if(o.style === 'circle'){
+        if(o.style === 'circle'){
           var ti = setInterval(function () {
             translate(curIndex + 1);
-          }, 600);
-        }*/
+          }, 2000);
+        }
 
 
         //绑定事件
