@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wei_temple_list</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+  <style>
+  @-webkit-keyframes ellipse_con{
+  0%,100%{
+  -webkit-transform: translateX(-52px);
+  }
+  16.6667%{
+  -webkit-transform: translateX(-198px);
+  }
+  33.3333%{
+  -webkit-transform: translateX(-144px);
+  }
+  50%{
+  -webkit-transform: translateX(144px);
+  }
+  66.6667%{
+  -webkit-transform: translateX(198px);
+  }
+  83.3333%{
+  -webkit-transform: translateX(52px);
+  }
+  }
+  @keyframes ellipse_con{
+  0%,100%{
+  transform: translateX(-52px);
+  }
+  16.6667%{
+  transform: translateX(-198px);
+  }
+  33.3333%{
+  transform: translateX(-144px);
+  }
+  50%{
+  transform: translateX(144px);
+  }
+  66.6667%{
+  transform: translateX(198px);
+  }
+  83.3333%{
+  transform: translateX(52px);
+  }
+  }
+
+  @-webkit-keyframes ellipse{
+  0%,100%{
+  -webkit-transform: translateY(50px) translateZ(0px);
+  }
+  16.6667%{
+  -webkit-transform: translateY(50px) translateZ(0px);
+  }
+  33.3333%{
+  -webkit-transform: translateY(30px) translateZ(-300px);
+  }
+  50%{
+  -webkit-transform: translateY(30px) translateZ(-600px);
+  }
+  66.6667%{
+  -webkit-transform: translateY(0px) translateZ(-600px);
+  }
+  83.3333%{
+  -webkit-transform: translateY(0px) translateZ(-300px);
+  }
+  }
+  @keyframes ellipse{
+  0%,100%{
+  transform: translateY(50px) translateZ(0px);
+  }
+  16.6667%{
+  transform: translateY(50px) translateZ(0px);
+  }
+  33.3333%{
+  transform: translateY(30px) translateZ(-300px);
+  }
+  50%{
+  transform: translateY(30px) translateZ(-600px);
+  }
+  66.6667%{
+  transform: translateY(0px) translateZ(-600px);
+  }
+  83.3333%{
+  transform: translateY(0px) translateZ(-300px);
+  }
+  }
+
+  .lotus-container .js-carousel .li_a{
+  transform: translateX(-52px) translateY(50px) translateZ(0px) rotateY(0deg);
+  z-index: -1;
+
+  -webkit-animation:ellipse_con 10s 0s ease-in-out infinite;
+  animation:ellipse_con 10s 0s ease-in-out infinite;
+  }
+  .lotus-container .js-carousel .li_a img{
+  -webkit-animation:ellipse 10s 2.5s ease-in-out infinite;
+  animation:ellipse 10s 2.5s ease-in-out infinite;
+  }
+
+
+  .lotus-container .js-carousel .li_b{
+  z-index: -1;
+  transform: translateX(52px) translateY(50px) translateZ(0px) rotateY(0deg);
+  }
+
+  .lotus-container .js-carousel .li_c{
+  z-index: -1;
+  transform: translateX(198px) translateY(30px) translateZ(-300px) rotateY(0deg);
+  }
+
+  .lotus-container .js-carousel .li_d{
+  z-index: -1;
+  transform: translateX(144px) translateY(0px) translateZ(-600px) rotateY(0deg);
+  }
+
+  .lotus-container .js-carousel .li_e{
+  z-index: -1;
+  transform: translateX(-144px) translateY(0px) translateZ(-600px) rotateY(0deg);
+  }
+
+  .lotus-container .js-carousel .li_f{
+  z-index: 2;
+  transform: translateX(-198px) translateY(30px) translateZ(-300px) rotateY(0deg);
+  }
+
+  </style>
+</head>
+<body>
+<div class="light-container">
+  <div class="light-bg">
+    <div class="lotus">
+      <div class="buddha-container">
+        <img src="public/img/buddha.png" class="buddha">
+        <div class="buddha-i-con">
+          <img src="public/img/buddha_i.png" class="buddha-i">
+        </div>
+        <input type="text" class="name" value="王xx點燈">
+      </div>
+      <div class="lotus-container">
+        <ul class="js-carousel">
+          <li class="li_a js-carousel-li js-carousel-li-visible">
+            <img src="public/img/lotus.png">
+          </li>
+          <li class="li_b js-carousel-li js-carousel-li-visible">
+            <img src="public/img/lotus.png">
+          </li>
+          <li class="li_c js-carousel-li js-carousel-li-visible">
+            <img src="public/img/lotus.png">
+          </li>
+          <li class="li_d js-carousel-li js-carousel-li-visible">
+            <img src="public/img/lotus.png">
+          </li>
+          <li class="li_e js-carousel-li js-carousel-li-visible">
+            <img src="public/img/lotus.png">
+          </li>
+          <li class="li_f js-carousel-li js-carousel-li-visible">
+            <img src="public/img/lotus.png">
+          </li>
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

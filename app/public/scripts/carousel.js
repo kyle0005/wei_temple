@@ -409,7 +409,8 @@
         translateZ:100,
         preventTouchEvent:false,
         style:'double',
-        resizeEvent: false
+        resizeEvent: false,
+        speed: 2000
       }, opt);
     return $(this).each(function () {
       var
@@ -420,6 +421,7 @@
         lisLength = $lis.length,
         curIndex = o.startIndex,
         width = $carousel.width(),
+        speed = o.speed,
         visibleCount = o.visibleCount;
       if (visibleCount > lisLength)
       {
@@ -473,7 +475,7 @@
             });
           }
         }
-        /* 圆形 */
+        /* 椭圆形 */
         else if (o.style === 'circle') {
           var r = (width/2) / Math.tan(30 / 180 * Math.PI);
           var position = [
@@ -499,7 +501,7 @@
           var m = 0;
           for(var j = 1; j <= visibleCount; j++) {
             li_index = fixIndex(index - j);
-            if(parseInt(position[position.length - j].y) == 0){
+            if(parseInt(position[position.length - j].y) == 20){
               m = -1;
             }else {
               m = 2;
@@ -536,7 +538,7 @@
         if(o.style === 'circle'){
           var ti = setInterval(function () {
             translate(curIndex + 1);
-          }, 2000);
+          }, speed);
         }
 
 
@@ -548,10 +550,6 @@
          translate(curIndex - 1);
          });*/
         $(document).ready(function (e) {
-         /* $carousel.attr('class', '');
-          $carousel.attr('style', '');
-          $lis.attr('class', '');
-          $lis.attr('style', '');*/
           updateSize();
         });
         if (o.resizeEvent) {
