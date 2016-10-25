@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta name="format-detection" content="telephone=no">
+  <title>demo</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="wei-container">
+  <header class="wei-head clearfix">
+    <a href="javascript:;" class="wei-arr-container"><span class="wei-arrow-left"></span></a>
+    <span>充值</span>
+  </header>
+  <section class="wei-content recharge">
+    <div class="choose-container clearfix">
+      支持金额
+      <div class="choose">
+        <div class="items" data-val="1">￥1</div>
+        <div class="items" data-val="5">￥5</div>
+        <div class="items" data-val="10">￥10</div>
+        <div class="items" data-val="20">￥20</div>
+        <div class="items chosen" data-val="30">￥30</div>
+      </div>
+      <input type="text" class="inf" id="inf" placeholder="手动输入其他金额">
+    </div>
+    <div class="choose-container clearfix">
+      <div class="choose">
+        <div class="info">所得功德分</div>
+        <div class="info" id="point">300分</div>
+      </div>
+    </div>
+  </section>
+  <footer class="wei-foot">
+    <div class="foot-container">
+    <span class="lightning-txt">
+      实付款：<span class="lightning-price" id="cash_price"></span>
+    </span>
+      <a href="javascript:;" class="btn ok">
+        下一步
+      </a>
+    </div>
+  </footer>
+</div>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<!-- endbuild -->
+<script>
+  var config = {
+    min_pirce: 1.00,
+    max_price: 10000.00,
+    exchange_rate: 100
+  };
+  $(function () {
+    var _inf = $('#inf'),
+      _cash_price = $('#cash_price'),
+      _point = $('#point');
+    $.fn.update = function(value){
+      $(this).each(function(){
+        if(value!=this.value){
+          this.value = value;
+          set_point($(this));
+          set_total();
+        }
+      });
+    };
+
+    $('.items').click(function () {
+        $('.items').removeClass('chosen');
+        $(this).addClass('chosen');
+      var _v = $(this).data('val');
+      _inf.update(_v);
+      _inf.val(_v);
+      set_total();
+    });
+
+    _inf.change(function () {
+      set_point($(this));
+      set_total();
+    });
+
+    _inf.keyup(function () {
+      set_point($(this));
+      set_total();
+    });
+
+    function set_total() {
+      var val = _inf.val();
+      if(val == '' || val == null || isNaN(parseFloat(val))){
+        val = '0.00';
+      }
+      _cash_price.html('￥' + parseFloat(val));
+    }
+    function set_point(obj) {
+      var val = $(obj).val();
+      if(val == '' || val == null || isNaN(parseFloat(val))){
+        val = '0.00';
+      }
+      _point.html(parseInt((parseFloat(val) * parseFloat(config.exchange_rate)).toFixed(2)) + '分');
+    }
+
+
+  })
+</script>
+</body>
+</html>

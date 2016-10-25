@@ -241,7 +241,7 @@
     justify-content: flex-end;
     align-items: center;
     height: 100%;
-    border-top: 1px solid $color-dcdcdc;
+
     a {
       -moz-box-flex: 1.0; /* Firefox */
       -webkit-box-flex: 1.0; /* Safari 和 Chrome */
@@ -251,6 +251,7 @@
       width: 25%;
       padding: 4px 0;
       text-align: center;
+      border-top: 1px solid $color-dcdcdc;
       i {
         font-size: $font-size-t24;
       }
@@ -273,9 +274,11 @@
     }
     .lightning-txt{
       display: inline-block;
-      width: calc(100% / 3 * 2);
+      width: calc(100% / 3 * 2 - 4.6875%);
       text-align: left;
-      margin-left: 4.6875%;
+      line-height: 36px;
+      padding: 4px 0 4px 4.6875%;
+      border-top: 1px solid $color-dcdcdc;
     }
     .lightning-price{
       color: $color-905641;
@@ -2093,6 +2096,17 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
       margin-top: 5px;
     }
   }
+  .recharge-container{
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    width: 68.5px;
+    a.recharge{
+      @include wei-bg-btn($color-905641, $color-white, $color-905641, 22.5px, 22.5px, $font-size-t12);
+      @include fillet(true); /* 圆角 */
+    }
+
+  }
 }
 .point-info{
   padding: 4.6875%;
@@ -2372,4 +2386,58 @@ input[type=checkbox].mui-switch.mui-switch-anim:checked:before {
       }
     }
   }
+}
+
+/* recharge */
+.recharge{
+  .choose-container{
+    padding: 4.6875%;
+    background-color: $color-white;
+    margin-bottom: 3.125%;
+  }
+  .choose{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    .items{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      width: 31%;
+      line-height: 25px;
+      border: 1px solid $color-dddddd;
+      text-align: center;
+      margin-right: 2.4%;
+      margin-top: 2.4%;
+      &:nth-child(3n){
+        margin-right: 0;
+      }
+    }
+    .items.chosen{
+      border: 1px solid $color-905641;
+      background-color: $color-905641;
+      color: $color-white;
+    }
+    .info{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      width: 50%;
+      &:last-child{
+        text-align: right;
+      }
+    }
+  }
+  input.inf{
+    margin-top: 2.4%;
+    width: 61%;
+    outline: none;
+    line-height: 25px;
+    border: 1px solid $color-dddddd;
+    background-color: $color-f8f8f8;
+    padding: 0 2%;
+  }
+
 }

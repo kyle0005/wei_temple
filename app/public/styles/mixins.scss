@@ -27,7 +27,7 @@
   display: inline-block;
   text-align: center;
   border: 1px solid $color-white;
-  font-size: $font-size-t14;
+
   margin: 0 auto;
 }
 
@@ -51,7 +51,8 @@
   overflow: hidden;
 }
 
-@mixin wei-bg-btn($color: $color-333, $bg-color: $color-white, $border-color: $color-ccc, $height: 30px, $line-height: 30px) {
+@mixin wei-bg-btn($color: $color-333, $bg-color: $color-white, $border-color: $color-ccc,
+ $height: 30px, $line-height: 30px, $font-size: $font-size-t14) {
   &,
   &:link,
   &:visited,
@@ -63,6 +64,7 @@
     background-color: $bg-color;
     height: $height;
     line-height: $line-height;
+    font-size: $font-size;
   }
 }
 
