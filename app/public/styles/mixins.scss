@@ -115,3 +115,43 @@
   }
 ;
 }
+
+@mixin switchBtn($btn-bg-color: $color-white, $bg-color: $color-white,
+$check-bg-color: $color-905641, $btn-radius: 4px, $bg-radius: 4px) {
+    &:before{
+      content: '';
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: $btn-radius;
+      background-color: $btn-bg-color;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+      transition: left .3s;
+    }
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: $bg-color;
+    box-shadow: #dfdfdf 0 0 0 0 inset;
+    border-radius: $bg-radius;
+    border: 1px solid $color-ccc;
+    background-clip: content-box;
+    display: inline-block;
+    -webkit-appearance: none;
+    user-select: none;
+    outline: 0;
+    transition: border cubic-bezier(0, 0, 0, 1) .4s, box-shadow cubic-bezier(0, 0, 0, 1) .4s;
+    &:checked{
+      &:before{
+        left: 50%;
+        transition: left .3s;
+      }
+      border-color: $check-bg-color;
+      box-shadow: $check-bg-color 0 0 0 16px inset;
+      background-color: $check-bg-color;
+      transition: border ease .4s, box-shadow ease .4s, background-color ease 1.2s;
+    }
+
+}

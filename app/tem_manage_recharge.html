@@ -95,12 +95,18 @@
       if(val == '' || val == null || isNaN(parseFloat(val))){
         val = '0.00';
       }
+      if(parseFloat(val)>config.max_price || parseFloat(val)< config.min_pirce){
+        return;
+      }
       _cash_price.html('￥' + parseFloat(val));
     }
     function set_point(obj) {
       var val = $(obj).val();
       if(val == '' || val == null || isNaN(parseFloat(val))){
         val = '0.00';
+      }
+      if(parseFloat(val)>config.max_price || parseFloat(val)< config.min_pirce){
+        return;
       }
       _point.html(parseInt((parseFloat(val) * parseFloat(config.exchange_rate)).toFixed(2)) + '分');
     }
