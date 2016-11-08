@@ -203,5 +203,17 @@ gulp.task('uglify_script', function() {
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
+  gulp.src('app/public/scripts/layer.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
+  gulp.src('app/public/scripts/jinniu.mobile.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
+  gulp.src('app/public/scripts/jquery.lazyload.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
 });
 
