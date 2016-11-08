@@ -1,34 +1,34 @@
-﻿var Ajax = function (element, options) {
+var Ajax = function (element, options) {
     options = options || {};
-    var html = "";
+    var html = '';
     if (options.wait) {
-        if ($(element).hasClass("disabled")) {
+        if ($(element).hasClass('disabled')) {
             return;
         }
         html = $(element).html();
-        $(element).addClass("disabled");
-        $(element).html(options.waitinfo || html+"中...");
+        $(element).addClass('disabled');
+        $(element).html(options.waitinfo || html+'中...');
     }
 
     if (options.type == 'GET' || options.type == 'LOAD') {
         $.ajax({
-            url: options.url ? options.url : "",
+            url: options.url ? options.url : '',
             type: 'GET',
             cache: false,
             timeout: 3000000,
             error: function () { if (options.containerid) { $('#' + options.containerid).html('数据加载失败'); } else { /*alert('数据加载失败，可能是网络连接问题或者服务器错误。'); */} },
             success: options.callback,
-            complete: function () { if (html != "") { $(element).html(html); } }
+            complete: function () { if (html != '') { $(element).html(html); } }
         });
     } else if (options.type == 'POST') {
         if (!options.url) {
-            options.url = $("#" + options.form).attr("action");
+            options.url = $('#' + options.form).attr('action');
         }
         var data;
         if ('object' == typeof(options.form)) {
             data = options.form;
         } else {
-            data = options.form ? $('#' + options.form).serialize() : "";
+            data = options.form ? $('#' + options.form).serialize() : '';
         }
         $.ajax({
             url: options.url,
@@ -38,23 +38,23 @@
             timeout: 3000000,
             error: function () { /*alert('数据加载失败，可能是网络连接问题或者服务器错误。'); */},
             success: options.callback,
-            complete: function () { $(element).removeClass("disabled"); if (html != "") { $(element).html(html); } }
+            complete: function () { $(element).removeClass('disabled'); if (html != '') { $(element).html(html); } }
         });
     }
 };
 var JQAjax = {
     get: function (element, options) {
         Ajax(element, {
-            type: "GET",
+            type: 'GET',
             url: options.url,
             wait: options.wait,
             callback: options.callback
         });
     },
     load: function (element, url) {
-        var cid = element.attr("data-load");
+        var cid = element.attr('data-load');
         Ajax(element, {
-            type:"LOAD",
+            type:'LOAD',
             url:url,
             containerid: cid,
             callback: function (data) {
@@ -69,11 +69,11 @@ var JQAjax = {
             }
             //JQbox.confrim("你确定要执行该操作？");
         }
-        $(".error").each(function () {
+        $('.error').each(function () {
             $(this).hide();
         });
         Ajax(element,{
-            type:"POST",
+            type:'POST',
             wait: options.wait,
             url:options.url,
             form: options.form,
@@ -82,30 +82,30 @@ var JQAjax = {
                 var data = eval('(' + result + ')');
                 if (data.method) {
                     switch (data.method) {
-                        case "func":
+                        case 'func':
                             eval(data.func);
                             break;
-                        case "remind":
+                        case 'remind':
                             $('#e_remind').html(data.message).show();
                             break;
-                        case "alert":
+                        case 'alert':
                             JQbox.alert(data.message);
                             break;
-                        case "goto":
+                        case 'goto':
                             if (data.message) {
                                 JQbox.jump(data.message, data.url);
                             } else {
                                 location.href = data.url;
                             }
                             break;
-                        case "reload":
+                        case 'reload':
                             if (data.message) {
                                 JQbox.reload(data.message);
                             } else {
                                 location.reload();
                             }
                             break;
-                        case "error":
+                        case 'error':
                             var err = data.dic;
                             for (var o in data.dic) {
                                 $('#e_' + o).html(err[o]).show();
@@ -125,29 +125,29 @@ var JQDialog ={
             return;
         }
         if ($('#dialog')) {
-            $("#dialog").dialog("destroy").remove();
+            $('#dialog').dialog('destroy').remove();
         }
-        var json = { "modal":options.modal ? options.modal :false,
-            "resizable": options.resizable ? options.resizable :false,
-            "bgiframe": options.bgiframe ? options.bgiframe : false,
-            "title":options.title,minHeight : 0,maxWidth:180
+        var json = { 'modal':options.modal ? options.modal :false,
+            'resizable': options.resizable ? options.resizable :false,
+            'bgiframe': options.bgiframe ? options.bgiframe : false,
+            'title':options.title,minHeight : 0,maxWidth:180
         };
         if (options.height) {
             json.height = options.height;
         }
         else {
-            json.height = "auto";
+            json.height = 'auto';
         }
         if(options.width){
             json.width = options.width;
         }
         else{
-            json.width="auto";
+            json.width='auto';
         }
         if(options.buttons){
             json.buttons = options.buttons;
         }
-        if (options.type == "open") {
+        if (options.type == 'open') {
             var self = this;
             JQAjax.get(null,{
                 url:options.url,
@@ -156,33 +156,33 @@ var JQDialog ={
                 }
             });
         }else{
-            var html = "<p class='jqalert'>";
-            html += options.content + "</p>";
+            var html = '<p class=\'jqalert\'>';
+            html += options.content + '</p>';
             this.show(html, json);
         }
 
         switch (options.type) {
-            case "reload":
-                setTimeout(""+ options.callback +"", 2000);
+            case 'reload':
+                setTimeout(''+ options.callback +'', 2000);
                 break;
-            case "alert":
-                setTimeout("$('#dialog').dialog('close')", 2000);
+            case 'alert':
+                setTimeout('$(\'#dialog\').dialog(\'close\')', 2000);
                 break;
-            case "jump":
-                setTimeout(""+ options.callback +"", 2000);
+            case 'jump':
+                setTimeout(''+ options.callback +'', 2000);
                 break;
-            case "close":
-                $(".ui-dialog-titlebar-close").click(options.callback);
+            case 'close':
+                $('.ui-dialog-titlebar-close').click(options.callback);
                 break;
         }
     },
     show:function (html,options) {
         var body = document.getElementsByTagName('body').item(0);
         var div = document.createElement('div');
-        div.id = "dialog";
+        div.id = 'dialog';
         div.innerHTML = html;
         body.appendChild(div);
-        $("#dialog").dialog(options);
+        $('#dialog').dialog(options);
     }
 };
 
@@ -219,8 +219,8 @@ var JQbox = {
     },
     close: function (message, callback) {
         JQDialog.creat({
-            type: "close",
-            title: "提示",
+            type: 'close',
+            title: '提示',
             content: message,
             callback: callback,
             modal:true
