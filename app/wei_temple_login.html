@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta name="format-detection" content="telephone=no">
+  <title>demo</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="wei-container2">
+  <header class="wei-head clearfix log">
+    <a href="javascript:;" class="wei-arr-container"><span class="wei-arrow-left"></span></a>
+    <span>登录</span>
+    <a href="wei_temple_reg.html" class="log-btn">注册</a>
+  </header>
+  <section class="wei-content log">
+    <form action="">
+      <div class="bind-container">
+        <div class="form-data">
+          <ul>
+            <li class="items clearfix">
+              <div class="left">账号</div>
+              <div class="right">
+                <input type="text" class="" placeholder="手机号码"/>
+              </div>
+            </li>
+            <li class="items clearfix">
+              <div class="left">密码</div>
+              <div class="right">
+                <input type="text" class="val-code" placeholder="登录密码"/>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="bind-btn">
+        <a href="javascript:;">登录</a>
+      </div>
+      <div class="others">
+        <a href="wei_temple_forgetpsw.html">忘记密码？</a>
+        <a href="wei_temple_fastlogin.html">手机号快捷登录</a>
+      </div>
+    </form>
+  </section>
+</div>
+<div class="pop-mask hide" id="pop-mask">
+  <div class="pop-container">
+    <div class="pop-txt" id="pop-txt">
+      提交成功
+    </div>
+    <div class="pop-btn">
+      <!--<a href="javascript:;" class="cancel" id="cancel">取消</a>-->
+      <a href="javascript:;" class="ok" id="ok">确定</a>
+    </div>
+  </div>
+</div>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<script src="public/scripts/layer.js"></script>
+<script src="public/scripts/jinniu.mobile.js"></script>
+<!-- endbuild -->
+<script>
+  $(function () {
+    $valCode = $('.js-valCode');
+    $valCode.on('click',function () {
+      wait_click($(this));
+    });
+
+    function wait_click(){
+      $valCode = $('.js-valCode');
+      var num = 10;
+      $valCode.addClass('code-mask')
+      var timer = setInterval(function () {
+        $valCode.off('click');
+        $valCode.text( num + '秒后重新获取' );
+        num--;
+        if (num < 0) {
+          clearTimeout(timer);
+          $valCode.text('获取验证码');
+          $valCode.removeClass('code-mask');
+          $valCode.on('click',function(){
+            wait_click();
+          });
+        }
+      },1000);
+    }
+
+
+    /*var pop = function () {
+      var mask = $('#pop-mask');
+      if(mask.hasClass('hide')){
+        mask.removeClass('hide');
+      }else {
+        mask.addClass('hide');
+      }
+
+    };
+    var closePop = function () {
+      var mask = $('#pop-mask');
+      mask.addClass('hide');
+    };
+
+    $(document).on('click', '.bind-btn', function () {
+      pop();
+    });
+    $(document).on('click', '#ok', function () {
+      closePop();
+    });*/
+
+    $(document).on('click', '.bind-btn', function () {
+//      JQbox.alert('aaaa');
+//      JQbox.reload('aaa');
+//      JQbox.jump('aaa', 'wei_temple.html');
+      JQbox.confirm('aaa', ok, cancel);
+//      JQbox.open({
+//        url: 'wei_temple.html',
+//        title: 'aaaa'
+//      });
+    });
+
+    function  ok() {
+      console.log('ok');
+    }
+
+    function  cancel() {
+      console.log('cancel');
+    }
+
+  });
+
+</script>
+</body>
+</html>

@@ -6,6 +6,7 @@
 @import "button";
 @import "common";
 @import "LCalendar";
+@import "layer";
 /* index */
 .wei-container{
   @extend %page;
@@ -2396,6 +2397,37 @@
       &.switch{
         @include switchBtn($color-white, $color-white, $color-a48e8c, 50%, 15px);
       }
+    }
+  }
+}
+
+.log{
+  color: $color-905641;
+  .log-btn{
+    position: absolute;
+    right: 4.6875%;
+    top: 0;
+    display: block;
+    font-size: $font-size-t14;
+  }
+  .bind-container .form-data .items .left{
+    width: 18.75%;
+    text-align: center;
+  }
+  .bind-container .form-data .items .right{
+    margin-left: 18.75%;
+  }
+  .others{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 4.6875%;
+    a{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      display: inline-block;
+      color: $color-a48e8c;
     }
   }
 }

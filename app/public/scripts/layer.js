@@ -180,7 +180,7 @@
     var js = document.scripts, script = js[js.length - 1], jsPath = script.src;
     var path = jsPath.substring(0, jsPath.lastIndexOf('/') + 1);
 
-    //如果合并方式，则需要单独引入layer.css
+/*    //如果合并方式，则需要单独引入layer.css
     if(script.getAttribute('merge')) return;
 
     document.head.appendChild(function(){
@@ -190,7 +190,7 @@
       link.rel = 'styleSheet';
       link.id = 'layermcss';
       return link;
-    }());
+    }());*/
 
   }();
 
