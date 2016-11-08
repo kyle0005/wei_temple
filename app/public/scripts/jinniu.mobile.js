@@ -188,12 +188,6 @@ var JQDialog ={
 
 var JQbox = {
     alert: function (message) {
-/*        JQDialog.creat({
-            type:"alert",
-            title:"提示",
-            content:message
-        });*/
-
       //提示
       layer.open({
         content: message
@@ -202,13 +196,6 @@ var JQbox = {
       });
     },
     reload: function (message) {
-/*        JQDialog.creat({
-            type: "reload",
-            title: "提示",
-            content: message,
-            callback: "location.reload()"
-        });*/
-
       //提示后刷新
       layer.open({
         content: message
@@ -220,13 +207,6 @@ var JQbox = {
       });
     },
     jump: function (message,url) {
-/*        JQDialog.creat({
-            type: "jump",
-            title: "提示",
-            content: message,
-            callback: "location.href = \"" + url + "\""
-        });*/
-
       //提示后跳转
       layer.open({
         content: message
@@ -247,15 +227,7 @@ var JQbox = {
         });
     },
     open: function (options) {
-        options = options || {};
-/*        JQDialog.creat({
-            type: "open",
-            title: options.title || "提示",
-            url: options.url,
-            width: options.width || 300,
-            height: options.height || 'auto'
-        });*/
-
+      options = options || {};
       JQAjax.get(null,{
         url:options.url,
         callback:function (html) {
