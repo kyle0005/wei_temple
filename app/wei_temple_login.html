@@ -19,19 +19,19 @@
     <span>登录</span>
     <a href="wei_temple_reg.html" class="log-btn">注册</a>
   </header>
-  <section class="wei-content log">
+  <section class="wei-content">
     <form action="">
       <div class="bind-container">
         <div class="form-data">
           <ul>
             <li class="items clearfix">
-              <div class="left">账号</div>
+              <div class="left"><img src="public/img/phone.png" ></div>
               <div class="right">
                 <input type="text" class="" placeholder="手机号码"/>
               </div>
             </li>
             <li class="items clearfix">
-              <div class="left">密码</div>
+              <div class="left"><img src="public/img/lock.png" ></div>
               <div class="right">
                 <input type="text" class="val-code" placeholder="登录密码"/>
               </div>
@@ -91,37 +91,15 @@
       },1000);
     }
 
-
-    /*var pop = function () {
-      var mask = $('#pop-mask');
-      if(mask.hasClass('hide')){
-        mask.removeClass('hide');
-      }else {
-        mask.addClass('hide');
-      }
-
-    };
-    var closePop = function () {
-      var mask = $('#pop-mask');
-      mask.addClass('hide');
-    };
-
-    $(document).on('click', '.bind-btn', function () {
-      pop();
-    });
-    $(document).on('click', '#ok', function () {
-      closePop();
-    });*/
-
     $(document).on('click', '.bind-btn', function () {
 //      JQbox.alert('aaaa');
 //      JQbox.reload('aaa');
 //      JQbox.jump('aaa', 'wei_temple.html');
-      JQbox.confirm('aaa', ok, cancel);
-//      JQbox.open({
-//        url: 'wei_temple.html',
-//        title: 'aaaa'
-//      });
+//      JQbox.confirm('aaa', ok, cancel);
+/*      JQbox.open({
+        url: 'wei_temple.html',
+        title: 'aaaa'
+      });*/
     });
 
     function  ok() {

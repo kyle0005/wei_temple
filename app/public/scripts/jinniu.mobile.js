@@ -192,7 +192,7 @@ var JQbox = {
       layer.open({
         content: message
         ,skin: 'msg'
-        ,time: 3 //3秒后自动关闭
+        ,time: 2 //2秒后自动关闭
       });
     },
     reload: function (message) {

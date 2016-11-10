@@ -1344,7 +1344,8 @@
 .light-container{
   width: 100%;
   height: 100%;
-  background-color: $color-37231e;
+  background: url("../img/bg_line.jpg") repeat-y top left;
+  background-size: 100% auto;
   font-size: $font-size-t12;
   @media screen and (max-height: 505px){
     //ip5以下设备
@@ -1356,7 +1357,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background: url("../img/light.jpg") no-repeat top left;
+    background: url("../img/light2.jpg") no-repeat top left;
     background-size: 100% auto;
     text-align: center;
     .lotus{
@@ -1547,6 +1548,15 @@
         }
       }
 
+      .text{
+        position: absolute;
+        right: 10px;
+        top: 50px;
+        width: 8.75%;
+        img{
+          width: 100%;
+        }
+      }
     }
     .light-con{
       margin: 20% auto 0;
@@ -1611,6 +1621,39 @@
           color: $color-d09a5a;
         }
       }
+      .v-title{
+        color: $color-44190e;
+      }
+      &.v2{
+        text-align: center;
+        color: $color-905641;
+      }
+      &.v3{
+        position: relative;
+        margin: 20% auto 0;
+        width: 100%;
+        text-align: left;
+        .txt{
+          float: left;
+          margin-left: 15px;
+          margin-top: 10px;
+        }
+        .qrcode{
+          position: relative;
+          float: right;
+          margin-right: 15px;
+          width: 17.65625%;
+          img{
+            width: 100%;
+          }
+          img.text2{
+            position: absolute;
+            bottom: -20px;
+            right: -18%;
+            width: 140%;
+          }
+        }
+      }
     }
     .foot{
       position: fixed;
@@ -1640,6 +1683,58 @@
         color: $color-white;
         font-size: $font-size-t14;
       }
+      .share-tips{
+        display: none;
+      }
+      .continue{
+        display: none;
+      }
+      &.r2{
+        div{
+          width: 50%;
+        }
+        .tips{
+          display: none;
+        }
+        .btn{
+          display: none;
+        }
+        .share-tips{
+          display: block;
+          color: $color-white;
+          background-color: $color-b39f9a;
+        }
+        .continue{
+          display: block;
+          background-color: $color-905641;
+          color: $color-white;
+          font-size: $font-size-t14;
+        }
+      }
+    }
+  }
+}
+.pop-img{
+  .layui-m-layercont{
+    padding: 0;
+  }
+}
+.help-container{
+  position: relative;
+  width: 100%;
+  //width: 93.75%;
+  img{
+    width: 100%;
+  }
+  a.fork{
+    position: absolute;
+    right: 6px;
+    top: 7px;
+    display: block;
+    width: 24px;
+    height: 24px;
+    img{
+      width: 100%;
     }
   }
 }
@@ -1649,7 +1744,7 @@
 }
 /* bind */
 .bind-container{
-  margin: 20px 0;
+  margin: 0 0 20px 0;
   background-color: $color-white;
   border-top: 1px solid $color-e9dbd5;
   .form-data{
@@ -2417,17 +2512,18 @@
   .bind-container .form-data .items .right{
     margin-left: 18.75%;
   }
-  .others{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 4.6875%;
-    a{
-      -moz-box-flex: 1.0; /* Firefox */
-      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
-      box-flex: 1.0;
-      display: inline-block;
-      color: $color-a48e8c;
-    }
+
+}
+.others{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 4.6875%;
+  a{
+    -moz-box-flex: 1.0; /* Firefox */
+    -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+    box-flex: 1.0;
+    display: inline-block;
+    color: $color-a48e8c;
   }
 }

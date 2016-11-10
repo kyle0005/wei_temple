@@ -15,11 +15,11 @@
   <div class="light-bg">
     <div class="lotus">
       <div class="buddha-container">
-        <img src="public/img/buddha.png" class="buddha">
-        <div class="buddha-i-con">
+        <img src="public/img/buddha2.png" class="buddha">
+        <!--<div class="buddha-i-con">
           <img src="public/img/buddha_i.png" class="buddha-i">
         </div>
-        <input type="text" class="name" value="王xx點燈">
+        <input type="text" class="name" value="王xx點燈">-->
       </div>
       <div class="lotus-container">
         <ul class="js-carousel">
@@ -42,15 +42,10 @@
             <img src="public/img/lotus.png">
           </li>
         </ul>
-
       </div>
     </div>
-    <div class="light-con">
+    <div class="light-con hide">
       <div class="title">法门寺-W12041号转经轮</div>
-      <!--<div class="context">
-        <img src="public/img/light_left.png">祈&ensp;福&ensp;语<img src="public/img/light_right.png">&ensp;一花一世界，一叶一菩提<br>
-        <img src="public/img/light_left.png">点灯时长<img src="public/img/light_right.png">&ensp; 9月1日18:50关闭
-      </div>-->
       <div class="context">
         祈福语：一花一世界，一叶一菩提，一片白云横谷口，几多归鸟尽迷巢
       </div>
@@ -60,16 +55,28 @@
         <a href="javascript:;" class="cont hide">继续点灯</a>
       </div>
     </div>
+    <div class="light-con v2">
+      今有善信法缘汇大德<br>为您在法门寺佛菩萨前供灯祈福(10盏)<br>事事顺利，身体健康！
+    </div>
+    <div class="light-con v3 hide clearfix">
+      <div class="txt">
+        今有善信<span class="v-title">法缘汇</span>大德<br>为您在法门寺佛菩萨前供灯祈福(10盏)<br>事事顺利，身体健康！
+      </div>
+      <div class="qrcode">
+        <img src="public/img/fayuanhui.jpg">
+        <img src="public/img/text2.png" class="text2">
+      </div>
+    </div>
     <div class="btns clearfix">
-      <a href="wei_temple_light_live.html" class="live">
-        <img src="public/img/btn_live.png" class="">
+      <a href="javascript:;" class="live">
+        <img src="public/img/btn_help.png" class="">
       </a>
-<!--      <a href="javascript:;" class="noVoice">
-        <img src="public/img/btn_noVoice.png" class="">
-      </a>-->
       <a href="javascript:;" class="voice play" id="control">
         <span class="voice_img"></span>
       </a>
+      <div class="text">
+        <img src="public/img/text.png">
+      </div>
     </div>
     <footer class="foot">
       <div class="tips">
@@ -78,6 +85,12 @@
       </div>
       <div class="btn" id="lighting">
         我要点灯
+      </div>
+      <div class="share-tips">
+        分享好友
+      </div>
+      <div class="continue">
+        继续点灯
       </div>
     </footer>
   </div>
@@ -95,6 +108,7 @@
 <script src="public/scripts/audioplayer.js"></script>
 <script src="public/scripts/hammer.js"></script>
 <script src="public/scripts/carousel.js"></script>
+<script src="public/scripts/layer.js"></script>
 <!-- endbuild -->
 <script>
   $(function () {
@@ -102,8 +116,9 @@
     audioPlayer.loadVoice(url);
 
     $('.foot').on('click', '#lighting', function () {
-      $('.foot').remove();
-      $('#share >a').removeClass('hide').addClass('show');
+      $(this).parents('.foot').addClass('r2');
+      $('.v2').addClass('hide');
+      $('.v3').removeClass('hide');
 
     });
     $(".js-carousel").carousel_h({
@@ -118,6 +133,21 @@
       resizeEvent: false,
       speed: 2000
     });
+
+    var html = '<div class="help-container">' +
+      '<img src="public/img/help.png">' +
+      '<a href="javascript:;" class="fork">&nbsp;</a>' +
+    '</div>';
+    $('.live').click(function () {
+      layer.open({
+        className: 'pop-img'
+        ,content: html
+      });
+    });
+    $(document).on('click', '.fork', function () {
+      layer.closeAll();
+    });
+
   });
 
 </script>
