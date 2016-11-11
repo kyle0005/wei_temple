@@ -3,7 +3,6 @@
 @import 'mixins';
 @import 'fontawesome';
 @import 'icon';
-@import 'animate.css';
 .wei-bg-white {
   @include wei-bg-btn();
   @include fillet(true); /* 圆角 */

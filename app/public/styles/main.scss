@@ -1550,21 +1550,29 @@
 
       .text{
         position: absolute;
-        right: 10px;
+        right: 1.5%;
         top: 50px;
-        width: 8.75%;
-        img{
-          width: 100%;
+        width: 11%;
+        height: 80px;
+        color: $color-905641;
+        font-size: $font-size-t14;
+        span{
+          display: inline-block;
+          width: 50%;
+          float: left;
+          text-align: center;
+          line-height: $font-size-t16;
         }
       }
     }
     .light-con{
       margin: 20% auto 0;
       width: 83.4375%;
+      font-size: $font-size-t14;
       @media screen and (max-height: 505px){
         //ip5以下设备
         //padding: 20px 0;
-        bottom: 10%;
+        //bottom: 10%;
       }
       @media screen and (max-height: 481px){
         //ip4以下设备
@@ -1623,6 +1631,7 @@
       }
       .v-title{
         color: $color-44190e;
+        font-size: $font-size-t16;
       }
       &.v2{
         text-align: center;
@@ -1641,8 +1650,9 @@
         .qrcode{
           position: relative;
           float: right;
-          margin-right: 15px;
-          width: 17.65625%;
+          //padding: 0 15px;
+          padding: 10px 5px 0 0;
+          width: 19%;
           img{
             width: 100%;
           }
@@ -1651,6 +1661,16 @@
             bottom: -20px;
             right: -18%;
             width: 140%;
+          }
+          .qrcode-txt{
+            display: inline-block;
+            position: absolute;
+            bottom: -20px;
+            left: -10px;
+            text-align: center;
+            width: 110%;
+            font-size: $font-size-t09;
+            color: $color-905641;
           }
         }
       }
@@ -1663,7 +1683,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      div{
+      a{
         -moz-box-flex: 1.0; /* Firefox */
         -webkit-box-flex: 1.0; /* Safari 和 Chrome */
         box-flex: 1.0;
@@ -1690,7 +1710,7 @@
         display: none;
       }
       &.r2{
-        div{
+        a{
           width: 50%;
         }
         .tips{
