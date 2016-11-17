@@ -7,19 +7,21 @@ var audioPlayer = {
       url +
       '">亲 您的浏览器不支持html5的audio标签</audio>';
     $('.voice').append(s);
+
+    this.playCotrol(); //播放控制函数
     if ($('#control').hasClass('play')) {
       audio.play();//开始播放
     }
-    this.playCotrol(); //播放控制函数
+
   },
   clicks: function () {
     var audio = document.getElementById('audio');
     $('#control').click(function() {
       if ($('#control').hasClass('play')) {
-        $('#control').addClass('pause').removeClass('play');
+        // $('#control').addClass('pause').removeClass('play');
         audio.play();//开始播放
       } else {
-        $('#control').addClass('play').removeClass('pause');
+        // $('#control').addClass('play').removeClass('pause');
         audio.pause();
       }
     })
