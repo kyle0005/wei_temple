@@ -272,6 +272,7 @@
     a.ok{
       background-color: $color-905641;
       color: $color-white;
+      border-top: 1px solid $color-905641;
     }
     .lightning-txt{
       display: inline-block;
@@ -2549,3 +2550,69 @@
     color: $color-a48e8c;
   }
 }
+
+.red-bg-container{
+  position: relative;
+  width: 100%;
+  padding-bottom: 42%;
+  overflow-x: hidden;
+  .red-bg{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    margin-left: -118%;
+    width: 236%;
+    padding-bottom: 236%;
+    background-color: $color-e95b51;
+    border-radius: 50%;
+    margin-bottom: 8%;
+    .red-result{
+      position: absolute;
+      bottom: -3%;
+      left: 50%;
+      margin-left: -20%;
+      width: 40%;
+      text-align: center;
+      img{
+        margin: 0 auto;
+        width: 17%;
+        border-radius: 50%;
+      }
+      span{
+        display: block;
+      }
+    }
+  }
+}
+.red-context{
+  text-align: center;
+  font-size: $font-size-t14;
+  div{
+    width: 100%;
+  }
+  .title{
+    color: $color-444;
+    margin-bottom: 1%;
+  }
+  .msg{
+    color: $color-ccc;
+  }
+  .point{
+    position: relative;
+    font-size: $font-size-t70;
+    line-height: $font-size-t70;
+    margin-top: 5%;
+    .num{
+      display: inline-block;
+      position: absolute;
+      bottom: 10%;
+      margin-left: 3%;
+      font-size: $font-size-t12;
+      line-height: $font-size-t12;
+    }
+  }
+  .tips{
+    color: $color-5f679e;
+  }
+}
+

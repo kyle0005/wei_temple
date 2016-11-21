@@ -32,6 +32,10 @@ var audioPlayer = {
       function() {
         audioPlayer.clicks();
       }, false);
+    audio.addEventListener('error', //歌曲一经完整的加载完毕
+      function() {
+        // audio.currentTime = 1;
+      }, false);
     audio.addEventListener('pause',
       function() { //监听暂停
         $('#control').addClass('play').removeClass('pause');

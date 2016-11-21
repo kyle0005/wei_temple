@@ -8,11 +8,14 @@ var audioPlayer = {
       '">亲 您的浏览器不支持html5的audio标签</audio>';
     $('.voice').append(s);
 
-    this.playCotrol(); //播放控制函数
+    /*this.playCotrol(); //播放控制函数
     if ($('#control').hasClass('play')) {
       audio.play();//开始播放
-    }
+    }*/
 
+  },
+  removeVoice: function () {
+    $('.voice').children('#audio').remove();
   },
   clicks: function (url) {
     var audio = '';
@@ -24,6 +27,7 @@ var audioPlayer = {
         audio.play();//开始播放
       } else {
         audio.pause();
+        audioPlayer.removeVoice();
       }
     })
   },

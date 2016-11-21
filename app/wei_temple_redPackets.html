@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>wei_temple_list</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="wei-container3">
+  <header class="wei-head clearfix">
+    <a href="javascript:;" class="wei-arr-container"><span class="wei-arrow-left"></span></a>
+    <span>拼手气！抢红包！</span>
+  </header>
+  <section class="wei-content">
+    <div class="red-bg-container">
+      <div class="red-bg">
+        <div class="red-result">
+          <img src="public/img/syb.png" class="">
+
+        </div>
+      </div>
+    </div>
+    <div class="red-context">
+      <div class="title">法缘汇的红包</div>
+      <div class="msg">恭喜发财，大吉大利！</div>
+      <div class="point">888<span class="num">功德分</span></div>
+      <div class="tips">已存入账户，可直接使用</div>
+    </div>
+    <ul>
+      <li>
+
+      </li>
+      <li></li>
+      <li></li>
+    </ul>
+  </section>
+</div>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<script src="public/scripts/layer.js"></script>
+<!-- endbuild -->
+<script>
+  $(function () {
+    var html = '<div class="help-container">' +
+      '<img src="public/img/help.png">' +
+      '<a href="javascript:;" class="fork">&nbsp;</a>' +
+    '</div>';
+    $('.live').click(function () {
+      layer.open({
+        className: 'pop-img'
+        ,content: html
+      });
+    });
+    $(document).on('click', '.fork', function () {
+      layer.closeAll();
+    });
+
+  });
+
+</script>
+</body>
+</html>
