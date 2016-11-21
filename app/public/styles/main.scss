@@ -2615,4 +2615,31 @@
     color: $color-5f679e;
   }
 }
+.ranks{
+  margin-top: 11%;
+  li{
+    margin: 0 4%;
+    border-top: 1px solid $color-dcdcdc;
+    .container, a.container{
+      display: block;
+      padding: 2.777% 0;
+      .left{
+        display: inline-block;
+        width: 50%;
+        float: left;
+        text-align: left;
+        img{
+          width: 23.63%;
+          border-radius: 50%;
+        }
+      }
+      .right{
+        display: inline-block;
+        width: 50%;
+        float: left;
+        text-align: right;
+      }
+    }
+  }
+}
 
