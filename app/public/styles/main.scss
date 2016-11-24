@@ -7,6 +7,7 @@
 @import "common";
 @import "LCalendar";
 @import "layer";
+@import "font";
 /* index */
 .wei-container{
   @extend %page;
@@ -2656,6 +2657,7 @@
 .redPack-pop{
   position: relative;
   width: 100%;
+  font-family: "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
   img{
     width: 100%;
   }
@@ -2684,13 +2686,30 @@
       font-size: $font-size-t14;
       color: $color-ffd8b6;
     }
+    .con{
+      margin-top: 8%;
+      font-size: $font-size-t18;
+      color: $color-ffd8b6;
+      letter-spacing: 0.01rem;
+      text-align: center;
+    }
+    .con.tips{
+      font-size: $font-size-t30;
+      font-family: 'ygy';
+    }
     a.redPack-btn{
       display: block;
-      margin: 26% auto 0;
+      margin: 10% auto 0;
       width: 35.4%;
       img{
         width: 100%;
       }
+    }
+    a.check{
+      display: block;
+      margin-top: 13%;
+      font-size: $font-size-t12;
+      color: $color-ffd8b6;
     }
     .rotate{
       -webkit-animation: anim .6s infinite alternate;

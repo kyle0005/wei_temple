@@ -1,0 +1,7 @@
+$icon-font-path: "../fonts" !default;
+@font-face {
+  font-family: 'ygy';
+  src: url('#{$icon-font-path}/yegenyou.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
