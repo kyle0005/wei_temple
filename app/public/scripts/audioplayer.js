@@ -9,20 +9,37 @@ var audioPlayer = {
     $('.voice').append(s);
 
     this.playCotrol(); //播放控制函数
+
+    var userAgent = navigator.userAgent.toLowerCase(); //取得浏览器的userAgent字符串
+    if (userAgent.match(/MicroMessenger/i) == "micromessenger") {
+
+    } else {
+      $('#control').addClass('pause').removeClass('play');
+    }
+
+    var audio = document.getElementById('audio');
     if ($('#control').hasClass('play')) {
+      audio.load(); //ios9
       audio.play();//开始播放
     }
+
+
+
+/*    var audio = document.getElementById('audio');
+    $(window).one('touchstart click',function(){
+      audio.load(); //ios9
+      audio.play();
+    });*/
 
   },
   clicks: function () {
     var audio = document.getElementById('audio');
     $('#control').click(function() {
       if ($('#control').hasClass('play')) {
-        // $('#control').addClass('pause').removeClass('play');
-        audio.play();//开始播放
-      } else {
-        // $('#control').addClass('play').removeClass('pause');
         audio.pause();
+      } else {
+        alert('click');
+        audio.play();//开始播放
       }
     })
   },
@@ -34,15 +51,14 @@ var audioPlayer = {
       }, false);
     audio.addEventListener('error', //歌曲一经完整的加载完毕
       function() {
-        // audio.currentTime = 1;
       }, false);
     audio.addEventListener('pause',
       function() { //监听暂停
-        $('#control').addClass('play').removeClass('pause');
+        $('#control').addClass('pause').removeClass('play');
       }, false);
     audio.addEventListener('play',
       function() { //监听播放
-        $('#control').addClass('pause').removeClass('play');
+        $('#control').addClass('play').removeClass('pause');
       }, false);
   }
 };

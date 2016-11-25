@@ -33,7 +33,9 @@
     <ul class="ranks">
       <li class="">
         <div class="container clearfix">
-          <img src="public/img/syb.png">
+          <span class="img">
+            <img src="public/img/syb.png">
+          </span>
           <span class="left">
             <span>马里奥</span>
             <span class="clock">16:01</span>
@@ -43,20 +45,12 @@
       </li>
       <li class="">
         <div class="container clearfix">
-          <img src="public/img/syb.png">
-          <span class="left">
-            <span>马里奥</span>
-            <span>16:01</span>
+          <span class="img">
+            <img src="public/img/syb.png">
           </span>
-          <span class="right">12功德分</span>
-        </div>
-      </li>
-      <li class="">
-        <div class="container clearfix">
-          <img src="public/img/syb.png">
           <span class="left">
             <span>马里奥</span>
-            <span>16:01</span>
+            <span class="clock">16:01</span>
           </span>
           <span class="right">12功德分</span>
         </div>
@@ -73,7 +67,8 @@
     var data = {
       photo: 'public/img/syb.png',
       title: '法缘汇',
-      url: ''
+      url: '',
+      context: '<div>给您发了一个红包</div><div class="con">拼手气！抢红包！</div><a href="javascript:;" class="redPack-btn"><img src="public/img/redPack_btn.png"></a>'
     };
     var html = '<div class="redPack-pop">' +
       '<img src="public/img/redPack_bg.png">' +
@@ -86,11 +81,7 @@
       data.title +
       '</div></div>' +
       '<div class="context" id="context">' +
-      '<div>给您发了一个红包</div>' +
-      '<div class="con">拼手气！抢红包！</div>' +
-      '<a href="javascript:;" class="redPack-btn">' +
-      '<img src="public/img/redPack_btn.png">' +
-      '</a>' +
+      data.context +
       '</div>' +
       '<a href="javascript:;" class="check">看看大家的手气></a>' +
       '</div>' +
@@ -99,30 +90,30 @@
       className: 'pop-img'
       ,content: html
     });
-    $(document).on('click', '.fork', function () {
+    $(document).one('click', '.fork', function () {
       layer.closeAll();
     });
-    $(document).on('click', '.redPack-btn', function () {
+    $(document).one('click', '.redPack-btn', function () {
       var context = $('#context');
       $('.redPack-btn').addClass('rotate');
       setTimeout(function () {
         $.ajax({
           url: data.url,
-          type: 'GET',
+          type: 'post',
           cache: false,
           timeout: 3000000,
           error: function (data) {
             var str = '<div class="con">' + data.message + '</div>';
-            $(context).remove();
+//            $(context).empty();
             $(context).html(str);
           },
           success: function (data) {
-            window.location.reload();
+//            window.location.reload();
           }
         });
 
-        layer.closeAll();
-      }, 3000);
+//        layer.closeAll();
+      }, 1800);
 
     });
   });
