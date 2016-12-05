@@ -9,7 +9,7 @@ var audioPlayer = {
     $('.voice').append(s);
     var control = $('#control');
     var userAgent = navigator.userAgent.toLowerCase();
-    var isSafari = userAgent.indexOf("safari") > -1 && userAgent.indexOf("chrome") < 1 ;
+    var isSafari = userAgent.indexOf('safari') > -1 && userAgent.indexOf('chrome') < 1 ;
     if(isSafari){
       $(control).addClass('pause');
     }else {

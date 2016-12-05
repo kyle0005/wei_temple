@@ -2614,6 +2614,10 @@
   }
   .tips{
     color: $color-5f679e;
+    img{
+      margin-left: 2%;
+      width: $font-size-t14;
+    }
   }
 }
 .ranks{
