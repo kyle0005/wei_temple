@@ -1,18 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>万年历</title>
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="yes" name="apple-touch-fullscreen">
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,maximum-scale=1, minimum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="css/common.css">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/cal_common.css">
     <link rel="stylesheet" href="css/swiper-3.3.1.min.css">
     <script src="js/jquery-1.11.0.js"></script>
     <script type="text/javascript" src="js/swiper-3.3.1.min.js"></script>
 </head>
+
 <body>
+
+
     <!-- 加载ing -->
         <div class="loading loading1 covers" >
             <div class="loading-bj"></div>
@@ -750,7 +754,7 @@
             var ly = LunarDate.GetLunarDayDetail(lb, lm, bday);
             var jq = getjq(lb, lm, bday);
             if (jq) {
-                ly = '<font color="#00b7ec">' + jq;
+                ly = '<font class="fodan">' + jq;
             }
             var jd = "";
             var hb = lb + "-" + lm + "-" + bday;
@@ -776,7 +780,7 @@
             var ly = LunarDate.GetLunarDayDetail(b, c, i);
             var jq = getjq(b, c, i);
             if (jq) {
-                ly = '<font color="#00b7ec">' + jq;
+                ly = '<font class="fodan">' + jq;
             }
             var jd = "";
             var hb = b + "-" + c + "-" + i;
@@ -799,7 +803,7 @@
                 var ly = LunarDate.GetLunarDayDetail(xb, xm, i);
                 var jq = getjq(xb, xm, i);
                 if (jq) {
-                    ly = '<font color="#00b7ec">' + jq;
+                    ly = '<font class="fodan">' + jq;
                 }
                 var jd = "";
                 var hb = xb + "-" + xm + "-" + i;
@@ -838,8 +842,8 @@
             var weeks = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
             var data = new Date();
             var weekk = weeks[data.getDay() - 1];
-            var yue = LunarDate.GetLunarDay(data.getFullYear(), data.getMonth(), data.getDate());
-            var fdday = getfodan(data.getFullYear(), data.getMonth(), data.getDate());
+            var yue = LunarDate.GetLunarDay(data.getFullYear(), data.getMonth(), data.getDay());
+            var fdday = getfodan(data.getFullYear(), data.getMonth(), data.getDay());
             if(fdday){
                 yue+=","+fdday;
             }
@@ -949,7 +953,9 @@
                 solarMonth = (parseInt(solarMonth) > 0) ? (solarMonth - 1) : 11;
                 this.e2c(solarYear, solarMonth, solarDay);
 
-                var tmp = this.Month+"-"+this.Day;
+              var month  = this.Month<10 ?"0"+this.Month:this.Month;
+              var day = this.Day<10 ?"0"+this.Day:this.Day;
+              var tmp = month+"-"+day;
                 for(var i in fdDay){
                     if(fdDay[i].day == tmp){
                         return fdDay[i].desc;
@@ -986,7 +992,7 @@
             return "佛诞日";
         }
 
-        if(yyyy==2016&&mm==12&&dd==7){
+        /*if(yyyy==2016&&mm==12&&dd==7){
             return "大雪";
         }
         if(yyyy==2016&&mm==12&&dd==6){
@@ -1004,14 +1010,128 @@
         tmp2 = tmp1.getUTCDate();
         if (tmp2 == dd)
             solarTerms = solarTerm[mm * 2];
-        return solarTerms;
+        return solarTerms;*/
     }
 
     function getfodan(yyyy,mm,dd){
         //农历节日 *表示放假日
         var lFtv = [
-            {day:"11-10",desc:"弥勒菩萨圣诞、春节"},
-            {day:"10-15",desc:"四明知礼尊者圆寂"}
+            {day:"01-01",desc:"弥勒佛圣诞"},
+            {day:"01-05",desc:"四明知礼尊者圆寂"},
+            {day:"01-06",desc:"定光佛圣诞"},
+            {day:"01-06",desc:"圭峰宗密大师圆寂"},
+            {day:"01-09",desc:"帝释天尊圣诞"},
+            {day:"01-11",desc:"真谛三藏圆寂"},
+            {day:"01-12",desc:"省常法师圆寂"},
+            {day:"01-13",desc:"牛头法融禅师圆寂"},
+            {day:"01-17",desc:"百丈怀海禅师圆寂"},
+            {day:"01-21",desc:"蕅益法师圆寂"},
+            {day:"01-22",desc:"见月律师圆寂"},
+            {day:"02-01",desc:"马祖道一禅师圆寂"},
+            {day:"02-02",desc:"太虚大师圆寂"},
+            {day:"02-05",desc:"荆溪湛然尊者圆寂"},
+            {day:"02-05",desc:"玄奘法师圆寂"},
+            {day:"02-08",desc:"释迦牟尼佛出家"},
+            {day:"02-08",desc:"道安法师圆寂"},
+            {day:"02-09",desc:"六祖慧能圣诞"},
+            {day:"02-11",desc:"贞诲法师圆寂"},
+            {day:"02-13",desc:"四世班禅大师圆寂"},
+            {day:"02-15",desc:"释迦牟尼佛涅槃"},
+            {day:"02-19",desc:"观音菩萨圣诞"},
+            {day:"02-21",desc:"普贤菩萨圣诞"},
+            {day:"02-26",desc:"永明法师圆寂"},
+            {day:"03-03",desc:"布袋和尚坐化"},
+            {day:"03-16",desc:"准提菩萨圣诞"},
+            {day:"03-16",desc:"慧可大师圆寂"},
+            {day:"03-18",desc:"昙衍法师圆寂"},
+            {day:"03-28",desc:"李通玄长者圆寂"},
+            {day:"04-04",desc:"文殊菩萨圣诞"},
+            {day:"04-04",desc:"支遁三藏圆寂"},
+            {day:"04-04",desc:"慈航菩萨涅槃"},
+            {day:"04-08",desc:"释迦牟尼佛圣诞"},
+            {day:"04-08",desc:"道宣律师诞辰"},
+            {day:"04-14",desc:"省庵法师圆寂"},
+            {day:"04-15",desc:"佛吉祥(卫赛节)"},
+            {day:"04-24",desc:"善慧菩萨涅槃"},
+            {day:"04-28",desc:"药王菩萨圣诞"},
+            {day:"05-06",desc:"鉴真法师圆寂"},
+            {day:"05-06",desc:"布敦大师圆寂"},
+            {day:"05-08",desc:"善慧菩萨圣诞"},
+            {day:"05-13",desc:"伽蓝菩萨圣诞"},
+            {day:"05-13",desc:"神会禅师圆寂"},
+            {day:"05-18",desc:"法天三藏圆寂"},
+            {day:"05-18",desc:"胆巴大师圆寂"},
+            {day:"05-26",desc:"僧祐大师圆寂"},
+            {day:"05-30",desc:"弘赞律师诞辰"},
+            {day:"06-03",desc:"韦驮菩萨圣诞"},
+            {day:"06-05",desc:"鸿楚法师往生"},
+            {day:"06-15",desc:"不空三藏圆寂"},
+            {day:"06-19",desc:"观音菩萨成道"},
+            {day:"06-21",desc:"智周大师圆寂"},
+            {day:"06-22",desc:"慧思尊者圆寂"},
+            {day:"07-04",desc:"莲池大师圆寂"},
+            {day:"07-09",desc:"截流法师圆寂"},
+            {day:"07-13",desc:"大势至菩萨圣诞"},
+            {day:"07-15",desc:"盂兰盆会"},
+            {day:"07-15",desc:"玛尔巴大师圆寂"},
+            {day:"07-19",desc:"法上国师往生"},
+            {day:"07-19",desc:"承远法师圆寂"},
+            {day:"07-21",desc:"普庵祖师圣诞"},
+            {day:"07-22",desc:"圆测大师圆寂"},
+            {day:"07-24",desc:"法琳大师圆寂"},
+            {day:"07-24",desc:"龙树菩萨圣诞"},
+            {day:"07-29",desc:"虚云和尚诞辰"},
+            {day:"07-30",desc:"地藏菩萨圣诞"},
+            {day:"08-04",desc:"黄财神圣诞"},
+            {day:"08-06",desc:"慧远法师圆寂"},
+            {day:"08-07",desc:"慈航菩萨圣诞"},
+            {day:"08-08",desc:"圣救度佛母圣诞"},
+            {day:"08-15",desc:"月光菩萨圣诞"},
+            {day:"08-16",desc:"金刚智三藏圆寂"},
+            {day:"08-20",desc:"鸠摩罗什圆寂"},
+            {day:"08-22",desc:"燃灯佛圣诞"},
+            {day:"09-01",desc:"元照湛然大师圆寂"},
+            {day:"09-04",desc:"弘一法师圆寂"},
+            {day:"09-09",desc:"摩利支天菩萨圣诞"},
+            {day:"09-12",desc:"虚云和尚往生"},
+            {day:"09-19",desc:"观音菩萨出家"},
+            {day:"09-20",desc:"弘一法师诞辰"},
+            {day:"09-28",desc:"求那跋摩三藏圆寂"},
+            {day:"09-30",desc:"药师佛圣诞"},
+            {day:"10-03",desc:"少康法师圆寂"},
+            {day:"10-03",desc:"道宣律师往生"},
+            {day:"10-05",desc:"达摩祖师圣诞"},
+            {day:"10-05",desc:"八思巴大师诞辰"},
+            {day:"10-07",desc:"唐密祖师善无畏三藏纪念日"},
+            {day:"10-08",desc:"一行禅师纪念日"},
+            {day:"10-10",desc:"宗喀巴诞辰"},
+            {day:"10-11",desc:"憨山德清大师圆寂"},
+            {day:"10-12",desc:"实叉难陀三藏圆寂"},
+            {day:"10-16",desc:"法忍禅师往生"},
+            {day:"10-18",desc:"阿底峡尊者圆寂"},
+            {day:"10-23",desc:"五祖弘忍大师圆寂"},
+            {day:"10-25",desc:"宗咯巴圆寂"},
+            {day:"10-29",desc:"智俨大师圆寂"},
+            {day:"11-04",desc:"菩提流志三藏圆寂"},
+            {day:"11-13",desc:"窥基法师往生"},
+            {day:"11-15",desc:"终南杜顺大师圆寂"},
+            {day:"11-17",desc:"阿弥陀佛圣诞"},
+            {day:"11-19",desc:"日光菩萨圣诞"},
+            {day:"11-22",desc:"天台智者大师圆寂"},
+            {day:"11-24",desc:"道生大师圆寂"},
+            {day:"12-01",desc:"法照法师圆寂"},
+            {day:"12-03",desc:"印光法师圆寂"},
+            {day:"12-08",desc:"释迦如来成道"},
+            {day:"12-08",desc:"佛图澄大师圆寂"},
+            {day:"12-17",desc:"彻悟法师圆寂"},
+            {day:"12-17",desc:"紫柏真可尊者圆寂"},
+            {day:"12-17",desc:"淄州慧沼大师圆寂"},
+            {day:"12-18",desc:"太虚大师诞辰"},
+            {day:"12-23",desc:"监斋菩萨圣诞"},
+            {day:"12-25",desc:"石头希迁禅师圆寂"},
+            {day:"12-26",desc:"永明延寿大师圆寂"},
+            {day:"12-26",desc:"施护三藏圆寂"},
+            {day:"12-29",desc:"华严菩萨圣诞"}
         ];
         return LunarDate.GetDayNumber(yyyy,mm,dd,lFtv);
 

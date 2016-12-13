@@ -215,5 +215,15 @@ gulp.task('uglify_script', function() {
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
+  gulp.src('app/public/scripts/components/calendar/js/cal_common.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
 });
 
+/* 单独压缩css */
+gulp.task('uglify_css', function() {
+  return gulp.src('app/public/scripts/components/calendar/css/cal_common.css')
+    .pipe($.cssnano())
+    .pipe(gulp.dest('dist/css'));
+});
