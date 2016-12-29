@@ -842,8 +842,13 @@
             var weeks = ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日'];
             var data = new Date();
             var weekk = weeks[data.getDay() - 1];
-            var yue = LunarDate.GetLunarDay(data.getFullYear(), data.getMonth(), data.getDay());
-            var fdday = getfodan(data.getFullYear(), data.getMonth(), data.getDay());
+          var year = data.getFullYear();
+          var month = data.getMonth()+1;
+          var date = data.getDate();
+
+          var yue = LunarDate.GetLunarDay(year, month, date);
+
+          var fdday = getfodan(year, month,date);
             if(fdday){
                 yue+=","+fdday;
             }

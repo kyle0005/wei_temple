@@ -196,6 +196,20 @@
             width: 100%;
             height: 74%;
           }
+          span.click-me{
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            display: block;
+            width: 18%;
+            color: $color-888;
+            font-size: $font-size-t12;
+            text-align: center;
+            img {
+              width: 100%;
+              height: auto;
+            }
+          }
           .product-detail {
             display: block;
             margin: 5%;
@@ -1312,7 +1326,17 @@
     height:auto;
   }
   .temple-items{
+    position: relative;
     background-color: $color-white;
+    .click-me{
+      position: absolute;
+      top: 3%;
+      left: 5%;
+      width: 12%;
+      color: $color-888;
+      font-size: $font-size-t12;
+      text-align: center;
+    }
     .img-con{
       position: relative;
       width: 100%;
