@@ -21,9 +21,9 @@
     $(function() {
         function e() {
             var e = document.documentElement.clientWidth;
-            var font_size = e * .04 + "px";
-            var font_size_small = e * .03 + "px";
-            var font_size_big = e * .05 + "px";
+            var font_size = e * .04 + 'px';
+            var font_size_small = e * .03 + 'px';
+            var font_size_big = e * .05 + 'px';
             //var padding = e * .01 ;
             //if(padding>10){padding = 10}
             $('.autosize').css('font-size', font_size);
@@ -32,7 +32,7 @@
             //$('.swiper-slide img').css('padding',padding);
         }
         e();
-        $(window).on("orientationchange, resize",
+        $(window).on('orientationchange, resize',
                 function() {
                     e();
                 })
