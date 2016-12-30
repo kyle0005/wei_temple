@@ -81,6 +81,22 @@
     </div>
   </div>
 </div>
+<div class="pop-mask hide" id="reg-mask">
+  <div class="pop-container reg-suc">
+    感恩您的注册！首次注册，送您99元<br>请在佛前为亲朋好友点一盏灯吧！
+    <img src="public/img/reg_qrcode.png" class="qrcode">
+    <div class="text">
+      扫一扫，”码”上有惊喜
+    </div>
+    <div class="btn-container">
+      <a href="javascript:;" class="reg-suc-btn">下次关注</a>
+    </div>
+    <div class="top">
+      <img src="public/img/pop_bg.png">
+      <div class="title">注册成功</div>
+    </div>
+  </div>
+</div>
 <!-- build:js scripts/main.js -->
 <script src="public/scripts/jquery-3.0.0.js"></script>
 <!-- endbuild -->
@@ -130,6 +146,8 @@
     $(document).on('click', '#ok', function () {
       closePop();
     });
+
+    $('#reg-mask').removeClass('hide');
 
   });
 

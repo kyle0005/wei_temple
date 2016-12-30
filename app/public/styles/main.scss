@@ -1876,20 +1876,56 @@
     left: 50%;
     border-radius: 5px;
 
-    background-color: #fff;
+    background-color: $color-white;
     color: $color-905641;
-    //height: 20%;
     margin-top: -10%;
     width: 80%;
     margin-left: -40%;
   }
   .pop-container.alert{           //提示框
-    //height: 7%;
     margin-top: -3.5%;
     width: 65.625%;
     margin-left: -32.8125%;
     background-color: $color-3e3d3d;
     color: $color-white;
+  }
+  .pop-container.reg-suc{           //注册成功提示框
+    width: 65.625%;
+    background-color: $color-f9f4f2;
+    color: $color-905641;
+    margin-top: -40.390625%;
+    margin-left: -32.8125%;
+    text-align: center;
+    padding: 20% 0 4.6875% 0;
+    .qrcode{
+      width: 45.95238%;
+      margin-top: 6.9%;
+    }
+    .text{
+      color: $color-333;
+      line-height: $font-size-t24;
+      margin-bottom: 2%;
+    }
+    .btn-container{
+      margin: 0 auto;
+      width: 82.857%;
+    }
+    .top{
+      position: absolute;
+      top: 7.14%;
+      left: -12.142857%;
+      width: 124.2857%;
+      img{
+        width: 100%;
+      }
+      .title{
+        position: absolute;
+        top: 13%;
+        width: 100%;
+        color: $color-white;
+        font-size: $font-size-t15;
+      }
+    }
   }
 
 

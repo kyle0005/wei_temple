@@ -23,3 +23,9 @@
   @include wei-bg-btn($color-905641, $bg-color, $color-905641, 30px, 30px);
   @include fillet(true); /* 圆角 */
 }
+
+.reg-suc-btn {
+  $bg-color: initial;
+  @include wei-bg-btn($color-905641, $bg-color, $color-905641, 25px, 25px, $font-size-t12);
+  @include fillet(true); /* 圆角 */
+}
