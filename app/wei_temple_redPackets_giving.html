@@ -22,6 +22,7 @@
         <li class="clearfix">
           <span class="txt">功&ensp;德&ensp;分</span>
           <input type="text" class="inp" name="" placeholder="可用999功德分">
+          <span class="tips">注：红包类型为普通，功德分为单个红包</span>
         </li>
         <li class="clearfix">
           <span class="txt">红包个数</span>
@@ -29,7 +30,7 @@
         </li>
         <li class="clearfix">
           <span class="txt">红包类型</span>
-          <label for="p" class="p-con"><input type="radio" name="red-type" class="p-red" id="p">拼手气红包</label>
+          <label for="p" class="p-con"><input type="radio" checked name="red-type" class="p-red" id="p">拼手气红包</label>
           <label for="n" class="n-con"><input type="radio" name="red-type" class="n-red" id="n">普通红包</label>
         </li>
         <li class="clearfix">
@@ -38,7 +39,7 @@
         </li>
       </ul>
       <div class="bind-btn">
-        <a href="javascript:;">发红包</a>
+        <a href="javascript:;" class="js-sub">发红包</a>
       </div>
     </form>
   </section>
@@ -49,7 +50,29 @@
 <!-- endbuild -->
 <script>
   $(function () {
+    $('.tips').hide();
+    $('input[name="red-type"]').change(function () {
+      var flag = $('#n').is(":checked");
+      if (flag) {
+        $('.tips').show();
+      }else {
+        $('.tips').hide();
+      }
+    });
+    $(document).on('click', '.js-sub', function () {
+      layer.open({
+        content: '您的功德分还有1000，还需1000'
+        ,btn: ['确认', '取消']
+        ,yes: function(index){
+        alert('点击了是');
+        layer.close(index)
+        }
+        ,no: function () {
 
+          }
+
+    });
+    });
   });
 
 </script>
