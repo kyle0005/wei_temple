@@ -1965,6 +1965,55 @@
     text-align: center;
   }
 }
+.giving-container{
+  .red-con{
+    margin-bottom: 6.94%;
+    li{
+      margin: 0 2.777%;
+      padding: 4.166% 0;
+      border-bottom: 1px solid $color-ebebeb;
+      .txt{
+        float: left;
+        display: inline-block;
+        width: 18.235294%;
+        margin-right: 5.2941%;
+      }
+      input[type=text].inp{
+        border: 0;
+        width: 76.470606%;
+
+      }
+      label{
+        display: inline-block;
+        float: left;
+        width: 38.235303%;
+        input[type=radio]{
+          width: 16%;
+          padding-bottom: 16%;
+          margin-right: 6%;
+          vertical-align: middle;
+          background: url("../img/radio_unchked.png") no-repeat center center;
+          background-size: 100% auto;
+        }
+        input[type=radio]:checked{
+          width: 16%;
+          padding-bottom: 16%;
+          margin-right: 6%;
+          vertical-align: middle;
+          background: url("../img/radio_chked.png") no-repeat center center;
+          background-size: 100% auto;
+        }
+      }
+
+
+
+    }
+  }
+  .bind-btn{
+    margin: 0 8.333%;
+  }
+}
+
 /* payment */
 .payment-container{
   .total{
@@ -2220,6 +2269,17 @@
   .recharge-container{
     position: absolute;
     bottom: 10px;
+    left: 15px;
+    width: 68.5px;
+    a.recharge{
+      @include wei-bg-btn($color-905641, $color-white, $color-905641, 22.5px, 22.5px, $font-size-t12);
+      @include fillet(true); /* 圆角 */
+    }
+
+  }
+  .redPackets-container{
+    position: absolute;
+    bottom: 10px;
     right: 15px;
     width: 68.5px;
     a.recharge{
@@ -2247,35 +2307,49 @@
     align-items: center;
     border-bottom: 1px solid $color-dcdcdc;
     padding: 9px 0;
-    .left{
-      -moz-box-flex: 1.0; /* Firefox */
-      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
-      box-flex: 1.0;
-      width: 13%;
-      margin-right: 3%;
-      text-align: center;
-      span{
-        display: block;
+    a.link{
+      position: relative;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .wei-arrow-right{
+        @include wei-arrow('right', $color-dcdcdc);
+        right: 3px;
+        left: initial;
       }
-    }
-    .right{
-      -moz-box-flex: 1.0; /* Firefox */
-      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
-      box-flex: 1.0;
-      width: 84%;
-      .point{
-        display: block;
-        color: $color-905641;
-        .num{
-          font-size: $font-size-t15;
+
+      .left{
+        -moz-box-flex: 1.0; /* Firefox */
+        -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+        box-flex: 1.0;
+        width: 13%;
+        margin-right: 3%;
+        text-align: center;
+        span{
+          display: block;
         }
       }
-      .info{
-        display: block;
-        font-size: 1rem;
-        color: $color-888;
+      .right{
+        -moz-box-flex: 1.0; /* Firefox */
+        -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+        box-flex: 1.0;
+        width: 84%;
+        .point{
+          display: block;
+          color: $color-905641;
+          .num{
+            font-size: $font-size-t15;
+          }
+        }
+        .info{
+          display: block;
+          font-size: 1rem;
+          color: $color-888;
+        }
       }
     }
+
   }
 }
 .m-lighting-container{
