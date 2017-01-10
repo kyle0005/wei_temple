@@ -739,7 +739,7 @@
     .num{
       float: left;
       width: 50%;
-      line-height: 20px;
+      line-height: 30px;
     }
     .num-btns{
       float: right;
@@ -751,18 +751,18 @@
       a{
         display: inline-block;
         background-color: $color-dcdcdc;
-        width: 20px;
-        height: 20px;
+        width: 30px;
+        height: 30px;
         text-align: center;
-        line-height: 20px;
+        line-height: 30px;
       }
       input.num-check{
-        width: 40px;
+        width: 60px;
         border: none;
         border-radius: 0;
         outline: none;
         background-color: $color-eee;
-        line-height: 20px;
+        line-height: 30px;
         text-align: center;
         color: $color-444;
       }
@@ -1298,6 +1298,13 @@
     list-style:none;
     padding:0;
     margin:0;
+    li{
+      background-color: $color-white;
+    }
+  }
+  .btn-con{
+    padding: 0 0 10px 10px;
+    width: 30%;
   }
   img{
     width:100%;
@@ -1326,8 +1333,11 @@
     height:auto;
   }
   .temple-items{
+    display: block;
     position: relative;
-    background-color: $color-white;
+    span{
+      display: block;
+    }
     .click-me{
       position: absolute;
       top: 3%;
@@ -1350,7 +1360,7 @@
       }
     }
     .temple-con{
-      padding: 10px 10px 15px 10px;
+      padding: 10px;
       color: $color-666;
       .title{
         font-size: $font-size-t14;
@@ -1375,6 +1385,10 @@
   background: url("../img/bg_line.jpg") repeat-y top left;
   background-size: 100% auto;
   font-size: $font-size-t12;
+  &.v3{
+    background: url("../img/bg_line3.jpg") repeat-y top left;
+    background-size: 100% auto;
+  }
   @media screen and (max-height: 505px){
     //ip5以下设备
   }
@@ -1388,6 +1402,10 @@
     background: url("../img/light2.jpg") no-repeat top left;
     background-size: 100% auto;
     text-align: center;
+    &.v3{
+      background: url("../img/light3.jpg") no-repeat top left;
+      background-size: 100% auto;
+    }
     .lotus{
       position: relative;
       width: 100%;
@@ -1434,6 +1452,10 @@
           font-size: $font-size-t10;
           font-weight: bold;
         }
+      }
+      .buddha-container.v3{
+        width: 69.375%;
+        padding-top: 9.6875%;
       }
       .lotus-container{
         overflow: hidden;
@@ -1589,7 +1611,7 @@
           width: 50%;
           float: left;
           text-align: center;
-          line-height: $font-size-t16;
+          line-height: $font-size-t14;
         }
       }
     }
@@ -2914,3 +2936,94 @@
   }
 }
 
+/*分享红包*/
+.shareRed-container{
+  background-color: $color-e95b51;
+  .shareRed-content{
+    position: relative;
+    width: 100%;
+    padding-bottom: 30%;
+    background-color: $color-white;
+    .shareRed_title{
+      position: absolute;
+      top:10%;
+      left: 23.61%;
+      width: 45%;
+    }
+    .shareRed_arrow{
+      position: absolute;
+      top: 5%;
+      left: 70%;
+      width: 23.61%;
+    }
+    .shareRed_pot{
+      position: absolute;
+      left: 17.5%;
+      top: 23%;
+      width: 21.666%;
+    }
+    .shareRed_text{
+      position: absolute;
+      top: 23%;
+      left: 40.833%;
+      width: 34.72%;
+    }
+    .red-light{
+      margin: 0 auto;
+      padding-top: 50%;
+      width: 23.333%;
+    }
+  }
+  .red-bg-container{
+    position: relative;
+    width: 100%;
+    padding-bottom: 42%;
+    overflow-x: hidden;
+    .red-bg{
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -118%;
+      width: 236%;
+      padding-bottom: 236%;
+      background-color: $color-white;
+      border-radius: 50%;
+      margin-bottom: 8%;
+      .red-result{
+        position: absolute;
+        bottom: -3%;
+        left: 50%;
+        margin-left: -20%;
+        width: 40%;
+        text-align: center;
+
+        .photo{
+          position: relative;
+          margin: 0 auto;
+          width: 17%;
+          padding-bottom: 17%;
+          img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+          }
+        }
+
+        span{
+          display: block;
+        }
+      }
+    }
+  }
+  .red-context{
+    .title{
+      color: $color-white;
+    }
+    .msg{
+      color: $color-white;
+    }
+  }
+}

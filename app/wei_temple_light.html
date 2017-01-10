@@ -97,7 +97,7 @@
     </footer>
   </div>
 </div>
-<div class="pop-mask hide" id="pop-mask">
+<div class="pop-mask " id="pop-mask">
   <div class="share-container" id="share-container">
     <img src="public/img/share.png" class="share-img" />
     <div class="title">为家人祈福接力，心诚则灵</div>
@@ -150,6 +150,14 @@
     $(document).on('click', '.fork', function () {
       layer.closeAll();
     });
+
+    if(!$('#pop-mask').hasClass('hide')){
+      $(document).on('click', '#pop-mask', function () {
+        $('#pop-mask').addClass('hide');
+      });
+    }
+
+
 
   });
 
