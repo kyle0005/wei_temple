@@ -202,6 +202,7 @@
           '" class="items-img"/>' +
           '</a>';
       }
+
       else{
         //为视频
         video_num = i;
