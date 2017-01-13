@@ -16,10 +16,6 @@
     <div class="lotus">
       <div class="buddha-container">
         <img src="public/img/buddha2.png" class="buddha">
-        <!--<div class="buddha-i-con">
-          <img src="public/img/buddha_i.png" class="buddha-i">
-        </div>
-        <input type="text" class="name" value="王xx點燈">-->
       </div>
       <div class="lotus-container">
         <ul class="js-carousel">
@@ -81,7 +77,7 @@
       </div>
     </div>
     <footer class="foot">
-      <a class="tips">
+<!--      <a class="tips">
         <i class="fa fa-bell-o"></i>
         <span>新用户送99元点灯体验金！</span>
       </a>
@@ -90,14 +86,14 @@
       </a>
       <a class="share-tips">
         分享好友
-      </a>
-      <a class="continue">
+      </a>-->
+      <a class="continue v1">
         继续点灯
       </a>
     </footer>
   </div>
 </div>
-<div class="pop-mask " id="pop-mask">
+<div class="pop-mask hide" id="pop-mask">
   <div class="share-container" id="share-container">
     <img src="public/img/share.png" class="share-img" />
     <div class="title">为家人祈福接力，心诚则灵</div>
@@ -152,9 +148,18 @@
     });
 
     if(!$('#pop-mask').hasClass('hide')){
-      $(document).on('click', '#pop-mask', function () {
+      var ham = new Hammer($('#pop-mask')[0]);
+      ham.on('tap', function () {
         $('#pop-mask').addClass('hide');
       });
+
+
+/*      $(document).on('click', '#pop-mask', function () {
+        alert('aaa');
+        $('#pop-mask').addClass('hide');
+      });*/
+
+
     }
 
 

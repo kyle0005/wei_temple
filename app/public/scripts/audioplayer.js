@@ -10,11 +10,11 @@ var audioPlayer = {
     var control = $('#control');
     var userAgent = navigator.userAgent.toLowerCase();
     var isSafari = userAgent.indexOf('safari') > -1 && userAgent.indexOf('chrome') < 1 ;
-    if(isSafari){
+    // if(isSafari){
       $(control).addClass('pause');
-    }else {
-      $(control).addClass('play');
-    }
+    // }else {
+    //   $(control).addClass('play');
+    // }
     this.playCotrol();
     var audio = document.getElementById('audio');
     if ($(control).hasClass('play')) {

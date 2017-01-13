@@ -51,7 +51,7 @@
       hasCtrls: true,        //默认有左右箭头
       hasBtns: true,         //默认有小点
       txt_data: '',
-      height: false            //carousel高度
+      height: 'auto'            //carousel高度: 1.'auto':默认自动; 2.'width':与元素宽度一样; 3.自定义数值
     };
 
     var opts = $.extend({}, this.defaults, options);     //将$.fn.carousel.defaults和options合并放入第一个参数“{}”中
@@ -80,14 +80,12 @@
     });*/
 
 
-    if(!IsPC()){
+
+    if(this.options.height == 'width'){
       this.$element.height(this.$element.width());
     }
-    if(!this.options.height){
-      //设置了高度值
-
-    }else {
-      //未设置高度值
+    else if(this.options.height != 'auto'){
+      this.$element.height(this.options.height);
     }
     if($('video.items-img').length > 0){
       $('video.items-img').height(this.$element.width());
@@ -122,7 +120,6 @@
     }
     return flag;
   }
-
   function loadVideo(obj, data, i) {
     var p = $(obj).parents('.items-container');
     var items = '<div class="items-a">' +
@@ -204,7 +201,8 @@
           data[i] +
           '" class="items-img"/>' +
           '</a>';
-      }else{
+      }
+      else{
         //为视频
         video_num = i;
         items += '<a href="javascript:;" class="items-a cal-video js-video">' +

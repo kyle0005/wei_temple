@@ -29,3 +29,7 @@
   @include wei-bg-btn($color-905641, $bg-color, $color-905641, 25px, 25px, $font-size-t12);
   @include fillet(true); /* 圆角 */
 }
+.wei-bg-h1 {
+  @include wei-bg-btn($color-white, $color-905641, $color-905641, 40px, 40px);
+  @include fillet(true); /* 圆角 */
+}

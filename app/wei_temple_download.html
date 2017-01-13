@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta name="format-detection" content="telephone=no">
+  <title>demo</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+  <style>
+    .download-content{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: url("public/img/download_bg.jpg") no-repeat center center;
+      background-size: 100% 100%;
+      text-align: center;
+    }
+    .logo{
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      margin-left: -15%;
+      width: 30%;
+    }
+    .linkTo-con{
+      position: absolute;
+      bottom: 30%;
+      left: 4.6875%;
+      width: 90.625%;
+    }
+
+  </style>
+</head>
+<body>
+<div class="wei-container2">
+  <section class="download-content">
+    <img src="public/img/logo.png" class="logo">
+    <div class="linkTo-con">
+      <a href="javascript:;" class="wei-bg-h1">立即下载体验</a>
+    </div>
+  </section>
+</div>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<!-- endbuild -->
+<script>
+  $(function () {
+    var NA = window.navigator;
+    var UA = NA.userAgent.toLowerCase();
+    function test(needle) {
+      return needle.test(UA);
+    }
+    var IsAndroid = test(/android|htc/) || /linux/i.test(NA.platform + "");
+    var IsIPad = !IsAndroid && test(/ipad/);
+    var IsIPhone = !IsAndroid && test(/ipod|iphone/);
+    var IsIOS = IsIPad || IsIPhone;
+    var t = setTimeout(function () {
+      if(IsAndroid){
+        window.location.href = 'http://www.baidu.com/';
+      }
+      else if(IsIOS){
+        window.location.href = 'http://www.qq.com/';
+      }
+    }, 1000);
+  });
+</script>
+</body>
+</html>

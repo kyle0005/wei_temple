@@ -901,7 +901,7 @@
       .progress-container{
         position: relative;
         float: left;
-        width: 80%;
+        width: 70%;
         height: 5.5px;
         margin-top: 7.25px;
         border-radius: 20px;
@@ -915,7 +915,7 @@
       }
       .progress-txt{
         float: left;
-        width: 20%;
+        width: 30%;
         height: 20px;
         line-height: 20px;
         text-align: right;
@@ -1386,10 +1386,10 @@
   background: url("../img/bg_line.jpg") repeat-y top left;
   background-size: 100% auto;
   font-size: $font-size-t12;
-  &.v3{
+/*  &.v3{
     background: url("../img/bg_line3.jpg") repeat-y top left;
     background-size: 100% auto;
-  }
+  }*/
   @media screen and (max-height: 505px){
     //ip5以下设备
   }
@@ -1404,7 +1404,7 @@
     background-size: 100% auto;
     text-align: center;
     &.v3{
-      background: url("../img/light3.jpg") no-repeat top left;
+      background: url("../img/light4.jpg") no-repeat top left;
       background-size: 100% auto;
     }
     .lotus{
@@ -1566,15 +1566,18 @@
       width: 100%;
       a{
         display: block;
-        width: 22px;
+        width: 7.5%;
         margin: 15px;
+        font-size: $font-size-t12;
         img{
           width: 100%;
+          margin-bottom: 10%;
         }
       }
       .live{
         float: left;
       }
+
       .noVoice{
         float: right;
       }
@@ -1601,9 +1604,9 @@
 
       .text{
         position: absolute;
-        right: 1.5%;
-        top: 50px;
-        width: 11%;
+        right: 15%;
+        top: 135%;
+        width: 10%;
         height: 80px;
         color: $color-905641;
         font-size: $font-size-t14;
@@ -1759,6 +1762,13 @@
       }
       .continue{
         display: none;
+        &.v1{
+          display: block;
+          width: 100%;
+          background-color: #905641;
+          color: #fff;
+          font-size: 1.4rem;
+        }
       }
       &.r2{
         a{
@@ -1786,6 +1796,7 @@
   }
 }
 .pop-img{
+
   .layui-m-layercont{
     padding: 0;
   }
@@ -1793,9 +1804,18 @@
 .help-container{
   position: relative;
   width: 100%;
-  //width: 93.75%;
+  background: url("../img/pop_bg.jpg") no-repeat center center;
+  background-size: 100% auto;
+  padding-bottom: 139%;
   img{
     width: 100%;
+  }
+  .content{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
   a.fork{
     position: absolute;
@@ -3029,3 +3049,7 @@
     }
   }
 }
+
+
+
+
