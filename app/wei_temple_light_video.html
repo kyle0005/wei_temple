@@ -4,15 +4,22 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>live</title>
+  <title>demo</title>
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="public/styles/main.css">
   <!-- endbuild -->
 </head>
 <body>
-<div class="wei-container">
-  <div id="id_video_container" class="live-video"></div>
+<div class="wei-container3">
+  <div class="live-container hide">
+    <div id="id_video_container"></div>
+  </div>
+  <div class="video-container">
+    <video src="http://200006282.vod.myqcloud.com/200006282_42ca7ffa1e9011e692fe0785d455c86c.f20.mp4"
+           poster="http://p.qpic.cn/videoyun/0/200006282_42ca7ffa1e9011e692fe0785d455c86c_1/640" controls="controls"
+           preload="metadata"></video>
+  </div>
 </div>
 <!-- build:js scripts/main.js -->
 <script src="public/scripts/jquery-3.0.0.js"></script>
@@ -20,12 +27,13 @@
 <!-- endbuild -->
 <script>
   var configs = {
-    app_id: '1251951972',
-    live_url: 'http://200006282.vod.myqcloud.com/200006282_42ca7ffa1e9011e692fe0785d455c86c.f20.mp4'
+    url: 'http://play.video.qcloud.com/live.html?app_id=1251951972&channel_id=16093104850682363958&sw=950&sh=593',
+    app_id: '1251951972'
   };
   $(function () {
-    vodLive(configs.live_url);
+    vodLive(configs.url);
     function vodLive(live_url){
+      var wid = $(document).width();
       //live
       var PLAY_INFO = (function(){
         var ps = (window.location.href.split('?')[1] || '').split('&')
@@ -62,7 +70,7 @@
         new qcVideo.Player("id_video_container", {
           "channel_id": live_url,
           "app_id": configs.app_id,
-          "width": 414,
+          "width": wid,
           "height": 244,
           "https": 0
         });

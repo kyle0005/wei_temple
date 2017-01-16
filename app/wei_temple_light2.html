@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>wei_temple_list</title>
+  <title>demo</title>
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <!-- build:css styles/main.css -->
   <link rel="stylesheet" href="public/styles/main.css">
@@ -57,7 +57,7 @@
       <a href="javascript:;" class="live">
         <img src="public/img/btn_help.png" class=""><br>帮助
       </a>
-      <a href="javascript:;" class="noVoice">
+      <a href="wei_temple_light_video.html" class="noVoice">
         <img src="public/img/btn_live.png" class=""><br>实景
       </a>
 <!--      <a href="javascript:;" class="voice" id="control">
@@ -100,9 +100,16 @@
 <script src="public/scripts/hammer.js"></script>
 <script src="public/scripts/carousel.js"></script>
 <script src="public/scripts/layer.js"></script>
+<script src="//qzonestyle.gtimg.cn/open/qcloud/video/live/h5/live_connect.js"></script>
 <!-- endbuild -->
 <script>
   var img_data = ['public/img/guide1.png','public/img/guide2.png','public/img/guide3.png', 'public/img/guide4.png', 'public/img/guide5.png'];
+  var cal_content = {
+    p1: '<div class="pf-container">法缘汇是针对中国佛教文化服务平台开发的、结合线下寺院转轮藏使用的互联网平台，您可以足不出户通过法缘汇平台选择全国各大知名寺院、转轮藏，实现<span class="s">远程操控实体点灯供奉</span>。<br>为自己及亲友增加福分、积攒功德。<div class="pf-img"><img src="public/img/qrcode.png"></div></div>',
+    p2: '<div class="ps-container"><div class="ps-img"><img src="public/img/pop_p2.png"></div>每个寺院室外转轮藏上均有2568个佛龛，佛龛内供奉着佛像以及佛灯</div>',
+    p3: '<div class="pt-container"><div class="pt-img"><img src="public/img/pop_p3.png"></div>佛龛佛像（供灯前效果）</div>',
+    p4: '<div class="pfo-container"><div class="pfo-img"><img src="public/img/pop_p4.png"></div>佛龛佛像（供灯后效果）</div>'
+  };
   $(function () {
 //    var url = 'public/file/boruomi.mp3';
 //    audioPlayer.loadVoice(url);
@@ -141,7 +148,8 @@
       $('#light').carousel(
         {
           interval: false,
-          data: img_data,
+          data: cal_content,
+          height: '95%',
           hasCtrls: false
         }
       );

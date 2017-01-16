@@ -120,11 +120,14 @@
     }
     return flag;
   }
+  function isArray(o){
+    return Object.prototype.toString.call(o)=='[object Array]';
+  }
   function loadVideo(obj, data, i) {
     var p = $(obj).parents('.items-container');
     var items = '<div class="items-a">' +
       '<video class="items-img" ' +
-      '" controls="controls" preload="metadata" ' +
+      'controls="controls" preload="metadata" ' +
       'src="' +
       data[i].url +
       '"' +
@@ -187,43 +190,45 @@
     if(txt.length != 0)captions = '<div class="wei-carousel-captions">' + txt[0] + '</div>';
     if (hasCtrls)content += ctrls;
     if (!data || data.length <= 0)return false;
-    $.each(data, function (i) {
+    $.each(data, function (i, n) {
       items += '<div class="items-container">';
-      // var _data = [],str = '';
-      if(typeof (data[i]) === 'string'){
-        //为图片
-        // _data = data[i].split('.');
-        // str = _data[_data.length - 1].toLowerCase();
-      /*}
-      if(str != 'jpg' && str != 'jpeg' && str != 'png' && str != 'bmp' && str != 'gif'){*/
-        items += '<a href="javascript:;" class="items-a">' +
-          '<img src="' +
-          data[i] +
-          '" class="items-img"/>' +
-          '</a>';
+      if(!isArray(data)){
+        //不为数组，为{}对象，html代码等自定义内容
+        items += n;
+      }
+      else {
+        //为数组
+        if(typeof (data[i]) === 'string'){
+          //为图片
+          items += '<a href="javascript:;" class="items-a">' +
+            '<img src="' +
+            data[i] +
+            '" class="items-img"/>' +
+            '</a>';
+        }
+        else{
+          //为视频
+          video_num = i;
+          items += '<a href="javascript:;" class="items-a cal-video js-video">' +
+            '<img src="' +
+            data[i].poster +
+            '" class="items-img"/>' +
+            '<img src="' +
+            data[i].play +
+            '" class="items-img play"/>' +
+
+            /* '<video class="items-img" ' +
+             '" controls="controls" preload="metadata" ' +
+             'src="' +
+             data[i].url +
+             '"' +
+             'poster="' +
+             data[i].poster +
+             '"></video>' +*/
+            '</a>';
+        }
       }
 
-      else{
-        //为视频
-        video_num = i;
-        items += '<a href="javascript:;" class="items-a cal-video js-video">' +
-          '<img src="' +
-          data[i].poster +
-          '" class="items-img"/>' +
-          '<img src="' +
-          data[i].play +
-          '" class="items-img play"/>' +
-
-         /* '<video class="items-img" ' +
-          '" controls="controls" preload="metadata" ' +
-          'src="' +
-          data[i].url +
-          '"' +
-          'poster="' +
-          data[i].poster +
-          '"></video>' +*/
-          '</a>';
-      }
       items += '</div>';
       btns += '<li></li>';
 
