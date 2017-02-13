@@ -2492,6 +2492,11 @@
           color: $color-444;
           margin-bottom: 3%;
         }
+        a.more{
+          float: right;
+          display: inline-block;
+          color: $color-888;
+        }
 
       }
     }
@@ -2517,6 +2522,52 @@
     }
   }
 }
+.l-items-title{
+  margin: 3.125% 3.125% 0 3.125%;
+  padding-bottom: 3.125%;
+  border-bottom: 1px solid $color-dcdcdc;
+  .title{
+    margin-bottom: 3.125%;
+  }
+  .content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    div{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      width: 50%;
+    }
+    .temple{
+
+    }
+    .pos{
+
+    }
+  }
+}
+.l-items-container{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  .l-items{
+    -moz-box-flex: 1.0; /* Firefox */
+    -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+    box-flex: 1.0;
+    width: 25%;
+    .content{
+      margin: 12.5% 12.5% 0 ;
+      border: 1px solid $color-905641;
+      color: $color-905641;
+      border-radius: 4px;
+      text-align: center;
+      line-height: $font-size-t24;
+    }
+  }
+}
+
 .person-info{
   .upload{
     width: 75px;
