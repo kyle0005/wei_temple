@@ -1233,22 +1233,28 @@
   }
 
   .lightning-opts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     line-height: 35px;
     height: 35px;
     border-bottom: 1px solid $color-eee;
     span{
-      display: block;
-      width: 50%;
-      float: left;
-    }
-    .lightning-discount{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
       display: block;
       width: 70%;
-      float: left;
+      //float: left;
+    }
+    .lightning-discount{
+     /* display: block;
+      width: 70%;
+      float: left;*/
     }
     .lightning-right{
-      display: block;
-      float: right;
+      /*display: block;
+      float: right;*/
       width: 30%;
       line-height: 35px;
       height: 35px;
@@ -1256,11 +1262,11 @@
     }
 
     span.switch-container{
-      display: inline-block;
       float: right;
       width: 70px;
       height: 20px;
-      margin-top: 4px;
+      font-size: 0;
+      margin: 7.5px 0;
       input[type=checkbox] {
         &.switch{
           @include switchBtn();
@@ -1269,9 +1275,11 @@
     }
   }
   select.lightning-select{
-    float: right;
+    -webkit-box-flex: 1.0;
+    box-flex: 1.0;
+    display: block;
     width: 20%;
-    margin-left: 30%;
+    margin-left: 10%;
     border: none;
     background: url("../img/r_arr.png") no-repeat right center;
     background-size: 8px auto;
@@ -1415,7 +1423,7 @@
         position: relative;
         margin: 0 auto;
         width: 44.6875%;
-        padding-top: 29.375%;
+        padding-top: 22.375%;
         z-index: 1;
         img.buddha{
           position: relative;
