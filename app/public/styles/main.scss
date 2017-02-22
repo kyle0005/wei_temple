@@ -1417,6 +1417,8 @@
     &.v5{
       background: url("../img/light5.jpg") no-repeat top center;
       background-size: 100% auto;
+      height: auto;
+      min-height: 100%;
       .top{
         position: relative;
         margin: 0 auto;
@@ -1425,7 +1427,7 @@
         background: url("../img/v5_bg1.png") no-repeat top left;
         background-size: 100% auto;
         line-height: $font-size-t12;
-        color: $color-d9ba6a;
+        color: $color-d6b55f;
         writing-mode: vertical-rl;
         -webkit-writing-mode: vertical-rl;
         -ms-writing-mode: rl-tb;
@@ -1457,15 +1459,18 @@
           .right{
             position: absolute;
             top: 19.279%;
-            right: 6.5%;
+            right: 4.5%;
             width: 30%;
             p.line{
-              width: 20%;
+              width: 18%;
+              margin-right: 2%;
               .s{
-                color: $color-ffd8b6;
+                color: $color-fffcc8;
               }
               .c{
-                color: $color-ffd8b6;
+                display: inline-block;
+                margin-top: -8px;
+                color: $color-fffcc8;
                 font-size: $font-size-t13;
               }
               .n{
@@ -1478,6 +1483,7 @@
                 background-color: $color-d9ba6a;
                 border-radius: 50%;
                 color: $color-333;
+                vertical-align: bottom;
               }
             }
           }
@@ -1605,7 +1611,8 @@
       .bottom{
         margin:  0 auto;
         width: 88.2666666666666667%;
-        height: 2.3569%;
+        padding-bottom: 7.46666%;
+        //height: 2.3569%;
         background: url("../img/v5_outline_bottom.png") no-repeat top left;
         background-size: 100% auto;
       }
