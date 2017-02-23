@@ -1422,9 +1422,10 @@
       .top{
         position: relative;
         margin: 0 auto;
-        padding-bottom: 51.6%;
+        //padding-bottom: 51.6%;
+        padding-bottom: 49.866667%;
         width: 88.2666666666666667%;
-        background: url("../img/v5_bg1.png") no-repeat top left;
+        background: url("../img/v5_bg1_374.png") no-repeat top left;
         background-size: 100% auto;
         line-height: $font-size-t12;
         color: $color-d6b55f;
@@ -1465,6 +1466,8 @@
               width: 18%;
               margin-right: 2%;
               .s{
+                display: inline-block;
+                margin-top: -5px;
                 color: $color-fffcc8;
               }
               .c{
@@ -1475,7 +1478,7 @@
               }
               .n{
                 display: inline-block;
-                margin: 5px 0;
+                margin: 2px 0;
                 ext-combine-upright: all;
                 -ms-text-combine: horizontal;
                 -webkit-text-combine: horizontal;
@@ -1550,8 +1553,11 @@
           }
         }
         .words{
-          margin-bottom: 10px;
+          width: 74.7734%;
+          margin: 5px auto 15px;
           color: #d9ba6a;
+          line-height: $font-size-t14;
+          font-size: $font-size-t13;
         }
         .btn{
           position: relative;
