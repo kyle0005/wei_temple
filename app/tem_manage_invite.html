@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="black" name="apple-mobile-web-app-status-bar-style">
+  <meta name="format-detection" content="telephone=no">
+  <title>demo</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/main.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div class="wei-container">
+  <header class="wei-head clearfix">
+    <a href="javascript:;" class="wei-arr-container"><span class="wei-arrow-left"></span></a>
+    <span>我的邀请</span>
+  </header>
+  <section class="wei-content invite">
+    <div class="head">
+      <div>总共邀请12人</div>
+      <div>累计获得<span class="num">3600</span>福分</div>
+    </div>
+    <div>
+      <ul class="list">
+        <li>
+          <div class="items-a">
+            <div class="photo-container">
+              <img src="public/img/light5.jpg">
+            </div>
+          </div>
+          <div class="items-b overText">啊啊aaaaaaaaaaaaaaaaa啊啊啊啊</div>
+          <div class="items-c">13838384381</div>
+          <div class="items-d">2017-01-01</div>
+        </li>
+        <li>
+          <div class="items-a">
+            <div class="photo-container">
+              <img src="public/img/light5.jpg">
+            </div>
+          </div>
+          <div class="items-b overText">啊啊aaaaaaaaaaaaaaaaa啊啊啊啊</div>
+          <div class="items-c">13838384381</div>
+          <div class="items-d">2017-01-01</div>
+        </li>
+        <li>
+          <div class="items-a">
+            <div class="photo-container">
+              <img src="public/img/light5.jpg">
+            </div>
+          </div>
+          <div class="items-b overText">啊啊aaaaaaaaaaaaaaaaa啊啊啊啊</div>
+          <div class="items-c">13838384381</div>
+          <div class="items-d">2017-01-01</div>
+        </li>
+        <li>
+          <div class="items-a">
+            <div class="photo-container">
+              <img src="public/img/light5.jpg">
+            </div>
+          </div>
+          <div class="items-b overText">啊啊aaaaaaaaaaaaaaaaa啊啊啊啊</div>
+          <div class="items-c">13838384381</div>
+          <div class="items-d">2017-01-01</div>
+        </li>
+        <li>
+          <div class="items-a">
+            <div class="photo-container">
+              <img src="public/img/light5.jpg">
+            </div>
+          </div>
+          <div class="items-b overText">啊啊aaaaaaaaaaaaaaaaa啊啊啊啊</div>
+          <div class="items-c">13838384381</div>
+          <div class="items-d">2017-01-01</div>
+        </li>
+        <li>
+          <div class="items-a">
+            <div class="photo-container">
+              <img src="public/img/light5.jpg">
+            </div>
+          </div>
+          <div class="items-b overText">啊啊aaaaaaaaaaaaaaaaa啊啊啊啊</div>
+          <div class="items-c">13838384381</div>
+          <div class="items-d">2017-01-01</div>
+        </li>
+        <li>
+          <div class="items-a">
+            <div class="photo-container">
+              <img src="public/img/light5.jpg">
+            </div>
+          </div>
+          <div class="items-b overText">啊啊aaaaaaaaaaaaaaaaa啊啊啊啊</div>
+          <div class="items-c">13838384381</div>
+          <div class="items-d">2017-01-01</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+</div>
+<!-- build:js scripts/main.js -->
+<script src="public/scripts/jquery-3.0.0.js"></script>
+<!-- endbuild -->
+<script>
+  var config = {
+    min_pirce: 1.00,
+    max_price: 10000.00,
+    exchange_rate: 100
+  };
+  $(function () {
+    var _inf = $('#inf'),
+      _cash_price = $('#cash_price'),
+      _point = $('#point');
+    $.fn.update = function(value){
+      $(this).each(function(){
+        if(value!=this.value){
+          this.value = value;
+          set_point($(this));
+          set_total();
+        }
+      });
+    };
+
+    $('.items').click(function () {
+        $('.items').removeClass('chosen');
+        $(this).addClass('chosen');
+      var _v = $(this).data('val');
+      _inf.update(_v);
+      _inf.val(_v);
+      set_total();
+    });
+
+    _inf.change(function () {
+      set_point($(this));
+      set_total();
+    });
+
+    _inf.keyup(function () {
+      set_point($(this));
+      set_total();
+    });
+
+    function set_total() {
+      var val = _inf.val();
+      if(val == '' || val == null || isNaN(parseFloat(val))){
+        val = '0.00';
+      }
+      if(parseFloat(val)>config.max_price || parseFloat(val)< config.min_pirce){
+        return;
+      }
+      _cash_price.html('￥' + parseFloat(val));
+    }
+    function set_point(obj) {
+      var val = $(obj).val();
+      if(val == '' || val == null || isNaN(parseFloat(val))){
+        val = '0.00';
+      }
+      if(parseFloat(val)>config.max_price || parseFloat(val)< config.min_pirce){
+        return;
+      }
+      _point.html(parseInt((parseFloat(val) * parseFloat(config.exchange_rate)).toFixed(2)) + '分');
+    }
+
+
+  })
+</script>
+</body>
+</html>

@@ -3373,6 +3373,96 @@
   }
 }
 
+/* invite */
+.invite{
+  font-size: $font-size-t12;
+  font-weight: normal;
+  div{
+    background-color: $color-white;
+  }
+  .head{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 4.6875%;
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid $color-f8f8f8;
+    color: $color-666;
+    div{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      width: 50%;
+    }
+    div:last-child{
+      text-align: right;
+      .num{
+        color: $color-905641;
+      }
+    }
+  }
+  .list li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 4.6875%;
+    border-bottom: 1px solid $color-f8f8f8;
+    .items-a{
+      position: relative;
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      height: 60px;
+      line-height: 60px;
+      width: 11%;
+      .photo-container{
+        position: absolute;
+        top: 50%;
+        margin-top: -50%;
+        left: 0;
+        width: 100%;
+        padding-bottom: 100%;
+        img{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+      }
 
+    }
+    .items-b{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      height: 60px;
+      line-height: 60px;
+      width: 36%;
+      text-indent: 10px;
+    }
+    .items-c{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      height: 60px;
+      line-height: 60px;
+      width: 30%;
+      color: $color-888;
+    }
+    .items-d{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      height: 60px;
+      line-height: 60px;
+      width: 23%;
+      color: $color-888;
+    }
+
+  }
+}
 
 
