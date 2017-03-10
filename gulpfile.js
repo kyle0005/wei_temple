@@ -223,6 +223,10 @@ gulp.task('uglify_script', function() {
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
+  gulp.src('app/public/scripts/iscroll-probe.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
 });
 
 /* 单独压缩css */

@@ -8,6 +8,7 @@
 @import "LCalendar";
 @import "layer";
 @import "font";
+@import "iscroll";
 /* index */
 .wei-container{
   @extend %page;
@@ -23,6 +24,7 @@
 }
 .wei-head {
   position: relative;
+  z-index: 10;
   height: 44px;
   line-height: 44px;
   background-color: $color-white;
@@ -1273,6 +1275,17 @@
         }
       }
     }
+
+    select.words-select{
+      -webkit-box-flex: 1.0;
+      box-flex: 1.0;
+      display: block;
+      width: 100%;
+      border: none;
+      background: url("../img/arr_down.png") no-repeat right center;
+      background-size: 15px auto;
+      text-align: right;
+    }
   }
   select.lightning-select{
     -webkit-box-flex: 1.0;
@@ -1284,6 +1297,7 @@
     background: url("../img/r_arr.png") no-repeat right center;
     background-size: 8px auto;
   }
+
   input[type=checkbox].lightning-discount{
     -webkit-appearance: checkbox;
     vertical-align: middle;
@@ -1296,6 +1310,7 @@
     outline: none;
     margin-top: 10px;
     min-height: 60px;
+    display: none;
   }
 }
 
@@ -1429,9 +1444,9 @@
         background-size: 100% auto;
         line-height: $font-size-t12;
         color: $color-d6b55f;
-        writing-mode: vertical-rl;
+        /*writing-mode: vertical-rl;
         -webkit-writing-mode: vertical-rl;
-        -ms-writing-mode: rl-tb;
+        -ms-writing-mode: rl-tb;*/
         text-align: left;
         .container{
           position: absolute;
@@ -1442,9 +1457,15 @@
           .left{
             position: absolute;
             top: 20.8%;
-            left: 20.96%;
+            //left: 20.96%;
+            left: 23%;
             width: 12%;
+            .sp{
+              display: inline-block;
+              margin-bottom: 5px;
+            }
             p{
+              float: left;
               width: 50%;
             }
           }
@@ -1459,30 +1480,54 @@
           }
           .right{
             position: absolute;
-            top: 19.279%;
+            top: 12%;
             right: 4.5%;
             width: 30%;
+            height: 100%;
+            /*writing-mode: vertical-rl;
+        -webkit-writing-mode: vertical-rl;
+        -ms-writing-mode: rl-tb;*/
             p.line{
+              float: left;
               width: 18%;
               margin-right: 2%;
+              height: 100%;
               .s{
                 display: inline-block;
                 margin-top: -5px;
                 color: $color-fffcc8;
+                .mark-up{
+                  margin-top: 5px;
+                  width: $font-size-t12;
+                }
+                .mark-down{
+                  margin-bottom: 5px;
+                  width: $font-size-t12;
+                }
               }
               .c{
                 display: inline-block;
                 margin-top: -8px;
                 color: $color-fffcc8;
                 font-size: $font-size-t13;
+                .mark-up{
+                  margin-top: 5px;
+                  width: $font-size-t13;
+                }
+                .mark-down{
+                  margin-bottom: 5px;
+                  width: $font-size-t13;
+                }
               }
               .n{
                 display: inline-block;
                 margin: 2px 0;
-                ext-combine-upright: all;
+                width: $font-size-t12;
+                text-align: center;
+                /*ext-combine-upright: all;
                 -ms-text-combine: horizontal;
                 -webkit-text-combine: horizontal;
-                text-combine: horizontal;
+                text-combine: horizontal;*/
                 background-color: $color-d9ba6a;
                 border-radius: 50%;
                 color: $color-333;
@@ -1540,15 +1585,17 @@
         .text{
           position: absolute;
           top: 5.5%;
-          right: 5%;
+          right: 3%;
           width: 11%;
           line-height: 1.2rem;
           color: #d9ba6a;
-          writing-mode: vertical-rl;
+          word-break:normal;word-wrap:break-word;
+         /* writing-mode: vertical-rl;
           -webkit-writing-mode: vertical-rl;
-          -ms-writing-mode: rl-tb;
+          -ms-writing-mode: rl-tb;*/
           text-align: left;
           p{
+            float: left;
             width: 50%;
           }
         }
@@ -3375,12 +3422,17 @@
 
 /* invite */
 .invite{
+  position: relative;
   font-size: $font-size-t12;
   font-weight: normal;
+  overflow: hidden;
+  height: calc(100% - 44px);
+  background-color: $color-white;
   div{
     background-color: $color-white;
   }
   .head{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
