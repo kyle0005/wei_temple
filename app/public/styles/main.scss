@@ -350,8 +350,10 @@
 }
 /* temple_info */
 .art-container {
+  font-size: $font-size-t12;
   padding: 4.6875%;
   background-color: $color-f8f8f8;
+
   .title {
     font-size: $font-size-t14;
     margin-top: 0;
@@ -363,19 +365,19 @@
     margin: 0;
     color: $color-999;
     font-weight: normal;
-  }
-
-  .pic img {
-    width: 100%;
-    margin: 5px 0;
-  }
-
-  .vTitle-date {
-    margin-left: 15px;
+    font-size: $font-size-t12;
+    .vTitle-date {
+      margin-left: 15px;
+    }
   }
   .art-con{
-    line-height: 20px;
+    width: 100%;
+    img{
+      width: 100%;
+      margin: 5px 0;
+    }
   }
+
   .info-title{
     margin-top: 35px;
     font-size: $font-size-t14;
