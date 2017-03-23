@@ -1278,26 +1278,37 @@
       }
     }
 
+
+  }
+  .ws-con{
+    border-bottom: 1px solid $color-eee;
     select.words-select{
-      -webkit-box-flex: 1.0;
-      box-flex: 1.0;
-      display: block;
       width: 100%;
       border: none;
       background: url("../img/arr_down.png") no-repeat right center;
       background-size: 15px auto;
-      text-align: right;
+      min-height: 35px;
+      padding: 0;
+      white-space: normal;
+        option{
+          width: 100%;
+          overflow: hidden;
+          padding: 0;
+          white-space: normal;
+        }
     }
   }
+
   select.lightning-select{
-    -webkit-box-flex: 1.0;
-    box-flex: 1.0;
     display: block;
     width: 20%;
     margin-left: 10%;
     border: none;
     background: url("../img/r_arr.png") no-repeat right center;
     background-size: 8px auto;
+    min-height: 35px;
+    padding: 0;
+    white-space: normal;
   }
 
   input[type=checkbox].lightning-discount{
