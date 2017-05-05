@@ -96,7 +96,7 @@ gulp.task('extras', () => {
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 
-gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
+gulp.task('serve', ['styles', 'scripts'], () => {
   browserSync({
     notify: false,
     port: 9000,
@@ -112,13 +112,13 @@ gulp.task('serve', ['styles', 'scripts', 'fonts'], () => {
   gulp.watch([
     'app/*.html',
     'app/public/img/**/*',
-    '.tmp/public/fonts/**/*'
+    // '.tmp/public/fonts/**/*'
   ]).on('change', reload);
 
   gulp.watch('app/public/styles/**/*.scss', ['styles']);
   gulp.watch('app/public/scripts/**/*.js', ['scripts']);
-  gulp.watch('app/public/fonts/**/*', ['fonts']);
-  gulp.watch('bower.json', ['wiredep', 'fonts']);
+  // gulp.watch('app/public/fonts/**/*', ['fonts']);
+  // gulp.watch('bower.json', ['wiredep', 'fonts']);
 });
 
 gulp.task('serve:dist', () => {
@@ -165,7 +165,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
@@ -231,7 +231,22 @@ gulp.task('uglify_script', function() {
 
 /* 单独压缩css */
 gulp.task('uglify_css', function() {
-  return gulp.src('app/public/scripts/components/calendar/css/cal_common.css')
+  gulp.src('app/public/scripts/components/calendar/css/cal_common.css')
+    .pipe($.cssnano())
+    .pipe(gulp.dest('dist/css'));
+
+  gulp.src('app/public/styles/pc.scss')
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.']
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('.tmp/public/styles'))
+    .pipe(reload({stream: true}))
     .pipe($.cssnano())
     .pipe(gulp.dest('dist/css'));
 });
