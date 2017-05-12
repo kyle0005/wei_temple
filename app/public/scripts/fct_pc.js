@@ -1,4 +1,4 @@
-var YUEWEN = function(e, t, a) {
+var YUEWEN = function(e, t, a) {    //t:window
   var n = "active"
     , i = "reverse"
     , exports = {
@@ -357,7 +357,7 @@ var YUEWEN = function(e, t, a) {
       var i = null
         , r = null
         , s = a.el.copy;
-      if (s.length && "S" == t.SIZE) {
+      if (s.length && "S" == t.SIZE) {      //t:window
         var o = Math.round((s[0].scrollWidth - s.width()) / 2);
         s.scrollLeft(o),
           s.on("scroll", function() {

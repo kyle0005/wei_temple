@@ -1,4 +1,10 @@
 @charset "utf-8";
+@import "bootstrap.min.css";
+@import "fontawesome";
+@import "animate.css";
+a:focus, a:hover {
+  text-decoration: none;
+}
 $img-path:          "../img/fct";
 body, dd, dl, h1, h2, h3, h4, h5, h6, ol, p, ul {
   margin: 0
@@ -78,6 +84,9 @@ html:not(.S) body {
 }
 
 .yw-nav-a {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
   display: inline-block;
   height: 34px;
   line-height: 34px;
@@ -136,15 +145,15 @@ html:not(.S) body {
 }
 
 .yw-bar-fixed .yw-nav .yw-nav-a:hover {
-  color: #565657;
-  box-shadow: 0 1px #565657, 0 2px #565657, 0 3px #565657
+  color: #191e22;
+  box-shadow: 0 1px #191e22, 0 2px #191e22, 0 3px #191e22
 }
 
 .yw-bar-fixed .yw-nav > .active {
   color: #fff;
-  background-color: #565657;
-  box-shadow: 0 1px #565657, 0 2px #565657, 0 3px #565657;
-  border-bottom: 3px solid #565657;
+  background-color: #191e22;
+  box-shadow: 0 1px #191e22, 0 2px #191e22, 0 3px #191e22;
+  border-bottom: 3px solid #191e22;
   border-bottom: 0 rgba(0, 0, 0, 0)
 }
 
@@ -153,8 +162,8 @@ html:not(.S) body {
 }
 
 .yw-bar-fixed .yw-nav-btn {
-  color: #565657;
-  border-color: #565657
+  color: #191e22;
+  border-color: #191e22
 }
 
 .yw-bar-fixed .yw-nav-btn:hover {
@@ -192,8 +201,8 @@ html:not(.S) body {
 }
 
 .fixed .yw-nav-btn {
-  color: #565657;
-  border-color: #565657;
+  color: #191e22;
+  border-color: #191e22;
   text-shadow: none
 }
 
@@ -622,6 +631,9 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
 .yw-home-app .yw-tab-a:hover {
   color: #202425;
 }
+.yw-home-app .yw-tab-a:link, .yw-home-app .yw-tab-a:visited, .yw-home-app .yw-tab-a:active  {
+  text-decoration: none;
+}
 
 .yw-tab-bot-line {
   display: inline-block;
@@ -710,6 +722,10 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
   font-weight: 300;
   text-align: center;
   color: #fff
+}
+.yw-btn-blue:link, .yw-btn-blue:visited,.yw-btn-blue:hover, .yw-btn-blue:active  {
+  color: white;
+  text-decoration: none;
 }
 
 .yw-brand {
@@ -908,6 +924,10 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
   transition: opacity .25s;
   opacity: .3;
   filter: alpha(opacity=30)
+}
+.yw-brand-nav-a:link,.yw-brand-nav-a:visited,.yw-brand-nav-a:hover,.yw-brand-nav-a:active{
+  border-color: white;
+  color: white;
 }
 
 .yw-brand-nav-a[href^=jav] {
@@ -1269,6 +1289,9 @@ html[class*=win] .yw-contact-dd {
 }
 
 .yw-footer {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
   height: 50px;
   padding: 23px 0;
   line-height: 20px;
@@ -2770,3 +2793,18 @@ html[class*=win] .yw-contact-dd {
   font-family: 'PingFang SC', Arial;
   font-weight: 700
 }
+
+@import "admin.css";
+@import "webuploader.css";
+@import "webuploader-demo.min.css";
+/* admin-start */
+
+/* admin-end */
+
+@import "icheck.css";
+@import "datepicker3.css";
+//@import "summernote.css";
+//@import "summernote-bs3.css";
+/* form-start */
+
+/* form-end */
