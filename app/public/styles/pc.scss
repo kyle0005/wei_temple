@@ -2803,8 +2803,13 @@ html[class*=win] .yw-contact-dd {
 
 @import "icheck.css";
 @import "datepicker3.css";
-//@import "summernote.css";
-//@import "summernote-bs3.css";
+@import "summernote.css";
+@import "summernote-bs3.css";
 /* form-start */
 
 /* form-end */
+
+@import "dataTables.bootstrap.css";
+/* table-start */
+
+/* table-end */

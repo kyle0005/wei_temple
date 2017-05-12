@@ -603,6 +603,56 @@
       </div>
     </div>
   </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>百度Web Uploader</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="form_file_upload.html#">
+              <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="form_file_upload.html#">选项1</a>
+              </li>
+              <li><a href="form_file_upload.html#">选项2</a>
+              </li>
+            </ul>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+          <div class="page-container">
+            <p>您可以尝试文件拖拽，使用QQ截屏工具，然后激活窗口后粘贴，或者点击添加图片按钮，来体验此demo.</p>
+            <div id="uploader" class="wu-example">
+              <div class="queueList">
+                <div id="dndArea" class="placeholder">
+                  <div id="filePicker"></div>
+                  <p>或将照片拖到这里，单次最多可选300张</p>
+                </div>
+              </div>
+              <div class="statusBar" style="display:none;">
+                <div class="progress">
+                  <span class="text">0%</span>
+                  <span class="percentage"></span>
+                </div>
+                <div class="info"></div>
+                <div class="btns">
+                  <div id="filePicker2"></div>
+                  <div class="uploadBtn">开始上传</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <div id="modal-form" class="modal fade" aria-hidden="true">
@@ -654,9 +704,12 @@
 <script src="public/scripts/plugins/iCheck/icheck.min.js"></script>
 <script src="public/scripts/plugins/summernote/summernote.min.js"></script>
 <script src="public/scripts/plugins/summernote/summernote-zh-CN.js"></script>
+<script src="public/scripts/plugins/webuploader/webuploader.js"></script>
+<script src="public/scripts/webuploader-demo.min.js"></script>
 <script src="public/scripts/form-validate-demo.min.js"></script>
 <script src="public/scripts/form-advanced-demo.min.js"></script>
 <script>
+  var BASE_URL = 'public/scripts/plugins/webuploader';
   $(document).ready(function () {
     $('.i-checks').iCheck({
       checkboxClass: 'icheckbox_square-green',
