@@ -11,7 +11,7 @@
   <!-- endbuild -->
 </head>
 <body class="gray-bg">
-<div class="wrapper wrapper-content animated fadeInRight">
+<div class="wrapper wrapper-content animated">
   <div class="row">
     <div class="col-sm-8">
       <div class="ibox float-e-margins">
@@ -587,15 +587,12 @@
         <div class="ibox-content" id="eg">
 
           <div class="click2edit wrapper">
-            <h3>你好，子涵 </h3>
+            <h3>你好 </h3>
             <p>
               H+是一个完全响应式，基于Bootstrap3.3.5最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术，她提供了诸多的强大的可以重新组合的UI组件，并集成了最新的jQuery版本(v2.1.1)，当然，也集成了很多功能强大，用途广泛的就jQuery插件，她可以用于所有的Web应用程序，如<b>网站管理后台</b>，<b>网站会员中心</b>，<b>CMS</b>，<b>CRM</b>，<b>OA</b>等等，当然，您也可以对她进行深度定制，以做出更强系统。
             </p>
             <p>
               <b>当前版本：</b>v4.0.0
-            </p>
-            <p>
-              <b>定价：</b><span class="label label-warning">¥988（不开发票）</span>
             </p>
           </div>
 
@@ -607,7 +604,7 @@
     <div class="col-sm-12">
       <div class="ibox float-e-margins">
         <div class="ibox-title">
-          <h5>百度Web Uploader</h5>
+          <h5>文件上传</h5>
           <div class="ibox-tools">
             <a class="collapse-link">
               <i class="fa fa-chevron-up"></i>
@@ -627,27 +624,9 @@
           </div>
         </div>
         <div class="ibox-content">
-          <div class="page-container">
-            <p>您可以尝试文件拖拽，使用QQ截屏工具，然后激活窗口后粘贴，或者点击添加图片按钮，来体验此demo.</p>
-            <div id="uploader" class="wu-example">
-              <div class="queueList">
-                <div id="dndArea" class="placeholder">
-                  <div id="filePicker"></div>
-                  <p>或将照片拖到这里，单次最多可选300张</p>
-                </div>
-              </div>
-              <div class="statusBar" style="display:none;">
-                <div class="progress">
-                  <span class="text">0%</span>
-                  <span class="percentage"></span>
-                </div>
-                <div class="info"></div>
-                <div class="btns">
-                  <div id="filePicker2"></div>
-                  <div class="uploadBtn">开始上传</div>
-                </div>
-              </div>
-            </div>
+          <div id="dropzoneDemo" class="dropzone">
+            <div class="dropzone-previews"></div>
+            <button type="submit" class="btn btn-primary pull-right">提交</button>
           </div>
         </div>
       </div>
@@ -697,28 +676,17 @@
 <script src="public/scripts/jquery.min.js"></script>
 <script src="public/scripts/bootstrap.min.js"></script>
 <script src="public/scripts/content.min.js"></script>
-<script src="public/scripts/contabs.min.js"></script>
 <script src="public/scripts/plugins/validate/jquery.validate.min.js"></script>
 <script src="public/scripts/plugins/validate/messages_zh.min.js"></script>
 <script src="public/scripts/plugins/datapicker/bootstrap-datepicker.js"></script>
 <script src="public/scripts/plugins/iCheck/icheck.min.js"></script>
 <script src="public/scripts/plugins/summernote/summernote.min.js"></script>
 <script src="public/scripts/plugins/summernote/summernote-zh-CN.js"></script>
-<script src="public/scripts/plugins/webuploader/webuploader.js"></script>
-<script src="public/scripts/webuploader-demo.min.js"></script>
+<script src="public/scripts/plugins/dropzone/dropzone.js"></script>
+<script src="public/scripts/sortable.js"></script>
 <script src="public/scripts/form-validate-demo.min.js"></script>
 <script src="public/scripts/form-advanced-demo.min.js"></script>
 <script>
-  var BASE_URL = 'public/scripts/plugins/webuploader';
-  $(document).ready(function () {
-    $('.i-checks').iCheck({
-      checkboxClass: 'icheckbox_square-green',
-      radioClass: 'iradio_square-green',
-    });
-
-    $('.summernote').summernote({lang: 'zh-CN'});
-  })
-
   var edit = function () {
     $('#eg').addClass('no-padding')
     $('.click2edit').summernote({lang: 'zh-CN', focus: true})
@@ -728,6 +696,84 @@
     var aHTML = $('.click2edit').code()
     $('.click2edit').destroy()
   }
+  $(document).ready(function () {
+    $('.i-checks').iCheck({
+      checkboxClass: 'icheckbox_square-green',
+      radioClass: 'iradio_square-green',
+    });
+
+    $('.summernote').summernote({lang: 'zh-CN'});
+
+    Dropzone.autoDiscover = false;
+    var tem_str = '<div class=\"dz-preview sortable_img dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>';
+    $("div#dropzoneDemo").dropzone({
+      url:'fct_admin_form_basic.html#',
+      autoProcessQueue:false,
+      uploadMultiple:true,
+      parallelUploads:100,
+      maxFiles:100,
+      addRemoveLinks:true,
+      init:function(){
+        var myDropzone=this;
+        this.element.querySelector("button[type=submit]").addEventListener("click",function(e){
+          e.preventDefault();
+          e.stopPropagation();
+
+          var current_queue = [];
+          $('div.sortable_img').each( function(){
+            current_queue.push($(this).data('file'));
+          });
+
+          myDropzone.removeAllFiles();
+
+          for(i=0;i<current_queue.length;i++){
+            myDropzone.addFile(current_queue[i]);
+          }
+
+          myDropzone.processQueue()
+        });
+        /*this.on("sendingmultiple",function(){});
+        this.on("successmultiple",function(files,response){});
+        this.on("errormultiple",function(files,response){});
+
+        this.on("drop",function(files,response){
+          console.log('drop');
+        });
+        this.on("dragstart",function(files,response){
+          console.log('dragstart');
+        });
+        this.on("dragend",function(files,response){
+          console.log('dragend');
+        });
+        this.on("dragenter",function(files,response){
+          console.log('dragenter');
+        });
+        this.on("dragover",function(files,response){
+          console.log('dragover');
+        });
+        this.on("dragleave",function(files,response){
+          console.log('dragleave');
+        });*/
+
+        this.on('addedfile', function(file) {
+          $('div.sortable_img:last-of-type').data('file', file);
+        });
+
+      },
+      previewTemplate: tem_str
+    });
+
+    var el = document.getElementById('dropzoneDemo');
+    var sortable = new Sortable(el, {
+      animation: 150,
+      ghostClass: "sortable-ghost",
+      handle: '.dz-preview'
+    });
+  })
+
+
+
+
 </script>
 </body>
 </html>

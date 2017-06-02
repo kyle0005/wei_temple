@@ -2794,22 +2794,36 @@ html[class*=win] .yw-contact-dd {
   font-weight: 700
 }
 
-@import "admin.css";
-@import "webuploader.css";
-@import "webuploader-demo.min.css";
+
+
 /* admin-start */
-
-/* admin-end */
-
-@import "icheck.css";
+@import "dropzone";
+@import "icheck";
 @import "datepicker3.css";
 @import "summernote.css";
 @import "summernote-bs3.css";
-/* form-start */
-
-/* form-end */
-
 @import "dataTables.bootstrap.css";
-/* table-start */
+@import "admin";
+.sortable-ghost {
+  opacity: 0.4;
+  background-color: #F4E2C9;
+}
 
-/* table-end */
+.drop-tips{
+  position: absolute;
+  right: 0;
+  top:0;
+  a{
+    display: block;
+    padding: 0 10px 20px 10px;
+    min-height: 50px;
+    .label {
+      padding: 1px 5px 1px 5px;
+      position: absolute;
+      right: 0;
+      top: -6px;
+    }
+  }
+}
+
+/* admin-end */
