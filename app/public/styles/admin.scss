@@ -2996,7 +2996,7 @@ video {
 #wrapper {
   width: 100%;
   overflow-x: hidden;
-  background-color: #2f4050
+  //background-color: #2f4050
 }
 
 .wrapper {
@@ -3182,8 +3182,8 @@ nav.page-tabs .page-tabs-content {
 }
 
 #content-main {
-  height: calc(100% - 140px);
-  overflow: hidden
+  /*height: calc(100% - 140px);
+  overflow: hidden*/
 }
 
 .fixed-nav #content-main {

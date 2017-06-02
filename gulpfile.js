@@ -177,9 +177,9 @@ gulp.task('default', ['clean'], () => {
   gulp.start('build');
 });
 
-//单独压缩js
+/*单独压缩js*/
 gulp.task('uglify_script', function() {
-  gulp.src('app/public/scripts/carousel.js')
+  /*gulp.src('app/public/scripts/carousel.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
 
@@ -225,7 +225,33 @@ gulp.task('uglify_script', function() {
 
   gulp.src('app/public/scripts/iscroll-probe.js')
     .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));*/
+
+  gulp.src('app/public/scripts/sortable.js')
+    .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
+  gulp.src('app/public/scripts/layer.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+  gulp.src('app/public/scripts/fct_admin.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+  gulp.src('app/public/scripts/jtools.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+  gulp.src('app/public/scripts/content.min.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
+  // 压缩 js 文件
+// 在命令行使用 gulp script 启动此任务
+    // 1\. 找到文件
+  gulp.src('app/public/scripts/plugins/*.js')
+    .pipe($.concat('plugins.js'))
+  // 2\. 压缩文件
+    .pipe($.uglify())
+    // 3\. 另存压缩后的文件
+    .pipe(gulp.dest('dist/js'))
 
 });
 
@@ -236,6 +262,21 @@ gulp.task('uglify_css', function() {
     .pipe(gulp.dest('dist/css'));
 
   gulp.src('app/public/styles/pc.scss')
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.']
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('.tmp/public/styles'))
+    .pipe(reload({stream: true}))
+    .pipe($.cssnano())
+    .pipe(gulp.dest('dist/css'));
+
+  gulp.src('app/public/styles/pc_admin.scss')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
