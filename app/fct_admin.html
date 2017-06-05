@@ -724,7 +724,7 @@
               <div class="ibox-content">
                 <div id="dropzoneDemo" class="dropzone">
                   <div class="dropzone-previews"></div>
-                  <!--<button type="submit" class="btn btn-primary pull-right">提交</button>-->
+                  <input type="hidden" id="photos" name="photos">
                 </div>
               </div>
             </div>
@@ -929,11 +929,18 @@
       $('.summernote').summernote({lang: 'zh-CN'});
 
 
-      $('#dropzoneDemo').uploads({
-        'url': 'fct_admin.html',
-        'input': '',
-        'uploadWay': ''
-      });
+//      $('#dropzoneDemo').uploads({
+//        'url': 'fct_admin.html',
+//        'input': '',
+//        'uploadWay': ''
+//      });
+
+      var ele = $('#dropzoneDemo')[0];
+        webUploads(ele, {
+            url: 'lll',
+            input: '',
+            more: false,
+        });
       /*Dropzone.autoDiscover = false;
       var tem_str = '<div class=\"dz-preview sortable_img dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>';
       $("div#dropzoneDemo").dropzone({

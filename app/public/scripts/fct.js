@@ -271,24 +271,46 @@ var JQbox = {
           $(ele).dropzone({
               url:url,
               autoProcessQueue:true,
-              uploadMultiple:more,
               parallelUploads:100,
-              maxFiles:1,
+              thumbnailHeight: null,
+              maxFiles:more,
               init:function(){
                   var myDropzone=this;
               },
               success: function (file, response, e) {
-                  $(file.previewTemplate).children('.dz-success-mark').css('opacity', '1')
-                  var res = JSON.parse(response);
-                  if(res){
-                      var input = '<input type="hidden" name="up_file" value="' + res.data + '">';
-                      $(file.previewTemplate).append(input);
-                  }
+                  //  res.data = {
+                //             img_url: 'aaaaaaaaaaaa',
+                //             img_name: 'aads.png'
+                //        }
+                //
+
+                  // if(!more){
+                    var res = JSON.parse(response);
+                    if(res.data){
+                      var input = $('#photos');
+                      var imgs = [];
+                      imgs.push(res.data);
+                      input.val(imgs);
+                      // If the image is already a thumbnail:
+                      this.emit('thumbnail', file, res.data.img_url);
+
+                      // If it needs resizing:
+                      // this.createThumbnailFromUrl(file, res.data.img_url);
+                    }
+                  // }else {
+
+                  // }
+
               },
               error: function (file, errorMessage, xhr) {
                   $(file.previewTemplate).children('.dz-error-mark').css('opacity', '1')
                   console.log('error')
               },
+
+            maxfilesexceeded: function (file) {
+              this.removeAllFiles(file);
+              this.addFile(file);
+            },
               previewTemplate: tem_str
           });
 
