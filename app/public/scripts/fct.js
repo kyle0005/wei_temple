@@ -256,6 +256,7 @@ var JQbox = {
           var input = options.input;
           var url = options.url;
           var more = options.more || false;
+          var default_img = options.default_img || '';
 
           Dropzone.autoDiscover = false;
           var tem_str = '<div class=\"dz-preview sortable_img dz-file-preview\">\n  ' +
@@ -276,6 +277,12 @@ var JQbox = {
               maxFiles:more,
               init:function(){
                   var myDropzone=this;
+
+                  for(var i=0;i<default_img.length;i++){
+                    myDropzone.emit("addedfile", default_img[i]);
+                    myDropzone.emit("thumbnail", default_img[i], default_img[i].img_url);
+                  }
+
               },
               success: function (file, response, e) {
                   //  res.data = {
@@ -308,8 +315,13 @@ var JQbox = {
               },
 
             maxfilesexceeded: function (file) {
-              this.removeAllFiles(file);
-              this.addFile(file);
+                if(parseInt(this.maxFiles) == 1){
+                  this.removeAllFiles(file);
+                  this.addFile(file);
+                }else {
+                  this.removeFile(file);
+                }
+
             },
               previewTemplate: tem_str
           });
@@ -323,6 +335,7 @@ var JQbox = {
             url: '',
             input: '',
             more: false,
+          default_img: ''
 
         };
         var options = $.extend({}, defaults, opt);
