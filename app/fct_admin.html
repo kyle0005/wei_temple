@@ -13,7 +13,7 @@
   <meta http-equiv="refresh" content="0;ie.html" />
   <![endif]-->
   <!-- build:css styles/main.css -->
-  <link rel="stylesheet" href="styles/pc_admin.css">
+  <link rel="stylesheet" href="public/styles/pc_admin.css">
   <!-- endbuild -->
 </head>
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -724,7 +724,7 @@
               <div class="ibox-content">
                 <div id="dropzoneDemo" class="dropzone">
                   <div class="dropzone-previews"></div>
-                  <button type="submit" class="btn btn-primary pull-right">提交</button>
+                  <!--<button type="submit" class="btn btn-primary pull-right">提交</button>-->
                 </div>
               </div>
             </div>
@@ -778,14 +778,24 @@
   </div>
   <!--右侧部分结束-->
 </div>
-<script src="scripts/jquery.min.js"></script>
-<script src="scripts/bootstrap.min.js"></script>
-<script src="scripts/jtools.js"></script>
-<script src="scripts/fct_admin.js"></script>
-<script src="scripts/content.min.js"></script>
-<script src="scripts/plugins.js"></script>
-<script src="scripts/sortable.js"></script>
-<script src="scripts/layer.js"></script>
+<script src="public/scripts/jquery.min.js"></script>
+<script src="public/scripts/bootstrap.min.js"></script>
+<script src="public/scripts/plugins/jtools.js"></script>
+<script src="public/scripts/fct_admin.js"></script>
+<script src="public/scripts/content.min.js"></script>
+<script src="public/scripts/plugins/bootstrap-datepicker.js"></script>
+  <script src="public/scripts/plugins/jquery.dataTables.js"></script>
+  <!--<script src="public/scripts/dataTables.bootstrap.js"></script>-->
+  <script src="public/scripts/plugins/dropzone.js"></script>
+  <script src="public/scripts/plugins/icheck.min.js"></script>
+  <script src="public/scripts/plugins/jquery.jeditable.js"></script>
+  <script src="public/scripts/plugins/jquery.validate.min.js"></script>
+  <script src="public/scripts/plugins/messages_zh.min.js"></script>
+  <script src="public/scripts/plugins/summernote.min.js"></script>
+  <script src="public/scripts/plugins/summernote-zh-CN.js"></script>
+<script src="public/scripts/sortable.js"></script>
+<script src="public/scripts/layer.js"></script>
+  <script src="public/scripts/fct.js"></script>
 <script>
 
   $('.js-btn').on('click', function(){
@@ -918,7 +928,13 @@
 
       $('.summernote').summernote({lang: 'zh-CN'});
 
-      Dropzone.autoDiscover = false;
+
+      $('#dropzoneDemo').uploads({
+        'url': 'fct_admin.html',
+        'input': '',
+        'uploadWay': ''
+      });
+      /*Dropzone.autoDiscover = false;
       var tem_str = '<div class=\"dz-preview sortable_img dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>';
       $("div#dropzoneDemo").dropzone({
         url:'fct_admin_form_basic.html#',
@@ -927,24 +943,33 @@
         parallelUploads:100,
         maxFiles:100,
         addRemoveLinks:true,
+        sending: function(file, xhr, formData) {
+          formData.append("filesize", file.size);
+        },
         init:function(){
           var myDropzone=this;
-          this.element.querySelector("button[type=submit]").addEventListener("click",function(e){
-            e.preventDefault();
-            e.stopPropagation();
+           this.element.querySelector("button[type=submit]").addEventListener("click",function(e){
+           e.preventDefault();
+           e.stopPropagation();
 
-            var current_queue = [];
-            $('div.sortable_img').each( function(){
-              current_queue.push($(this).data('file'));
-            });
+           var current_queue = [];
+           $('div.sortable_img').each( function(){
+           current_queue.push($(this).data('file'));
+           });
 
-            myDropzone.removeAllFiles();
+           myDropzone.removeAllFiles();
 
-            for(i=0;i<current_queue.length;i++){
-              myDropzone.addFile(current_queue[i]);
-            }
+           for(var i=0;i<current_queue.length;i++){
+           myDropzone.addFile(current_queue[i]);
+           }
 
-            myDropzone.processQueue()
+           myDropzone.processQueue()
+           });
+           this.on('addedfile', function(file) {
+           // $('div.sortable_img:last-of-type').data('file', file);
+           myDropzone.processQueue()
+
+           });
           });
 
           this.on('addedfile', function(file) {
@@ -960,7 +985,7 @@
         animation: 150,
         ghostClass: "sortable-ghost",
         handle: '.dz-preview'
-      });
+      }); */
 
     })
 

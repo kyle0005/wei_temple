@@ -236,9 +236,6 @@ gulp.task('uglify_script', function() {
   gulp.src('app/public/scripts/fct_admin.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
-  gulp.src('app/public/scripts/jtools.js')
-    .pipe($.uglify())
-    .pipe(gulp.dest('dist/js'));
   gulp.src('app/public/scripts/content.min.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
@@ -247,7 +244,7 @@ gulp.task('uglify_script', function() {
 // 在命令行使用 gulp script 启动此任务
     // 1\. 找到文件
   gulp.src('app/public/scripts/plugins/*.js')
-    .pipe($.concat('plugins.js'))
+    .pipe($.concat('jtools.js'))
   // 2\. 压缩文件
     .pipe($.uglify())
     // 3\. 另存压缩后的文件
