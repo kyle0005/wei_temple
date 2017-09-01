@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="public/styles/fct_index.css">
+  <!-- endbuild -->
+</head>
+<body>
+<div id="app" class="wei-content">
+  <div class="index-container">
+    <div class="btns">
+      <div class="enter">
+        <router-link to="/main">
+          <span>进入商城</span>
+        </router-link>
+      </div>
+      <div class="download">
+        <router-link to="">
+          <span>下载APP</span>
+        </router-link>
+      </div>
+    </div>
+    <!--<m-swipe swipeid="swipe" ref="swiper" :autoplay="3000" effect="slide">-->
+    <!--<div v-for="top in tops" class="swiper-slide" slot="swiper-con">-->
+    <!--<img :data-src="top.image" class="swiper-lazy silde-img">-->
+    <!--</div>-->
+    <!--</m-swipe>-->
+  </div>
+</div>
+<script src="vue.js"></script>
+<script>
+  import axios from 'axios'
+//  import swipe from './../../components/swipe/swipe'
+  import api from './../../api/index'
+
+
+  new Vue({
+  }).$mount('#app');
+
+
+  export default {
+    computed: {
+      ...mapState({
+        circle: state => state.circleFlag,
+      })
+    },
+    mounted: function() {
+      this.getList();
+      let swiper = this.$refs.swiper;
+      if (swiper.dom) {
+        this.swiper = swiper.dom;
+      }
+    },
+    activated() {
+      if (this.swiper) {
+        this.swiper.startAutoplay();
+      }
+    },
+    deactivated() {
+      this.loop = false;
+      if (this.swiper) {
+        this.swiper.stopAutoplay();
+      }
+    },
+    data() {
+      return {
+        refreshing: false,
+        trigger: null,
+        loading: false,
+        count: 1,
+        scroller: null,
+        list: [],
+        swiper: "",
+        tops: []
+      }
+    },
+    watch: {
+      '$route' (to, from) {
+
+      }
+    },
+    methods: {
+      getList() {
+        let vue = this;
+        api.getSlideResource().then(function(response) {
+          vue.tops = response.data.data;
+          vue.list.push(response.data);
+          vue.loading = false;
+        });
+
+      },
+    },
+    components: {
+      'm-swipe': swipe
+    }
+  }
+</script>
+</body>
+</html>

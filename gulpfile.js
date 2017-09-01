@@ -6,7 +6,7 @@ const del = require('del');
 const wiredep = require('wiredep').stream;
 
 const $ = gulpLoadPlugins();
-const reload = browserSync.reload;
+// const reload = browserSync.reload;
 
 gulp.task('styles', () => {
   return gulp.src('app/public/styles/*.scss')
@@ -19,8 +19,8 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/public/styles'))
-    .pipe(reload({stream: true}));
+    .pipe(gulp.dest('.tmp/public/styles'));
+    // .pipe(reload({stream: true}));
 });
 
 gulp.task('scripts', () => {
@@ -29,13 +29,13 @@ gulp.task('scripts', () => {
     .pipe($.sourcemaps.init())
     .pipe($.babel())
     .pipe($.sourcemaps.write('.'))
-    .pipe(gulp.dest('.tmp/public/scripts'))
-    .pipe(reload({stream: true}));
+    .pipe(gulp.dest('.tmp/public/scripts'));
+    // .pipe(reload({stream: true}));
 });
 
 function lint(files, options) {
   return gulp.src(files)
-    .pipe(reload({stream: true, once: true}))
+    // .pipe(reload({stream: true, once: true}))
     .pipe($.eslint(options))
     .pipe($.eslint.format())
     .pipe($.if(!browserSync.active, $.eslint.failAfterError()));
@@ -99,7 +99,7 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 gulp.task('serve', ['styles', 'scripts'], () => {
   browserSync({
     notify: false,
-    port: 9000,
+    port: 9003,
     server: {
       baseDir: ['.tmp', 'app'],
       routes: {
@@ -109,11 +109,11 @@ gulp.task('serve', ['styles', 'scripts'], () => {
     }
   });
 
-  gulp.watch([
-    'app/*.html',
-    'app/public/img/**/*',
-    // '.tmp/public/fonts/**/*'
-  ]).on('change', reload);
+  // gulp.watch([
+  //   'app/*.html',
+  //   'app/public/img/**/*',
+  //   // '.tmp/public/fonts/**/*'
+  // ]).on('change', reload);
 
   gulp.watch('app/public/styles/**/*.scss', ['styles']);
   gulp.watch('app/public/scripts/**/*.js', ['scripts']);
@@ -134,7 +134,7 @@ gulp.task('serve:dist', () => {
 gulp.task('serve:test', ['scripts'], () => {
   browserSync({
     notify: false,
-    port: 9000,
+    port: 9003,
     ui: false,
     server: {
       baseDir: 'test',
@@ -146,7 +146,7 @@ gulp.task('serve:test', ['scripts'], () => {
   });
 
   gulp.watch('app/scripts/**/*.js', ['scripts']);
-  gulp.watch('test/spec/**/*.js').on('change', reload);
+  // gulp.watch('test/spec/**/*.js').on('change', reload);
   gulp.watch('test/spec/**/*.js', ['lint:test']);
 });
 
@@ -227,7 +227,7 @@ gulp.task('uglify_script', function() {
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));*/
 
-  gulp.src('app/public/scripts/sortable.js')
+/*  gulp.src('app/public/scripts/sortable.js')
     .pipe($.uglify())
     .pipe(gulp.dest('dist/js'));
   gulp.src('app/public/scripts/layer.js')
@@ -243,20 +243,47 @@ gulp.task('uglify_script', function() {
   // 压缩 js 文件
 // 在命令行使用 gulp script 启动此任务
     // 1\. 找到文件
-  gulp.src('app/public/scripts/plugins/*.js')
+  gulp.src('app/public/scripts/plugins/!*.js')
     .pipe($.concat('jtools.js'))
   // 2\. 压缩文件
     .pipe($.uglify())
     // 3\. 另存压缩后的文件
-    .pipe(gulp.dest('dist/js'))
+    .pipe(gulp.dest('dist/js'))*/
+
+/*  gulp.src('app/public/scripts/fastclick.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));*/
+
+  gulp.src('app/public/scripts/fct_pc.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));
+
+/*  gulp.src('app/public/scripts/layer.js')
+    .pipe($.uglify())
+    .pipe(gulp.dest('dist/js'));*/
 
 });
 
 /* 单独压缩css */
 gulp.task('uglify_css', function() {
-  gulp.src('app/public/scripts/components/calendar/css/cal_common.css')
-    .pipe($.cssnano())
-    .pipe(gulp.dest('dist/css'));
+  // gulp.src('app/public/scripts/components/calendar/css/cal_common.css')
+  //   .pipe($.cssnano())
+  //   .pipe(gulp.dest('dist/css'));
+
+  // gulp.src('app/public/styles/dropzone.scss')
+  //   .pipe($.plumber())
+  //   .pipe($.sourcemaps.init())
+  //   .pipe($.sass.sync({
+  //     outputStyle: 'expanded',
+  //     precision: 10,
+  //     includePaths: ['.']
+  //   }).on('error', $.sass.logError))
+  //   .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+  //   .pipe($.sourcemaps.write())
+  //   .pipe(gulp.dest('.tmp/public/styles'))
+  //   .pipe(reload({stream: true}))
+  //   .pipe($.cssnano())
+  //   .pipe(gulp.dest('dist/css'));
 
   gulp.src('app/public/styles/pc.scss')
     .pipe($.plumber())
@@ -269,22 +296,22 @@ gulp.task('uglify_css', function() {
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
     .pipe(gulp.dest('.tmp/public/styles'))
-    .pipe(reload({stream: true}))
+    // .pipe(reload({stream: true}))
     .pipe($.cssnano())
     .pipe(gulp.dest('dist/css'));
 
-  gulp.src('app/public/styles/pc_admin.scss')
-    .pipe($.plumber())
-    .pipe($.sourcemaps.init())
-    .pipe($.sass.sync({
-      outputStyle: 'expanded',
-      precision: 10,
-      includePaths: ['.']
-    }).on('error', $.sass.logError))
-    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
-    .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/public/styles'))
-    .pipe(reload({stream: true}))
-    .pipe($.cssnano())
-    .pipe(gulp.dest('dist/css'));
+  // gulp.src('app/public/styles/pc_admin.scss')
+  //   .pipe($.plumber())
+  //   .pipe($.sourcemaps.init())
+  //   .pipe($.sass.sync({
+  //     outputStyle: 'expanded',
+  //     precision: 10,
+  //     includePaths: ['.']
+  //   }).on('error', $.sass.logError))
+  //   .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+  //   .pipe($.sourcemaps.write())
+  //   .pipe(gulp.dest('.tmp/public/styles'))
+  //   .pipe(reload({stream: true}))
+  //   .pipe($.cssnano())
+  //   .pipe(gulp.dest('dist/css'));
 });

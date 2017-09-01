@@ -1,0 +1,97 @@
+@import "variables";
+#wrapper {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #f8f8f8;
+  overflow: hidden;
+  #scroller {
+    position: absolute;
+    z-index: 1;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    width: 100%;
+    -webkit-transform: translateZ(0);
+    -moz-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    -o-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    -o-text-size-adjust: none;
+    text-size-adjust: none;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      text-align: left;
+    }
+    #pullDown, #pullUp {
+      background: #fff;
+      height: 20px;
+      line-height: 20px;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: #888;
+      width: 120px;
+      margin: 0 auto;
+      /*visibility: hidden;*/
+    }
+
+    #pullDown .pullDownIcon, #pullUp .pullUpIcon {
+      display: block;
+      float: left;
+      width: 20px;
+      height: 20px;
+      background: url(#{$img-path}/pull-icon.png) 0 0 no-repeat;
+      -webkit-background-size: 20px 40px;
+      background-size: 20px 40px;
+      -webkit-transition-property: -webkit-transform;
+      -webkit-transition-duration: 250ms
+    }
+
+    #pullDown .pullDownIcon {
+      -webkit-transform: rotate(0deg) translateZ(0)
+    }
+
+    #pullUp .pullUpIcon {
+      -webkit-transform: rotate(-180deg) translateZ(0)
+    }
+
+    #pullDown.flip .pullDownIcon {
+      -webkit-transform: rotate(-180deg) translateZ(0)
+    }
+
+    #pullUp.flip .pullUpIcon {
+      -webkit-transform: rotate(0deg) translateZ(0)
+    }
+
+    #pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+      background-position: 0 100%;
+      -webkit-transform: rotate(0deg) translateZ(0);
+      -webkit-transition-duration: 0ms;
+      -webkit-animation-name: loading;
+      -webkit-animation-duration: 2s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear
+    }
+  }
+}
+
+@-webkit-keyframes loading {
+  from {
+    -webkit-transform: rotate(0deg) translateZ(0)
+  }
+  to {
+    -webkit-transform: rotate(360deg) translateZ(0)
+  }
+}

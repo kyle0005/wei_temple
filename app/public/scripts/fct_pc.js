@@ -412,7 +412,7 @@ var YUEWEN = function(e, t, a) {    //t:window
       }
       return a
     },
-    getNews: function() {
+    /*getNews: function() {
       var a = this
         , n = a.urlNewsList
         , i = $("#tempNews")
@@ -549,6 +549,178 @@ var YUEWEN = function(e, t, a) {    //t:window
         })
       }
       return a
+    },*/
+    getNews: function() {
+      var a = this
+        , n = a.urlNewsList
+        , r = $("#yw-news-x")
+        , s = $("#newsLoading")
+        , c = $("#ywNewslay")
+        , d = $("#news-list"),
+        _detail = $("#news-detail"),
+        pager = {};
+
+      $(document).on( "click", ".jsShut",function() {
+        c.hide(),d.hide(),_detail.hide();
+        "S" != t.SIZE && (e.documentElement.style.overflow = "",
+          $(e.body).css("border-right", "0"))
+      });
+      var h = function(e) {
+        return '<p class="yw-news-fn">' + e + "</p>"
+      }
+        , u = h("已全部加载完毕");
+      $(document).on( "click",".jsLayMore", function() {
+        var e = $(this)
+          , t = e.attr("data-page");
+        if(pager.next > 0){
+          e.html("加载中..."),
+            $.ajax({
+              url: n + '?page=' + t,
+              data: {
+                more: 1,
+                page: t
+              },
+              success: function(t) {
+                d.append(t.data.entries);
+                pager = e,data.pager;
+              },
+              complete: function() {
+                e.html("查看更多")
+              },
+              error: function() {
+                e.before(h("网络异常，没有加载成功")).remove()
+              }
+            })
+        }
+        else {
+          d.append('<div>没有更多了...</div>');
+        }
+
+      });
+      $(document).on( "click", "#moreNews", function() {
+        /*
+        "news": {
+         "message": "xxx",
+         "url": "",
+         "code": 200,
+         "data": {
+         "entries": "<div class="yw-news-li">
+         <div class="yw-news-detail">
+         <h5 class="yw-news-title"><a href="http://mp.weixin.qq.com/s/pNZ4awBB_wPKmD3LatUlmg" target="_blank">阅文集团白金作家叶非夜：找回创作的初心</a>
+         </h5>
+         <div class="yw-news-time">
+         <span class="yw-news-tag">人物</span>
+         <time>2017-07-25</time>
+         </div>
+         <p class="yw-news-sum">阅文集团白金作家，高人气IP《国民老公带回家》原著作者叶非夜对即将召开的中国网络文学大会表示很期待，并讲述了她在网络文学行业发展中的心路历程，愿以初心做好该做的事。</p>
+         <p class="yw-news-more">
+         <a href="http://mp.weixin.qq.com/s/pNZ4awBB_wPKmD3LatUlmg" target="_blank" class="yw-news-more-a">阅读更多
+         &gt;</a>
+         </p>
+         </div>
+         </div>
+         <div class="yw-news-li">
+         <div class="yw-news-detail">
+         <h5 class="yw-news-title"><a href="http://mp.weixin.qq.com/s/vyiPbc6cT39XD7JS6wN2rg" target="_blank">阅文集团大神作家国王陛下：写出正能量的作品是网文作者的社会担当</a>
+         </h5>
+         <div class="yw-news-time">
+         <span class="yw-news-tag">人物</span>
+         <time>2017-07-25</time>
+         </div>
+         <p class="yw-news-sum">阅文集团大神作家，知名仙侠作品《从前有座灵剑山》作者国王陛下在中国网络文学大会召开前夕受访，表示能够写出一部让大家喜欢的正能量作品就是作为一个网文作者的社会担当。</p>
+         <p class="yw-news-more">
+         <a href="http://mp.weixin.qq.com/s/vyiPbc6cT39XD7JS6wN2rg" target="_blank" class="yw-news-more-a">阅读更多
+         &gt;</a>
+         </p>
+         </div>
+         </div>
+         <div class="yw-news-li">
+         <div class="yw-news-detail">
+         <h5 class="yw-news-title"><a href="http://mp.weixin.qq.com/s/FAE_woZzQTfJNdFEj5ZkwQ" target="_blank">阅文大数据洞察：女性向市场升级趋势</a>
+         </h5>
+         <div class="yw-news-time">
+         <span class="yw-news-tag">报告</span>
+         <time>2017-07-04</time>
+         </div>
+         <p class="yw-news-sum">
+         中国正在步入“她时代”。随着女性收入及社会地位的提高，以女性为中心的消费主义成为新的潮流。娱乐方式的多元化、内容产业的扩大和细分，带动这股风潮从消费市场蔓延到文化娱乐市场，垂直女性内容正在成为下一个风口。<br>作为新兴的内容细分领域，女性内容产业正在经历新的结构升级。“她”们拥有什么样的内容消费习惯，需要什么样的产品？通过对内容产业源头——数字阅读女性用户的盘点和分析，我们能能够深入了解，“她时代”内容应该如何迭代。
+         </p>
+         <p class="yw-news-more">
+         <a href="http://mp.weixin.qq.com/s/FAE_woZzQTfJNdFEj5ZkwQ" target="_blank" class="yw-news-more-a">阅读更多
+         &gt;</a>
+         </p>
+         </div>
+         </div>",
+         "pager": {
+         "prev": 0,
+         "current": 1,
+         "next": 1,
+         "page_size": 20,
+         "total_page": 1,
+         "total": 1
+         }
+         }
+         }, */
+        e.documentElement.style.overflow = "hidden";
+        var i = {
+          more: 1,
+          page: $(this).attr("data-page")
+        };
+        d.show();
+        c.show();
+        $.ajax({
+          url: n + '?page=' + i.page,
+          data: i,
+          success: function(e) {
+            if (0 == e.code) {
+              d.html(e.data.entries);
+              pager = e,data.pager;
+            } else{
+              // d.html('<div class="error">' + (e.msg || "网络异常，稍后重试") + "</div>")
+            }
+          },
+          error: function() {
+            // d.html('<div class="error">网络异常，稍后重试</div>')
+          }
+        })
+      });
+      $(document).on( "click", ".news-link", function() {
+        var _this = $(this);
+        if(_this.data('urltype') == 0){
+          /* 跳转 */
+          location.href = _this.data('url');
+        }else {
+          /* 1: 弹窗显示详情 */
+          $.ajax({
+            url:  _this.data('url'),
+            success: function(e) {
+              if (0 == e.code) {
+                _detail.html(e.data.data);
+              } else{
+                // d.html('<div class="error">' + (e.msg || "网络异常，稍后重试") + "</div>")
+              }
+            },
+            error: function() {
+              // d.html('<div class="error">网络异常，稍后重试</div>')
+            }
+          })
+          var display =c.css('display');
+          if(display == 'none'){    /* 判断是否已经弹窗 */
+            e.documentElement.style.overflow = "hidden";
+            _detail.show();
+            // d.hide();
+            c.show();
+          }
+          else {
+            d.hide();
+            _detail.show();
+          }
+        }
+
+
+
+      })
+      return a
     },
     showImage: function(e) {
       var t = this
@@ -631,8 +803,8 @@ var YUEWEN = function(e, t, a) {    //t:window
       e.slideHomeHeader(),
         e.scrollBarFixed(),
         e.slideHomeApp(),
-        e.slideBrand(),
-        e.tapHomeCopy();
+        e.slideBrand();
+        // e.tapHomeCopy();
       var a;
       return "S" == t.SIZE && (a = e.el.barNav || $("#ywMnavBtn"),
         $("#ywMnav").click(function() {

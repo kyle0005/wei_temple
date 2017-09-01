@@ -1,0 +1,104 @@
+@import "common";
+.login-container{
+  @extend %page;
+  background-color: $color-f2f2f2;
+  .logo{
+    width: 100%;
+    padding-bottom: 24%;
+    background: url("#{$img-path}/category1.png") no-repeat center center;
+    background-size: 15% auto;
+  }
+  .form-data{
+    background-color: $color-white;
+      .items{
+        line-height: 47.5px;
+        .left{
+          float: left;
+          width: 16%;
+          text-align: center;
+          i{
+            color: $color-666;
+            font-size: $font-size-t24;
+            vertical-align: middle;
+          }
+          img{
+            width: 20px;
+          }
+        }
+        .right{
+          position: relative;
+          margin-left: 16%;
+          input{
+            width: 90%;
+            border: none;
+            outline: none;
+            color: $color-1d1d1d;
+            &::-webkit-input-placeholder { /* WebKit browsers */
+              color: $color-666;
+            }
+            &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+              color: $color-666;
+            }
+            &::-moz-placeholder { /* Mozilla Firefox 19+ */
+              color: $color-666;
+            }
+            &:-ms-input-placeholder { /* Internet Explorer 10+ */
+              color: $color-666;
+            }
+
+          }
+          input.q{
+            width: 60%;
+          }
+          .code-container{
+            position: absolute;
+            top: 0;
+            right: 5%;
+            width: 25.3968%;
+            a.get-code{
+              @include wei-bg-btn($color-1d1d1d, $color-white, $color-1d1d1d, 28px, 28px, $font-size-t12);
+              @include fillet(false);
+            }
+          }
+
+        }
+      }
+    }
+  .log-btn{
+    margin: 5.333% 4% 2.666%;
+    .sub{
+      @include wei-bg-btn($color-white, $color-1d1d1d, $color-1d1d1d, 40px, 40px, $font-size-t12);
+      @include fillet(false);
+    }
+  }
+  .options{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 4%;
+    a{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      display: inline-block;
+      color: $color-8a8a8a;
+    }
+  }
+  .others{
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    width: 100%;
+    color: $color-333;
+    font-size: $font-size-t14;
+    text-align: center;
+    a{
+      display: inline-block;
+      margin: 0 3.2%;
+      width: 11.733%;
+      img{
+        width: 100%;
+      }
+    }
+  }
+}

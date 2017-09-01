@@ -1,4 +1,4 @@
-﻿
+
 var JQCheck = {
     load: function () {
         //给checkbox提供全选
@@ -277,11 +277,29 @@ var JQbox = {
               maxFiles:more,
               init:function(){
                   var myDropzone=this;
-
+                myDropzone.on("thumbnail", function(file, dataUrl) {
+                  $(file.previewTemplate).children('.fork-remove').attr('data-imgurl', dataUrl);
+                });
                   for(var i=0;i<default_img.length;i++){
                     myDropzone.emit("addedfile", default_img[i]);
                     myDropzone.emit("thumbnail", default_img[i], default_img[i].img_url);
+
                   }
+
+                // myDropzone.on("addedfile", function(file) {
+                //   $(file.previewTemplate).children('.fork-remove').data('imgurl', file.dataUrl);
+                // });
+
+                myDropzone.on("maxfilesexceeded", function(file) {
+                  if(parseInt(myDropzone.options.maxFiles) == 1){
+                    console.log(1)
+                    myDropzone.removeAllFiles();
+                    myDropzone.addFile(file);
+                  }else {
+                    myDropzone.removeFile(file);
+                    console.log(2)
+                  }
+                });
 
               },
               success: function (file, response, e) {
@@ -292,15 +310,15 @@ var JQbox = {
                 //
 
                   // if(!more){
+                console.log(response)
                     var res = JSON.parse(response);
                     if(res.data){
-                      var input = $('#photos');
                       var imgs = [];
                       imgs.push(res.data);
                       input.val(imgs);
                       // If the image is already a thumbnail:
                       this.emit('thumbnail', file, res.data.img_url);
-
+                      $(file.previewTemplate).children('.fork-remove').attr('data-imgurl', res.data.img_url);
                       // If it needs resizing:
                       // this.createThumbnailFromUrl(file, res.data.img_url);
                     }
@@ -314,14 +332,25 @@ var JQbox = {
                   console.log('error')
               },
 
-            maxfilesexceeded: function (file) {
-                if(parseInt(this.maxFiles) == 1){
-                  this.removeAllFiles(file);
-                  this.addFile(file);
-                }else {
-                  this.removeFile(file);
+            // maxfilesreached: function (file) {
+            //     if(parseInt(this.maxFiles) == 1){
+            //       this.removeAllFiles();
+            //       // this.addFile(file);
+            //     }else {
+            //       this.removeFile(file);
+            //     }
+            //
+            // },
+            removedfile: function (file) {
+              var url = $(file.previewTemplate).children('.fork-remove').data('imgurl');
+              var del_img = input.val();
+              for(var i=0;i<del_img.length;i++){
+                if(url == del_img[i].img_url)
+                {
+                  del_img.splice(1, i);
+                  input.val(del_img);
                 }
-
+              }
             },
               previewTemplate: tem_str
           });
@@ -342,7 +371,8 @@ var JQbox = {
 
         dropZoneUploads.init(ele, options);
 
-        var sortable = new Sortable(ele, {
+
+        var sortable = new Sortable($(ele)[0], {
           animation: 150,
           ghostClass: "sortable-ghost",
           handle: '.dz-preview'

@@ -1,0 +1,157 @@
+@import 'variables';
+%page{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-size: $font-size-t12;
+  font-weight: normal;
+}
+
+%clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    display: table;
+    line-height: 0;
+    content: "";
+  }
+;
+  &:after {
+    clear: both;
+  }
+;
+}
+
+%wei-btn {
+  width: calc(100% - 2px);
+  display: inline-block;
+  text-align: center;
+  border: 1px solid $color-white;
+
+  margin: 0 auto;
+}
+
+@mixin fillet($flag) {
+  @if $flag == true {
+    border-radius: $border-radius-base;
+  } @else {
+    border-radius: $border-radius-none;
+  }
+}
+
+@mixin clearfix() {
+  @extend %clearfix;
+}
+
+@mixin overTextH($line:2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+@mixin wei-bg-btn($color: $color-333, $bg-color: $color-white, $border-color: $color-ccc,
+ $height: 30px, $line-height: 30px, $font-size: $font-size-t14) {
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    @extend %wei-btn;
+    color: $color;
+    border: 1px solid $border-color;
+    background-color: $bg-color;
+    height: $height;
+    line-height: $line-height;
+    font-size: $font-size;
+  }
+}
+
+@mixin wei-arrow($direction, $color: $color-black, $x: 10px, $y: 2px) {
+  $left: 0;
+  $right: 0;
+  $rotate: 45;
+  position: absolute;
+  display: block;
+  top: 45%;
+  left: 3px;
+  height: $x;
+  width: $y;
+  background-color: $color;
+
+  @if $direction == 'left' {
+    $rotate: -45;
+    $left: 0;
+    $right: 'auto';
+  } @else if $direction == 'right' {
+    $rotate: 45;
+    $left: 'auto';
+    $right: 0;
+  } @else if $direction == 'up' {
+    $rotate: 45;
+    $left: 0;
+    $right: 'auto';
+  } @else if $direction == 'down' {
+    $rotate: 135;
+    $left: 'auto';
+    $right: 0;
+  }
+  transform: rotate(#{$rotate}deg) translateZ(0);
+  -ms-transform: rotate(#{$rotate}deg) translateZ(0);
+  -moz-transform: rotate(#{$rotate}deg) translateZ(0);
+  -webkit-transform: rotate(#{$rotate}deg) translateZ(0);
+  -o-transform: rotate(#{$rotate}deg) translateZ(0);
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: $left;
+    right: $right;
+    top: 0;
+    height: $y;
+    width: $x;
+    background-color: $color;
+  }
+;
+}
+
+@mixin switchBtn($btn-bg-color: $color-white, $bg-color: $color-white,
+$check-bg-color: $color-905641, $btn-radius: 4px, $bg-radius: 4px) {
+    &:before{
+      content: '';
+      width: 50%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: $btn-radius;
+      background-color: $btn-bg-color;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+      transition: left .3s;
+    }
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-color: $bg-color;
+    box-shadow: #dfdfdf 0 0 0 0 inset;
+    border-radius: $bg-radius;
+    border: 1px solid $color-ccc;
+    background-clip: content-box;
+    display: inline-block;
+    -webkit-appearance: none;
+    user-select: none;
+    outline: 0;
+    transition: border cubic-bezier(0, 0, 0, 1) .4s, box-shadow cubic-bezier(0, 0, 0, 1) .4s;
+    &:checked{
+      &:before{
+        left: 50%;
+        transition: left .3s;
+      }
+      border-color: $check-bg-color;
+      box-shadow: $check-bg-color 0 0 0 16px inset;
+      background-color: $check-bg-color;
+      transition: border ease .4s, box-shadow ease .4s, background-color ease 1.2s;
+    }
+
+}

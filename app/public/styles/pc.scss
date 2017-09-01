@@ -42,6 +42,9 @@ html:not(.S) body {
 .S .yw-copyright .yw-home-h3 {
   margin-top: 0
 }
+.yw-copyright{
+  //width: 1920px;
+}
 
 .yw-header {
   height: 511px;
@@ -61,10 +64,10 @@ html:not(.S) body {
 
 .yw-logo {
   position: absolute;
-  top: 21px;
+  top: 15px;
   width: 138px;
   height: 44px;
-  background: url('#{$img-path}/fct-logo.png') no-repeat;
+  background: url('#{$img-path}/fct-logo-n.png') no-repeat;
   -webkit-transform-origin: left center;
   transform-origin: left center;
   z-index: 1
@@ -472,7 +475,8 @@ html:not(.S) body {
 }
 
 .yw-copy-x {
-  height: 512px;
+  //height: 512px;
+  padding-bottom: calc(512/1730*100%);
   margin-top: 48px;
   position: relative;
   overflow: hidden
@@ -496,15 +500,18 @@ html:not(.S) body {
 .yw-copy-center {
   position: absolute;
   height: 100%;
-  width: 2880px;
+  width: 100%;
   top: 0;
   left: 50%;
-  margin-left: -1440px;
-  transition: transform .25s
+  transform: translateX(-50%);
+  //margin-left: -1440px;
+  //transition: transform .25s
 }
 
 .yw-copy-li {
-  width: 320px;
+  position: relative;
+  width: calc(100%/6);
+  height: 100%;
   background-color: #eee;
   float: left
 }
@@ -515,11 +522,11 @@ html:not(.S) body {
 }
 
 .yw-copy-part-s {
-  height: 192px
+  height: calc(192/512*100%);
 }
 
 .yw-copy-part-l {
-  height: 320px
+  height: calc(320/512*100%);
 }
 
 .yw-copy-part-l .yw-ip-img {
@@ -723,6 +730,12 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
   text-align: center;
   color: #fff
 }
+.yw-btn-blue.jsLayMore{
+  margin-bottom: 20px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  //margin: 0 auto;
+}
 .yw-btn-blue:link, .yw-btn-blue:visited,.yw-btn-blue:hover, .yw-btn-blue:active  {
   color: white;
   text-decoration: none;
@@ -909,6 +922,7 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
   display: inline-block;
   width: 100px;
   height: 100px;
+  text-align: center;
   border-radius: 50%;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -924,6 +938,11 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
   transition: opacity .25s;
   opacity: .3;
   filter: alpha(opacity=30)
+}
+.yw-brand-nav-a > img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
 }
 .yw-brand-nav-a:link,.yw-brand-nav-a:visited,.yw-brand-nav-a:hover,.yw-brand-nav-a:active{
   border-color: white;
@@ -1093,7 +1112,7 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
   left: 0;
   width: 100%;
   height: 50px;
-  background-image: linear-gradient(to bottom, #fff, hsla(0, 0%, 100%, 0));
+  //background-image: linear-gradient(to bottom, #fff, hsla(0, 0%, 100%, 0));
   border-radius: inherit;
   z-index: 1
 }
@@ -1120,6 +1139,12 @@ html:not(.S) .yw-copy-part:hover .yw-mid-con {
   overflow: auto
 }
 
+.news-list > .error{
+  text-align: center;
+}
+.news-list{
+  display: none;
+}
 .yw-news-lay-x > a, .yw-news-lay-x > p {
   margin-bottom: 60px
 }
@@ -1356,7 +1381,7 @@ html[class*=win] .yw-contact-dd {
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
   .yw-logo {
     background-size: 138px 89px;
-    background-image: url('#{$img-path}/fct-logo@2x.png'), none
+    background-image: url('#{$img-path}/fct-logo-n-2x.png'), none
   }
 
   .icon-share {
@@ -2437,9 +2462,10 @@ html[class*=win] .yw-contact-dd {
 }
 
 .yw-overlay .yw-mid-con {
-  width: 200px;
-  height: 200px;
-  background: #fff url('#{$img-path}/loading.gif') no-repeat center;
+  width: 960px;
+  height: 90%;
+  //background: #fff url('#{$img-path}/loading.gif') no-repeat center;
+  background-color: #fff;
   text-align: center;
   -webkit-transition: all .25s;
   transition: all .25s;

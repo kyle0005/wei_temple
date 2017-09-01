@@ -1,0 +1,44 @@
+@import "common";
+.main-container{
+  @extend %page;
+  height: auto;
+  background-color: $color-f2f2f2;
+  .cat-container{
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    &::-webkit-scrollbar{
+      display: none;
+    }
+    ul.category{
+      list-style-type: none;
+      white-space: nowrap;
+      li.item{
+        display: inline-block;
+        width: 113px;
+        padding: 20px 0;
+        text-align: center;
+        img {
+          display: block;
+          margin: 0 auto;
+          width: 35%
+        }
+      }
+    }
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-active {
+    opacity: 0;
+  }
+  .fade-choose-enter-active, .fade-choose-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-choose-leave, .fade-choose-leave-active {
+    display: none;
+  }
+  .fade-choose-enter, .fade-choose-leave-active {
+    opacity: 0;
+  }
+
+}

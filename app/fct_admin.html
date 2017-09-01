@@ -109,7 +109,7 @@
       </nav>
     </div>
     <div class="row J_mainContent" id="content-main">
-      <div class="wrapper wrapper-content animated">
+      <div class="wrapper wrapper-content animated bodyContent">
         <div class="row">
           <div class="col-sm-8">
             <div class="ibox float-e-margins">
@@ -730,6 +730,93 @@
             </div>
           </div>
         </div>
+        <div class="row">
+          <div class="col-sm-12">
+              <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                  <h5>文件上传</h5>
+                  <div class="ibox-tools">
+                    <a class="collapse-link">
+                      <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="form_file_upload.html#">
+                      <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                      <li><a href="form_file_upload.html#">选项1</a>
+                      </li>
+                      <li><a href="form_file_upload.html#">选项2</a>
+                      </li>
+                    </ul>
+                    <a class="close-link">
+                      <i class="fa fa-times"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="ibox-content">
+                  <form action="" class="form-horizontal m-t">
+                    <div class="form-group">
+                    <label class="col-sm-2 control-label">规格：</label>
+                    <div class="col-sm-8 m-b">
+                      <table class="table table-hover">
+                        <thead>
+                        <tr>
+                          <th>名称</th>
+                          <th>编号</th>
+                          <th>市场价</th>
+                          <th>销售价</th>
+                          <th>佣金</th>
+                          <th>库存</th>
+                          <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody id="extend-row">
+                        </tbody>
+                        <tbody id="extend-template">
+                        <tr>
+                          <td>
+                            <input name="extname" type="text" class="form-control" disabled="disabled" value="默认规格" placeholder="宝贝规格名称">
+                          </td>
+                          <td>
+                            <input name="code" th:value="${goods.code}" type="text" class="form-control" />
+                          </td>
+                          <td>
+                            <div class="input-group">
+                              <span class="input-group-addon">¥</span>
+                              <input name="marketPrice" class="form-control" type="number" th:value="${goods.marketPrice}">
+                            </div>
+                          </td>
+                          <td>
+                            <div class="input-group">
+                              <span class="input-group-addon">¥</span>
+                              <input name="salePrice" th:value="${goods.salePrice}" type="number" class="form-control" />
+                            </div>
+                          </td>
+                          <td>
+                            <div class="input-group">
+                              <span class="input-group-addon">¥</span>
+                              <input name="commission" th:value="${goods.commission}" type="number" class="form-control" />
+                            </div>
+                          </td>
+                          <td>
+                            <input name="stockCount" th:value="${goods.stockCount}" type="number" class="form-control" />
+                          </td>
+                          <td>
+                            <a href="javascript:;" class="is-remove btn btn-warning" style="display:inline-block; margin-top: -10px;">删除</a>
+                          </td>
+                        </tr>
+                        </tbody>
+                      </table>
+
+                    </div>
+                  </div>
+                  </form>
+                </div>
+              </div>
+
+
+          </div>
+        </div>
       </div>
       <div id="modal-form" class="modal fade" aria-hidden="true">
         <div class="modal-dialog">
@@ -935,12 +1022,20 @@
 //        'uploadWay': ''
 //      });
 
-      var ele = $('#dropzoneDemo')[0];
-        webUploads(ele, {
-            url: 'lll',
-            input: '',
-            more: 10,
-          default_img: [{img_url: 'aaa', img_name: 'asdas.png'},{img_url: 'aaa', img_name: 'asdas.png'}{img_url: 'aaa', img_name: 'asdas.png'}]   //默认已经上传的图片
+        webUploads($('#dropzoneDemo'), {
+            url: 'http://localhost:3000/data',
+            input: $('#photos'),
+            more: 5,
+          default_img: [
+            {
+              name: 'aaa',
+              img_url: 'http://localhost:9003/public/img/pro1.png'
+            },
+            {
+              name: 'bbb',
+              img_url: 'http://localhost:9003/public/img/pro2.png'
+            }
+          ]  //默认已经上传的图片
         });
       /*Dropzone.autoDiscover = false;
       var tem_str = '<div class=\"dz-preview sortable_img dz-file-preview\">\n  <div class=\"dz-details\">\n    <div class=\"dz-filename\"><span data-dz-name></span></div>\n    <div class=\"dz-size\" data-dz-size></div>\n    <img data-dz-thumbnail />\n  </div>\n  <div class=\"dz-progress\"><span class=\"dz-upload\" data-dz-uploadprogress></span></div>\n  <div class=\"dz-success-mark\"><span>✔</span></div>\n  <div class=\"dz-error-mark\"><span>✘</span></div>\n  <div class=\"dz-error-message\"><span data-dz-errormessage></span></div>\n</div>';

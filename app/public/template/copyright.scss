@@ -1,0 +1,20 @@
+@import "common";
+.copyright-container{
+  width: 100%;
+  background-color: $color-f2f2f2;
+  .info{
+    padding: 4%;
+    line-height: $font-size-t24;
+    -webkit-transform: scale(.88);
+    transform: scale(.88);
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+    color: $color-666;
+    a.law{
+      color: $color-5555e4;
+    }
+    .bottom{
+      color: $color-bdbdbd;
+    }
+  }
+}

@@ -1,0 +1,131 @@
+@import "variables";
+@import "normalize";
+@import "fontawesome";
+@import "mixins";
+html, body{
+  font-size: $font-size-base;
+  width: 100%;
+  height: 100%;
+  line-height: $line-height-base;
+  color: $color-333;
+  background-color: $color-white;
+  //包括min-height，不包括max-height值
+  @media screen and (min-width: 320px){
+    font-size: $font-size-base;
+  }
+  @media screen and (min-width: 360px){
+    font-size: 70.3125%;
+  }
+  @media screen and (min-width: 375px) {
+    font-size: 73.2421875%;
+  }
+  @media screen and (min-width: 384px){
+    font-size: 75%;
+  }
+  @media screen and (min-width: 412px){
+    font-size: 80.46875%;
+  }
+  @media screen and (min-width: 414px) {
+    font-size: 80.859375%;
+  }
+  @media screen and (min-width: 480px){
+    font-size: 93.75%;
+  }
+  @media screen and (min-width: 533px){
+    font-size: 104.1015625%;
+  }
+  @media screen and (min-width: 568px) {
+    font-size: 110.9375%;
+  }
+  @media screen and (min-width: 600px) {
+    font-size: 117.1875%;
+  }
+  @media screen and (min-width: 640px){
+    font-size: 125%;
+  }
+  @media screen and (min-width: 667px){
+    font-size: 130.2734375%;
+  }
+  @media screen and (min-width: 732px) {
+    font-size: 142.96875%;
+  }
+  @media screen and (min-width: 736px) {
+    font-size: 143.75%;
+  }
+  @media screen and (min-width: 768px) {
+    font-size: 150%;
+  }
+  @media screen and (min-width: 800px) {
+    font-size: 156.25%;
+  }
+
+}
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea {
+  margin: 0;
+  padding: 0;
+}
+
+ul, ol, li {
+  list-style: none;
+}
+
+img {
+  border: 0;
+  vertical-align: middle;
+}
+
+input, select, textarea {
+  appearance:none;
+  -webkit-appearance: none;
+  -moz-appearance:none;
+}
+
+a {
+  &,
+  &:link,
+  &:visited,
+  &:hover,
+  &:active {
+    color: $color-333;
+    text-decoration: none;
+    background-color: initial;
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.clearfix {
+  @include clearfix();
+}
+
+/* chrome默认边框去除 */
+input:focus, select:focus, textarea:focus {
+  outline: 0
+}
+
+/* 文本文字超过三行以省略号显示 */
+.overTextH3 {
+  @include overTextH(3);
+}
+
+/* 文本文字超过两行以省略号显示 */
+.overTextH2 {
+  @include overTextH(2);
+}
+
+/* 文本文字一行内超过容器以省略号显示 */
+.overText {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.wei-content{
+  @extend %page;
+}

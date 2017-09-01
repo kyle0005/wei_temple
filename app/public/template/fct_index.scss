@@ -1,0 +1,42 @@
+@import "common";
+.index-container{
+  @extend %page;
+  background-color: $color-f2f2f2;
+  .btns{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    div{
+      -moz-box-flex: 1.0; /* Firefox */
+      -webkit-box-flex: 1.0; /* Safari 和 Chrome */
+      box-flex: 1.0;
+      width: 40%;
+      padding-top: 5%;
+    }
+    .enter {
+      padding-right: 3%;
+      a{
+        $bg-color: initial;
+        @include wei-bg-btn($color-black, $bg-color, $color-black, 35px, 35px, $font-size-t12);
+        @include fillet(false); /* 圆角 */
+      }
+    }
+    .download {
+      padding-left: 3%;
+      a{
+        $bg-color: initial;
+        @include wei-bg-btn($color-white, $color-black, $color-black, 35px, 35px, $font-size-t12);
+        @include fillet(false); /* 圆角 */
+      }
+
+    }
+  }
+  img.silde-img{
+    width: 100%;
+  }
+}
