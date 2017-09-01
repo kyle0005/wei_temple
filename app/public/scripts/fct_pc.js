@@ -576,13 +576,16 @@ var YUEWEN = function(e, t, a) {    //t:window
           e.html("加载中..."),
             $.ajax({
               url: n + '?page=' + t,
+              dataType: 'json',
               data: {
                 more: 1,
                 page: t
               },
               success: function(t) {
-                d.append(t.data.entries);
-                pager = e,data.pager;
+                if (200 == t.code) {
+                  d.append(t.data.entries);
+                  pager = t.data.pager;
+                }
               },
               complete: function() {
                 e.html("查看更多")
@@ -671,10 +674,11 @@ var YUEWEN = function(e, t, a) {    //t:window
         $.ajax({
           url: n + '?page=' + i.page,
           data: i,
+          dataType: 'json',
           success: function(e) {
-            if (0 == e.code) {
+            if (200 == e.code) {
               d.html(e.data.entries);
-              pager = e,data.pager;
+              pager = e.data.pager;
             } else{
               // d.html('<div class="error">' + (e.msg || "网络异常，稍后重试") + "</div>")
             }
@@ -693,9 +697,10 @@ var YUEWEN = function(e, t, a) {    //t:window
           /* 1: 弹窗显示详情 */
           $.ajax({
             url:  _this.data('url'),
+            dataType: 'json',
             success: function(e) {
-              if (0 == e.code) {
-                _detail.html(e.data.data);
+              if (200 == e.code) {
+                _detail.html(e.data);
               } else{
                 // d.html('<div class="error">' + (e.msg || "网络异常，稍后重试") + "</div>")
               }
