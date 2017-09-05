@@ -255,9 +255,20 @@ var YUEWEN = function(e, t, a) {    //t:window
       return this
     },
     showQr: function() {
-      $(".jsLoadQr").on("mouseover mouseout", function(e) {
+/*      $(".jsLoadQr").on("mouseover mouseout", function(e) {
         "mouseover" == e.type ? $(".jsPicQr").css("display", "block") : "mouseout" == e.type && $(".jsPicQr").css("display", "none")
-      })
+      });*/
+
+      $(document).on("click",".pop-btn", function() {
+        var e = $(this);
+        if(e.parents('.check-code').find('.qrcode-contianer').css('display') == 'block'){
+          e.parents('.check-code').find('.qrcode-contianer').hide();
+        }else {
+          e.parents('.check-code').find('.qrcode-contianer').show();
+        }
+
+      });
+
     },
     scrollBarFixed: function() {
       var a = this
@@ -558,10 +569,11 @@ var YUEWEN = function(e, t, a) {    //t:window
         , c = $("#ywNewslay")
         , d = $("#news-list"),
         _detail = $("#news-detail"),
+        _back = $("#back"),
         pager = {};
 
       $(document).on( "click", ".jsShut",function() {
-        c.hide(),d.hide(),_detail.hide();
+        c.hide(),d.hide(),_detail.hide(),_back.hide();
         "S" != t.SIZE && (e.documentElement.style.overflow = "",
           $(e.body).css("border-right", "0"))
       });
@@ -695,6 +707,7 @@ var YUEWEN = function(e, t, a) {    //t:window
           location.href = _this.data('url');
         }else {
           /* 1: 弹窗显示详情 */
+          _back.show();
           $.ajax({
             url:  _this.data('url'),
             dataType: 'json',
@@ -722,9 +735,52 @@ var YUEWEN = function(e, t, a) {    //t:window
           }
         }
 
+        return false;
+
+      });
+      $(document).on( "click", ".js-opt", function() {
+        var _this = $(this);
+          $.ajax({
+            url:  _this.data('url'),
+            dataType: 'json',
+            success: function(e) {
+              if (200 == e.code) {
+                _detail.html(e.data);
+              } else{
+                // d.html('<div class="error">' + (e.msg || "网络异常，稍后重试") + "</div>")
+              }
+            },
+            error: function() {
+              // d.html('<div class="error">网络异常，稍后重试</div>')
+            }
+          })
 
 
-      })
+
+      });
+      $(document).on( "click", "#back", function() {
+        var _this = $(this);
+        $.ajax({
+          url: n + '?page=1',
+          dataType: 'json',
+          success: function(e) {
+            if (200 == e.code) {
+              d.html(e.data.entries);
+              pager = e.data.pager;
+              _detail.hide();
+              d.show();
+              _back.hide();
+            } else{
+              // d.html('<div class="error">' + (e.msg || "网络异常，稍后重试") + "</div>")
+            }
+          },
+          error: function() {
+            // d.html('<div class="error">网络异常，稍后重试</div>')
+          }
+        })
+
+      });
+
       return a
     },
     showImage: function(e) {
@@ -816,7 +872,7 @@ var YUEWEN = function(e, t, a) {    //t:window
           a.removeClass(n)
         })),
         e.getNews(),
-        e
+        e.showQr();
     },
     eventsApp: function() {
       var e = this
