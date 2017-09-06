@@ -423,144 +423,6 @@ var YUEWEN = function(e, t, a) {    //t:window
       }
       return a
     },
-    /*getNews: function() {
-      var a = this
-        , n = a.urlNewsList
-        , i = $("#tempNews")
-        , r = i.parent()
-        , s = $("#newsLoading")
-        , o = i.html();
-      $.template = function(e, t) {
-        return e.replace(/\$\w+\$/gi, function(e) {
-          var a = t[e.replace(/\$/g, "")];
-          return a + "" == "undefined" ? "" : a
-        })
-      }
-      ;
-      var l = function(e) {
-        return $.map(e, function(e) {
-          return $.each(e, function(t, a) {
-            e[t] = a.replace(/<|&|>/g, function(e) {
-              return {
-                "<": "&lt;",
-                ">": "&gt;",
-                "&": "&amp;"
-              }[e]
-            }),
-              "created_at" == t ? e[t] = e[t].split(" ")[0] : "desc" == t && (e[t] = e[t].replace(/\r|\n/g, "<br>"))
-          }),
-            $.template(o, e)
-        }).join("")
-      }
-        , c = $("#ywNewslay")
-        , d = c.children("div");
-      c.delegate(".jsShut", "click", function() {
-        c.hide(),
-        "S" != t.SIZE && (e.documentElement.style.overflow = "",
-          $(e.body).css("border-right", "0"))
-      });
-      var h = function(e) {
-        return '<p class="yw-news-fn">' + e + "</p>"
-      }
-        , u = h("已全部加载完毕");
-      if (c.delegate(".jsLayMore", "click", function() {
-          var e = $(this)
-            , t = e.attr("data-page");
-          e.html("加载中..."),
-            $.ajax({
-              url: n,
-              dataType: "json",
-              data: {
-                more: 1,
-                page: t
-              },
-              success: function(t) {
-                var a = t.data && t.data.listInfo
-                  , n = t.data && t.data.pageInfo;
-                if (0 == t.code && a && a.length > 0 && n) {
-                  var i = l(a);
-                  return e.before(i),
-                    void (n.pageIndex >= n.pageMax ? e.before(u).remove() : e.attr("data-page", n.pageIndex + 1))
-                }
-                e.before(u).remove()
-              },
-              complete: function() {
-                e.html("查看更多")
-              },
-              error: function() {
-                e.before(h("网络异常，没有加载成功")).remove()
-              }
-            })
-        }),
-          r.delegate("a[data-page]", "click", function() {
-            var i = {
-              more: 1,
-              page: $(this).attr("data-page")
-            };
-            if (c.show(),
-              "S" != t.SIZE) {
-              var r = 17;
-              "number" == typeof t.innerWidth && (r = t.innerWidth - e.documentElement.clientWidth),
-                e.documentElement.style.overflow = "hidden",
-                $(e.body).css("border-right", r + "px solid transparent")
-            }
-            var s = "yw-news-lay";
-            d.hasClass(s) || $.ajax({
-              url: n,
-              dataType: "json",
-              data: i,
-              success: function(e) {
-                if (0 == e.code) {
-                  var n = ""
-                    , i = [];
-                  if (e.data && e.data.listInfo) {
-                    i = e.data.listInfo;
-                    var r = e.data.pageInfo || {
-                        totalCount: 0,
-                        pageIndex: 1,
-                        pageNum: 2,
-                        pageMax: 1
-                      };
-                    n = l(i),
-                      r.pageIndex < r.pageMax ? n = n + '<a href="javascript:" class="yw-btn-blue jsLayMore" data-page="' + (r.pageIndex + 1) + '">查看更多</a>' : n += u
-                  } else
-                    n = l(a.jsonNews);
-                  d.addClass(s),
-                    "S" == t.SIZE ? d.css({
-                      width: window.innerWidth - 20,
-                      height: window.innerHeight - 20
-                    }) : d.css({
-                      width: 960,
-                      height: "90%"
-                    }),
-                    n = '<a href="javascript:" class="' + s + '-shut jsShut">×</a><div class="' + s + '-x">' + n + "</div>",
-                    history.pushState ? setTimeout(function() {
-                      d.html(n)
-                    }, 250) : d.html(n)
-                } else
-                  d.html('<div class="error">' + (e.msg || "网络异常，稍后重试") + "</div>")
-              },
-              error: function() {
-                d.html('<div class="error">网络异常，稍后重试</div>')
-              }
-            })
-          }),
-          n) {
-        var f = "新闻内容没能获取成功，" + ([].map ? '<a href="javascript:" onclick="$(this).parent().empty();YUEWEN.getNews();" style="color:#019EE4;">点击这里</a>重试。' : '<a href="">刷新</a>重试。');
-        $.ajax({
-          url: n,
-          dataType: "json",
-          success: function(e) {
-            0 == e.code ? e.data && e.data.length ? (r.html(l(e.data) + '<a href="javascript:" class="yw-btn-blue" data-page="1">查看更多 &gt;</a>'),
-              a.jsonNews = e.data) : s.html("新闻已下架，编辑正在更新内容，请稍等...") : s.html(e.msg || f)
-          },
-          error: function() {
-            s.html(f)
-          }
-        })
-      }
-      return a
-    },*/
     getNews: function() {
       var a = this
         , n = a.urlNewsList
@@ -915,13 +777,22 @@ var YUEWEN = function(e, t, a) {    //t:window
     },
     init: function() {
       var e = this;
+      e.loadVideo();
       return e.el.container = "S" == t.SIZE ? $("#ywPage") : $(t),
         e.el.header = $("#ywHeader"),
         e.el.dots = $("#hdDotX a"),
         t.APP ? e.eventsApp() : e.eventsHome(),
         e.eventsGlobal(),
         e
-    }
+    },
+    loadVideo: function () {
+      var _this = $(this), _poster = $('.js-poster'), _video = $('video.js-v').get(0);
+      $(document).on( "click", ".js-poster",function() {
+        _poster.hide();
+        _video.src = $('video.js-v').data('src');
+        _video.play();
+      });
+    },
   };
   return exports
 }(document, window);
