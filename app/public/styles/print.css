@@ -1,0 +1,245 @@
+.wei-btn {
+  width: 98%;
+  display: inline-block;
+  text-align: center;
+  border: 1px solid #ffffff;
+  height: auto;
+  font-size: 14px;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+a.unfillet-btn{
+  border-radius: 0;
+}
+a.wei-btn:link, a.wei-btn:visited, a.wei-btn:hover, a.wei-btn:active{
+  text-decoration: none;
+}
+.wei-bg-white {
+  color: #5f646e;
+  border: 1px solid #bfbfbf;
+  background-color: #ffffff;
+}
+
+.wei-bg-white:link, .wei-bg-white:visited, .wei-bg-white:hover, .wei-bg-white:active {
+  color: #5f646e;
+  border: 1px solid #bfbfbf;
+  background-color: #ffffff;
+}
+.wei-bg-sRed {
+  color: #ffffff;
+  background-color: #ff8000;
+  border: 1px solid #ff8000;
+}
+
+.wei-bg-sRed:link, .wei-bg-sRed:visited, .wei-bg-sRed:hover, .wei-bg-sRed:active {
+  color: #ffffff;
+  background-color: #ff8000;
+  border: 1px solid #ff8000;
+}
+.jcrop-holder #preview-pane {
+  display: block;
+  position: absolute;
+  top: 133%;
+  right: 42.7%;
+}
+#preview-pane .preview-container {
+  width: 61mm;
+  height: 36mm;
+  overflow: hidden;
+}
+.pc-print-container{
+  position: relative;
+  width: 210mm;
+  margin: 0 auto;
+}
+.pc-print{
+  position: relative;
+  width: 210mm;
+  height: 148mm;
+  margin: 0 auto;
+  background: url("../img/admin/cert-bg.png") no-repeat center;
+  background-size: 210mm 148mm;
+  font-size: 24px;
+  font-family: "微软雅黑", "Microsoft YaHei", "Hiragino Sans GB", Helvetica, Arial, sans-serif;
+}
+.pc-print>.code{
+  position: absolute;
+  right: 22.2mm;
+  top: 18.9mm;
+  font-size: 10.56pt;
+  font-weight: bold;
+  font-family: FZZDHJW -GB1-0;
+}
+.pc-print .item{
+  display: inline-block;
+  width: 36.4mm;
+  height: 7mm;
+  font-size: 13pt;
+  color: #666;
+  border-bottom: 1px solid black;
+  vertical-align: text-bottom;
+}
+.pc-print>.name{
+  position: absolute;
+  left: 31.8mm;
+  top: 56.8mm;
+  font-size: 15.43pt;
+  font-family: 宋体;
+}
+.pc-print>.author{
+  position: absolute;
+  left: 31.8mm;
+  top: 65.7mm;
+  font-size: 15.43pt;
+  font-family: 宋体;
+}
+.pc-print>.pug{
+  position: absolute;
+  left: 31.8mm;
+  top: 74.9mm;
+  font-size: 15.43pt;
+  font-family: 宋体;
+}
+.pc-print>.capacity{
+  position: absolute;
+  left: 31.8mm;
+  top: 83.8mm;
+  font-size: 15.43pt;
+  font-family: 宋体;
+}
+.pc-print>.sign{
+  position: absolute;
+  left: 29.7mm;
+  bottom: 39.6mm;
+  font-size: 17.04pt;
+  font-family: 楷体;
+}
+.pc-print>.comp{
+  position: absolute;
+  left: 115.78mm;
+  bottom: 39.6mm;
+  font-size: 17.04pt;
+  font-family: 楷体;
+}
+.pc-print>.title{
+  position: absolute;
+  left: 0;
+  top: 40.5mm;
+  width: 100%;
+  text-align: center;
+  font-size: 20.73pt;
+  font-family: 楷体;
+}
+.pc-print>img.qrcode{
+  position: absolute;
+  left: 18.3mm;
+  top: 22.6mm;
+  width: 19.5mm;
+}
+.user-photo-container{
+  position: absolute;
+  right: 28.9mm;
+  top:57.4mm;
+  width: 61mm;
+  height: 36mm;
+  overflow: hidden;
+}
+.user-name-container{
+  position: absolute;
+  width: 5mm;
+  height: 45mm;
+  padding: 0 2mm 0 2mm;
+  line-height: 5mm;
+  font-size: 2mm;
+  font-family: LiSu ,SimSun,FangSong ,KaiTi, SimHei,PMingLiU;
+  right: 70mm;
+  /* bottom: 100.31mm; */
+  top:35mm;
+  word-wrap: break-word;
+  word-break: normal;
+  text-align: center;
+}
+.pri-btn{
+  position: absolute;
+  right: 46.5mm;
+  top: 82mm;
+  width: 25mm;
+}
+.pri-btn a.wei-btn{
+  float: left;
+  width: 45%;
+}
+.pri-btn a.wei-btn:first-child{
+  margin-right: 2.5%;
+}
+.pri-btn a.wei-btn:last-child{
+  margin-left: 2.5%;
+}
+.cut-pop{
+  position: absolute;
+  width: 460px;
+  min-height: 460px;
+  top: 30%;
+  left: 50%;
+  margin-left: -250px;
+  margin-top: -250px;
+  background-color: #fff;
+  z-index: 3000;
+}
+.show-img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.cut-pop{
+  border: 1px solid #eee;
+  padding: 20px;
+}
+.cut-btn{
+  width: 100%;
+}
+.cut-btn a.wei-btn{
+  margin-top: 20px;
+  width: 45%;
+  line-height: 30px;
+  height: 30px;
+}
+.cut-btn a.wei-btn:first-child{
+  margin-right: 4%;
+}
+.cut-btn a.wei-btn:last-child{
+  margin-left: 4%;
+}
+
+/* 样式将只应用于打印 */
+@media print {
+  .user-photo-container{
+    position: absolute;
+    right: 28.9mm;
+    top:57.4mm;
+    width: 61mm;
+    height: 36mm;
+    overflow: hidden;
+  }
+  .user-name-container{
+    position: absolute;
+    width: 5mm;
+    height: 45mm;
+    padding: 0 2mm 0 2mm;
+    line-height: 5mm;
+    font-size: 2mm;
+    font-family: LiSu ,SimSun,FangSong ,KaiTi, SimHei,PMingLiU;
+    bottom: 307.7724px;
+    left:204.21804px;
+    word-wrap: break-word;
+    word-break: normal;
+    text-align: center;
+  }
+
+}
+
+@page {
+    size: 5in 7in;
+}
