@@ -285,22 +285,22 @@ gulp.task('uglify_css', function() {
   //   .pipe($.cssnano())
   //   .pipe(gulp.dest('dist/css'));
 
-  // gulp.src('app/public/styles/pc.scss')
-  //   .pipe($.plumber())
-  //   .pipe($.sourcemaps.init())
-  //   .pipe($.sass.sync({
-  //     outputStyle: 'expanded',
-  //     precision: 10,
-  //     includePaths: ['.']
-  //   }).on('error', $.sass.logError))
-  //   .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
-  //   .pipe($.sourcemaps.write())
-  //   .pipe(gulp.dest('.tmp/public/styles'))
-  //   // .pipe(reload({stream: true}))
-  //   .pipe($.cssnano())
-  //   .pipe(gulp.dest('dist/css'));
+  gulp.src('app/public/styles/pc.scss')
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.sass.sync({
+      outputStyle: 'expanded',
+      precision: 10,
+      includePaths: ['.']
+    }).on('error', $.sass.logError))
+    .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
+    .pipe($.sourcemaps.write())
+    .pipe(gulp.dest('.tmp/public/styles'))
+    // .pipe(reload({stream: true}))
+    .pipe($.cssnano())
+    .pipe(gulp.dest('dist/css'));
 
-  gulp.src('app/public/styles/print.css')
+  /*gulp.src('app/public/styles/print.css')
     .pipe($.plumber())
     .pipe($.sourcemaps.init())
     .pipe($.sass.sync({
@@ -328,7 +328,7 @@ gulp.task('uglify_css', function() {
     .pipe(gulp.dest('.tmp/public/styles'))
     // .pipe(reload({stream: true}))
     .pipe($.cssnano())
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('dist/css'));*/
 
   // gulp.src('app/public/styles/pc_admin.scss')
   //   .pipe($.plumber())

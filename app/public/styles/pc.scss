@@ -442,7 +442,7 @@ html:not(.S) body {
 }
 
 .yw-data-view {
-  padding-top: 55px;
+  padding-top: 40px;
   overflow: hidden
 }
 
@@ -472,13 +472,15 @@ html:not(.S) body {
 }
 
 .yw-data-dt {
-  padding: 40px 0 0 90px;
+  padding: 40px 0 0 0;
+  text-align: center;
   color: #565657;
-  font-size: 24px
+  font-size: 20px;
+  font-weight: bold;
 }
-
-.yw-data-dl-1 .yw-data-dt {
-  padding-left: 90px
+.yw-data-dt > img {
+  width: 80px;
+  margin-bottom: 10px;
 }
 
 .icons-pbm-p {
@@ -1367,7 +1369,7 @@ html[class*=win] .yw-contact-dd {
   font-size: 12px
 }
 
-.yw-local-bj, .yw-local-hz, .yw-local-sh,.yw-local-yx {
+.yw-local-bj, .yw-local-hz, .yw-local-sh,.yw-local-yx,.yw-local-xa {
   position: absolute;
   font-size: 18px;
   white-space: nowrap
@@ -1413,6 +1415,10 @@ html[class*=win] .yw-contact-dd {
 .yw-local-yx{
   top: 370px;
   right: 200px
+}
+.yw-local-xa{
+  top: 260px;
+  right: 260px
 }
 
 .yw-contact-dd {
@@ -1484,7 +1490,7 @@ html[class*=win] .yw-contact-dd {
   height: 45px
 }
 
-@media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
+/*@media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
   .yw-logo {
     background-size: 138px 89px;
     background-image: url('#{$img-path}/fct-logo-n-2x.png'), none
@@ -1493,7 +1499,7 @@ html[class*=win] .yw-contact-dd {
   .icon-share {
     background-image: url('#{$img-path}/icons-share@2x.png')
   }
-}
+}*/
 
 .S, .S body {
   height: 100%
@@ -2212,12 +2218,12 @@ html[class*=win] .yw-contact-dd {
 @media (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
   .logo-app {
     background-size: 201px 148px;
-    background-image: url('#{$img-path}/logo-app@2x.png'), none
+    //background-image: url('#{$img-path}/logo-app@2x.png'), none
   }
 }
 
 .logo-fixed {
-  background-image: url('#{$img-path}/logo-fixed2@2x.png');
+  //background-image: url('#{$img-path}/logo-fixed2@2x.png');
   background-repeat: no-repeat;
   background-size: 131px 97px;
   display: none
@@ -2655,7 +2661,7 @@ html[class*=win] .yw-contact-dd {
   width: 136px;
   height: 143px;
   background: url('#{$img-path}/qdqr.png') no-repeat;
-  background: url('#{$img-path}/qdqr@2x.png') no-repeat;
+  //background: url('#{$img-path}/qdqr@2x.png') no-repeat;
   background-size: cover;
   bottom: 100%;
   left: 50%;
@@ -2664,13 +2670,13 @@ html[class*=win] .yw-contact-dd {
 
 .qr-zj-pic {
   background: url('#{$img-path}/zjqr.png') no-repeat;
-  background: url('#{$img-path}/zjqr@2x.png') no-repeat;
+  //background: url('#{$img-path}/zjqr@2x.png') no-repeat;
   background-size: cover
 }
 
 .qr-qq-pic {
   background: url('#{$img-path}/qqqr.png') no-repeat;
-  background: url('#{$img-path}/qqqr@2x.png') no-repeat;
+  //background: url('#{$img-path}/qqqr@2x.png') no-repeat;
   background-size: cover
 }
 
